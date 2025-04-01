@@ -1,0 +1,2 @@
+C:/medi_book/android/app/.cxx/Debug/24692355/x86/CMakeFiles/edit_cache.dir
+C:/medi_book/android/app/.cxx/Debug/24692355/x86/CMakeFiles/rebuild_cache.dir
