@@ -2,7 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+## ⚛️ System design
+
+![ChatGPT Image Apr 1, 2025, 09_58_20 AM](https://github.com/user-attachments/assets/a11b59f4-a123-457e-9ca5-a0a76436f033)
 
 This project is a starting point for a Flutter application.
 
