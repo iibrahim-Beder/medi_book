@@ -12,6 +12,7 @@ class MediBookApp extends StatelessWidget {
        designSize: const Size(375,812),
        minTextAdapt: true,
       child: MaterialApp.router(
+      
         title: "Medi Book",
         theme: ThemeData(
           primaryColor: ColorsManager.mainBlue,

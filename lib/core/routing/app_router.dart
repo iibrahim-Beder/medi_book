@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:medi_book/features/login/presentation/views/login_view.dart';
+import 'package:medi_book/features/login/login_view.dart';
 import 'package:medi_book/features/onboarding/presentation/views/onboarding_view.dart';
 
 abstract class AppRouter {

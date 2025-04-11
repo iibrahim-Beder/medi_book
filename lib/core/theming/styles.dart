@@ -6,7 +6,7 @@ abstract class TextStyles {
   
   static TextStyle font24EerieBlack700Weight = TextStyle(
     fontSize: 24.sp,
-    color: ColorsManager.eerieBlack,
+    color: ColorsManager.text100,
     fontWeight: FontWeight.w700
     
   );
@@ -25,6 +25,26 @@ abstract class TextStyles {
     
   );
 
+    static TextStyle font12neutral60_400Weight = TextStyle(
+    fontSize: 12.sp,
+    color: ColorsManager.neutral60,
+    fontWeight: FontWeight.w400
+    
+  );
+
+   static TextStyle font14SilverGray500Weight = TextStyle(
+    fontSize: 14.sp,
+    color: ColorsManager.silverGray,
+    fontWeight: FontWeight.w500
+    
+  );
+
+ static TextStyle font14Gray400Weight = TextStyle(
+    fontSize: 14.sp,
+    color: ColorsManager.gray,
+    fontWeight: FontWeight.w400
+    
+  );
   static TextStyle font16White600Weight = TextStyle(
     fontSize: 16.sp,
     color: ColorsManager.white,
