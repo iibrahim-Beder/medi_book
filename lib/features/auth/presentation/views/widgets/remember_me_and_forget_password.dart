@@ -17,7 +17,13 @@ class RememberMeAndForgetPassword extends StatelessWidget {
           padding: EdgeInsets.only(left: 12.h),
           child: RowRememberMeAndCheckBox(),
         ),
-        TextButton(onPressed: () {}, child: Text("Forgot Password?",style: TextStyles.font12neutral60_400Weight.copyWith(color: ColorsManager.mainBlue),))
+        TextButton(
+            onPressed: () {},
+            child: Text(
+              "Forgot Password?",
+              style: TextStyles.font12Neutral60Regular
+                  .copyWith(color: ColorsManager.mainBlue),
+            ))
       ],
     );
   }
@@ -38,7 +44,7 @@ class RowRememberMeAndCheckBox extends StatelessWidget {
         ),
         Text(
           "Remember me",
-          style: TextStyles.font12neutral60_400Weight,
+          style: TextStyles.font12Neutral60Regular,
         )
       ],
     );

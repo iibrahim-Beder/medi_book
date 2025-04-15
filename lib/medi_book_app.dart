@@ -15,6 +15,7 @@ class MediBookApp extends StatelessWidget {
       
         title: "Medi Book",
         theme: ThemeData(
+          
           primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: Colors.white
           

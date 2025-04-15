@@ -26,9 +26,9 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                   width: 21,
                   height: 21,
                   decoration: BoxDecoration(
-                    color: _isChecked ? ColorsManager.mainBlue : ColorsManager.ghostWhite,
+                    color: _isChecked ? ColorsManager.mainBlue : ColorsManager.text30,
                     border: Border.all(
-                      color: _isChecked ? ColorsManager.mainBlue : ColorsManager.lightGrayishBlue,
+                      color: _isChecked ? ColorsManager.mainBlue : ColorsManager.grey400,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(5),
@@ -36,7 +36,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                   child: _isChecked
                       ? Icon(
                           Icons.check,
-                          color: ColorsManager.ghostWhite,
+                          color: ColorsManager.text30,
                           size: 18,
                         )
                       : null,

@@ -14,7 +14,8 @@ class CustomTextField extends StatelessWidget {
     this.focusedBorder,
     this.enabledBorder,
     this.contentPadding,
-
+    required this.validator,
+    this.controller,
   }) : super(key: key);
 
   final String hintText;
@@ -25,26 +26,25 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final OutlineInputBorder? enabledBorder;
   final OutlineInputBorder? focusedBorder;
-  // final String? Function(String?)? validator;
-  // final Function(String?)? onSaved;
+  final String? Function(String?) validator;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // onSaved: onSaved,
-      // validator: validator,
+      controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.h, vertical: 17.h),
         filled: true,
-        fillColor: ColorsManager.ghostWhite,
+        fillColor: ColorsManager.text30,
         hintText: hintText,
-        hintStyle: hintStyle ?? TextStyles.font14SilverGray500Weight,
+        hintStyle: hintStyle ?? TextStyles.font14Text50Medium,
         prefixIcon: prefixIcon,
-        prefixIconColor: ColorsManager.charcoal,
+        prefixIconColor: ColorsManager.text100,
         suffixIcon: suffixIcon,
-        suffixIconColor: ColorsManager.charcoal,
+        suffixIconColor: ColorsManager.text100,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -52,7 +52,7 @@ class CustomTextField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(
-                color: ColorsManager.lightGray,
+                color: ColorsManager.text30,
               ),
             ),
         focusedBorder: focusedBorder ??
@@ -62,7 +62,23 @@ class CustomTextField extends StatelessWidget {
                 color: ColorsManager.mainBlue,
               ),
             ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
       ),
+      validator: (value) {
+        return validator(value);
+      },
+      
     );
   }
 }

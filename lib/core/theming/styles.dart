@@ -1,54 +1,70 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/theming/colors.dart';
+import 'package:medi_book/core/theming/font_weight_helper.dart';
 
 abstract class TextStyles {
   
-  static TextStyle font24EerieBlack700Weight = TextStyle(
+  static TextStyle font24Text100Bold = TextStyle(
     fontSize: 24.sp,
     color: ColorsManager.text100,
-    fontWeight: FontWeight.w700
+    fontWeight: FontWeightHelper.bold,
     
   );
 
-  static TextStyle font32Blue700Weight = TextStyle(
+    static TextStyle font13Text100Regular = TextStyle(
+    fontSize: 13.sp,
+    color: ColorsManager.text100,
+    fontWeight: FontWeightHelper.regular,
+    
+  );
+
+  static TextStyle font15Text100Medium = TextStyle(
+    fontSize: 15.sp,
+    color: ColorsManager.text100,
+    fontWeight: FontWeightHelper.medium,
+    
+  );
+
+  static TextStyle font32BlueBold = TextStyle(
     fontSize: 32.sp,
     color: ColorsManager.mainBlue,
-    fontWeight: FontWeight.w700
+    fontWeight: FontWeightHelper.bold,
     
   );
 
-  static TextStyle font11Gray400Weight = TextStyle(
+  static TextStyle font11TextBodyBold = TextStyle(
     fontSize: 11.sp,
-    color: ColorsManager.gray,
-    fontWeight: FontWeight.w700
+    color: ColorsManager.textBody,
+    fontWeight: FontWeightHelper.bold,
     
   );
 
-    static TextStyle font12neutral60_400Weight = TextStyle(
+    static TextStyle font12Neutral60Regular = TextStyle(
     fontSize: 12.sp,
     color: ColorsManager.neutral60,
-    fontWeight: FontWeight.w400
+    fontWeight: FontWeightHelper.regular
     
   );
 
-   static TextStyle font14SilverGray500Weight = TextStyle(
+   static TextStyle font14Text50Medium = TextStyle(
     fontSize: 14.sp,
-    color: ColorsManager.silverGray,
-    fontWeight: FontWeight.w500
+    color: ColorsManager.text50,
+    fontWeight: FontWeightHelper.medium
     
   );
 
- static TextStyle font14Gray400Weight = TextStyle(
+  static TextStyle font14MainBlueSemiBold = TextStyle(
     fontSize: 14.sp,
-    color: ColorsManager.gray,
-    fontWeight: FontWeight.w400
+    color: ColorsManager.mainBlue,
+    fontWeight: FontWeightHelper.semiBold
     
   );
-  static TextStyle font16White600Weight = TextStyle(
+
+  static TextStyle font16BackgroundWhiteSemiBold = TextStyle(
     fontSize: 16.sp,
-    color: ColorsManager.white,
-    fontWeight: FontWeight.w600
+    color: ColorsManager.backgroundWhite,
+    fontWeight: FontWeightHelper.semiBold
     
   );
 

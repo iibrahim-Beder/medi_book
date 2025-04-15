@@ -10,20 +10,20 @@ class TermsAndConditionsText extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
         text: TextSpan(
-          style: TextStyles.font12neutral60_400Weight.copyWith(fontSize: 11, height: 1.5),
+          style: TextStyles.font12Neutral60Regular.copyWith(fontSize: 11, height: 1.5),
           children: <TextSpan>[
       TextSpan(
           text: "By logging, you agree to our",
   ),
           TextSpan(
           text: "  Terms & Conditions ",
-          style: TextStyles.font12neutral60_400Weight.copyWith(fontSize: 11,color: ColorsManager.text100)),
+          style: TextStyles.font12Neutral60Regular.copyWith(fontSize: 11,color: ColorsManager.text100)),
             TextSpan(
           text: "and",
           ),
             TextSpan(
           text: "\nPrivacyPolicy",
-          style: TextStyles.font12neutral60_400Weight.copyWith(fontSize: 11,color: ColorsManager.text100)),
+          style: TextStyles.font12Neutral60Regular.copyWith(fontSize: 11,color: ColorsManager.text100)),
     ]));
   }
 }

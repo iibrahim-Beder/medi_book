@@ -13,14 +13,14 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
       children: [
         Text(
           "Already have an account yet?",
-          style: TextStyles.font12neutral60_400Weight
+          style: TextStyles.font12Neutral60Regular
               .copyWith(fontSize: 11, color: ColorsManager.text100),
         ),
         TextButton(
           onPressed: () {},
           child: Text(
             "Sign Up",
-            style: TextStyles.font12neutral60_400Weight
+            style: TextStyles.font12Neutral60Regular
                 .copyWith(fontSize: 11, color: ColorsManager.mainBlue),
           ),
         ),

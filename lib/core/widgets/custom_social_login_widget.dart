@@ -17,7 +17,7 @@ class CustomSocialLoginWidget extends StatelessWidget {
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: ColorsManager.text_20,
+          color: ColorsManager.text20,
           shape: BoxShape.circle,
         ),
         padding: EdgeInsets.all(12),

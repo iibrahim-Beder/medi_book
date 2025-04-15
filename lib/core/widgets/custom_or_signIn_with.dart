@@ -17,7 +17,7 @@ class CustomOrSigninWith extends StatelessWidget {
           
           ),
         ),
-        Text(" Or sign in with ",style: TextStyles.font12neutral60_400Weight,),
+        Text(" Or sign in with ",style: TextStyles.font12Neutral60Regular,),
         Expanded(
           child: Container(
             height: 1,
