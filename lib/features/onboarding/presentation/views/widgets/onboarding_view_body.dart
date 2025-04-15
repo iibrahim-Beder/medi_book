@@ -30,14 +30,14 @@ class OnboardingViewBody extends StatelessWidget {
                     Text(
                       textAlign: TextAlign.center,
                       "Manage and schedule all of your medical appointments easily with Docdoc to get a new experience.",
-                      style: TextStyles.font11Gray400Weight,
+                      style: TextStyles.font11TextBodyBold,
                     ),
                     SizedBox(
                       height: 30.h,
                     ),
                     CustomButton(
                       textValue: 'Get Started',
-                      voidCallback: () =>  context.pushNamed(AppRouter.kLogin)
+                      voidCallback: () =>  context.pushReplacementNamed(AppRouter.kLogin)
                     )
                   ],
                 ),

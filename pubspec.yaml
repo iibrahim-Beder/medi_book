@@ -31,16 +31,22 @@ dependencies:
   flutter:
     sdk: flutter
   
+  # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures, monads, lenses and other FP tools.
+  dartz: ^0.10.1
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+   
+  # A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.15
 
+  
   # State management
   flutter_bloc: ^9.1.0
 
   # Cood generator (commonly used with a cubit and retrofit)
-  freezed: ^3.0.4
-  freezed_annotation: ^3.0.0
+  freezed_annotation: ^2.4.1
   
   # Dimensions injection
   get_it: ^8.0.3
@@ -52,7 +58,6 @@ dependencies:
   # Networking
   dio: ^5.8.0+1
   retrofit: ^4.4.2
-  retrofit_generator: ^9.1.9
   pretty_dio_logger: ^1.4.0
 
   # Localisation
@@ -75,6 +80,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # Code generator, so it belongs in dev_dependencies
+  retrofit_generator: ^9.1.9  
+  freezed: ^2.4.6
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

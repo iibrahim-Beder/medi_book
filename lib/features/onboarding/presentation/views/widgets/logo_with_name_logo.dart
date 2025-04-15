@@ -14,7 +14,7 @@ class LogoWithNameLogo extends StatelessWidget {
       
       SvgPicture.asset("assets/svgs/logo.svg"),
       SizedBox(width: 10.w),
-      Text("MediBook",style: TextStyles.font24EerieBlack700Weight,)
+      Text("MediBook",style: TextStyles.font24Text100Bold,)
     
 
       ],
