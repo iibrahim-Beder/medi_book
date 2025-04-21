@@ -4,33 +4,34 @@ import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
 
 class PasswordValidation extends StatelessWidget {
-  final bool hasLowerCase;
-  final bool hasUpperCase;
-  final bool hasSpecialCharacter;
+  final bool hasLowercase;
+  final bool hasUppercase;
+  final bool hasSpecialCharacters;
   final bool hasNumber;
   final bool hasMinLength;
-  const PasswordValidation(
-      {super.key,
-      required this.hasLowerCase,
-      required this.hasUpperCase,
-      required this.hasSpecialCharacter,
-      required this.hasNumber,
-      required this.hasMinLength});
+  const PasswordValidation({
+    super.key,
+    required this.hasLowercase,
+    required this.hasUppercase,
+    required this.hasSpecialCharacters,
+    required this.hasNumber,
+    required this.hasMinLength,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildValidationRow('At least 1 lowercase letter', hasLowerCase),
+        buildValidationRow('At least 1 lowercase letter', hasLowercase),
         verticalSpace(2),
-        buildValidationRow('At least 1 upperCase letter', hasUpperCase),
+        buildValidationRow('At least 1 upperCase letter', hasUppercase),
         verticalSpace(2),
-        buildValidationRow('At least 1 specialCharacter letter', hasSpecialCharacter),
+        buildValidationRow(
+            'At least 1 specialCharacter letter', hasSpecialCharacters),
         verticalSpace(2),
         buildValidationRow('At least 1 number letter', hasNumber),
         verticalSpace(2),
         buildValidationRow('At least 8 characters', hasMinLength),
-      
       ],
     );
   }

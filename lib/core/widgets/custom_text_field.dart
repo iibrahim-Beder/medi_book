@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.enabledBorder,
     this.contentPadding,
     required this.validator,
-    this.controller,
+    this.controller, this.keyboardType = TextInputType.text
   }) : super(key: key);
 
   final String hintText;
@@ -28,17 +28,19 @@ class CustomTextField extends StatelessWidget {
   final OutlineInputBorder? focusedBorder;
   final String? Function(String?) validator;
   final TextEditingController? controller;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.h, vertical: 17.h),
         filled: true,
-        fillColor: ColorsManager.text30,
+        fillColor: ColorsManager.text20,
         hintText: hintText,
         hintStyle: hintStyle ?? TextStyles.font14Text50Medium,
         prefixIcon: prefixIcon,

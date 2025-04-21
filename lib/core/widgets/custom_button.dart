@@ -18,6 +18,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: voidCallback,
+        
         style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(ColorsManager.mainBlue),
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
