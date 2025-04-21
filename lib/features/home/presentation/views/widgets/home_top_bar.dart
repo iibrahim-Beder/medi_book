@@ -17,7 +17,7 @@ class HomeTopBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hi Ibrahim!",
+              "Hi, Ibrahim!",
               style: TextStyles.font24Text100Bold.copyWith(fontSize: 18.sp),
             ),
             Text(
@@ -39,7 +39,7 @@ class HomeTopBar extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(12),
                   child: SvgPicture.asset(
-                    'assets/svgs/notification.svg',
+                    'assets/svgs/notifications.svg',
                     fit: BoxFit.contain,
                   ),
                 ),
