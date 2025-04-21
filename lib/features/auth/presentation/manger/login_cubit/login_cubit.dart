@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medi_book/features/auth/domain/entities/login_request_entitie.dart';
+import 'package:medi_book/features/auth/domain/entities/login_entitie.dart';
 import 'package:medi_book/features/auth/domain/repos/auth_repo.dart';
 import 'package:medi_book/features/auth/presentation/manger/login_cubit/login_state.dart';
 
@@ -13,13 +13,13 @@ class LoginCubit extends Cubit<LoginState> {
   late TextEditingController emailController = TextEditingController();
   late TextEditingController passWordController = TextEditingController();
 
-  void emitLoginState(LoginRequestEntitie loginRequestEntitie) async {
+  void emitLoginState(LoginEntitie loginRequestEntitie) async {
     emit(const LoginState.loading());
     final response = await authRepo.login(loginRequestEntitie);
     response.fold((error) {
       emit(LoginState.error(failures: error));
-    }, (loginEntitie) {
-      emit(LoginState.success(loginEntitie));
+    }, (authResponseEntitie) {
+      emit(LoginState.success(authResponseEntitie));
     });
   }
 }

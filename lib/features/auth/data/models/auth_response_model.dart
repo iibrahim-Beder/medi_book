@@ -1,19 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:medi_book/features/auth/domain/entities/login_response_entitie.dart';
-part 'login_response.g.dart';
+import 'package:medi_book/features/auth/domain/entities/auth_response_entitie.dart';
+part 'auth_response_model.g.dart';
 
 @JsonSerializable()
-class LoginResponse extends LoginResponseEntitie {
+class AuthResponseModel extends AuthResponseEntitie {
   final String? message;
   @JsonKey(name: 'data')
   final UserData? userData;
   final bool? status;
   final int? code;
 
-  LoginResponse(this.message, this.userData, this.status, this.code) : super(userData!.userName);
+  AuthResponseModel(this.message, this.userData, this.status, this.code) : super(userData!.userName);
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseFromJson(json);
+  factory AuthResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseModelFromJson(json);
 }
 
 @JsonSerializable()

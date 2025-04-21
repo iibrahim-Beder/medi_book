@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:medi_book/core/routing/app_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
 
@@ -17,7 +19,9 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
               .copyWith(fontSize: 11, color: ColorsManager.text100),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(AppRouter.kSignupScreen);
+          },
           child: Text(
             "Sign Up",
             style: TextStyles.font12Neutral60Regular

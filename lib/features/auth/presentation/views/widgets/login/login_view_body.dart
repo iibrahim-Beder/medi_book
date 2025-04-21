@@ -5,14 +5,14 @@ import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/font_weight_helper.dart';
 import 'package:medi_book/core/theming/styles.dart';
-import 'package:medi_book/core/widgets/already_have_an_account_text.dart';
+import 'package:medi_book/features/auth/presentation/views/widgets/login/already_have_an_account_text.dart';
 import 'package:medi_book/core/widgets/custom_button.dart';
 import 'package:medi_book/core/widgets/custom_or_signIn_with.dart';
 import 'package:medi_book/core/widgets/terms_and_conditions_text.dart';
-import 'package:medi_book/features/auth/domain/entities/login_request_entitie.dart';
+import 'package:medi_book/features/auth/domain/entities/login_entitie.dart';
 import 'package:medi_book/features/auth/presentation/manger/login_cubit/login_cubit.dart';
-import 'package:medi_book/features/auth/presentation/views/widgets/email_and_password.dart';
-import 'package:medi_book/features/auth/presentation/views/widgets/login_block_listener.dart';
+import 'package:medi_book/features/auth/presentation/views/widgets/login/email_and_password.dart';
+import 'package:medi_book/features/auth/presentation/views/widgets/login/login_block_listener.dart';
 import 'package:medi_book/features/onboarding/presentation/views/widgets/custom_all_available_SocialLogin.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -23,7 +23,7 @@ class LoginViewBody extends StatelessWidget {
     return SafeArea(
         child: SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.h, vertical: 45.h),
+        padding: EdgeInsets.symmetric(horizontal: 30.h, vertical: 45.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -75,7 +75,7 @@ class LoginViewBody extends StatelessWidget {
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginState(LoginRequestEntitie(
+      context.read<LoginCubit>().emitLoginState(LoginEntitie(
           email: context.read<LoginCubit>().emailController.text,
           passWord: context.read<LoginCubit>().passWordController.text));
     }

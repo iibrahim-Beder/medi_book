@@ -38,7 +38,7 @@ class RowRememberMeAndCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomCheckbox(),
+        // CustomCheckbox(),
         SizedBox(
           width: 12.h,
         ),

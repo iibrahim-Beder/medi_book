@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/routing/app_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
-import 'package:medi_book/core/theming/styles.dart';
+import 'package:medi_book/core/widgets/setup_error_state.dart';
 import 'package:medi_book/features/auth/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:medi_book/features/auth/presentation/manger/login_cubit/login_state.dart';
 
@@ -33,41 +33,11 @@ class LoginBlockListener extends StatelessWidget {
           },
           error: (error) {
             setUpErrorState(context, error.message);
+            
           },
         );
       },
       child: const SizedBox.shrink(),
-    );
-  }
-
-  void setUpErrorState(BuildContext context, String error) {
-    context.pop();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.white, 
-        icon: Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
-        content: Text(
-          error,
-          style: TextStyles.font15Text100Medium.copyWith(
-              color: Colors.black), // optional: make text readable on white
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.pop();
-            },
-            child: Text(
-              'Got it',
-              style: TextStyles.font14MainBlueSemiBold,
-            ),
-          )
-        ],
-      ),
     );
   }
 }
