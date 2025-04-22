@@ -22,26 +22,45 @@ class DoctorsListVeiwItem extends StatelessWidget {
               width: 110.w,
               fit: BoxFit.cover,
             ),
-          ), 
+          ),
           horizontalSpace(12),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-
-              Text("Dr. Randy Wigham", style: TextStyles.font16Text100Bold,),
-              verticalSpace(5),
-              Text("General | RSUD Gatot Subroto",style: TextStyles.font12Text80Medium,),
-              verticalSpace(5),
-              Row(
-                children: [
-                    Icon(Icons.star, color: Color(0xFFFFD600),),
-                  Text("4.8 (4,279 reviews)",style: TextStyles.font12Text80Medium.copyWith(fontSize: 12),),
-                ],
-              ),
-            ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Dr. Randy Wigha",
+                  style: TextStyles.font16Text100Bold,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                verticalSpace(5),
+                Text(
+                  "General | RSUD Gatot Subroto",
+                  style: TextStyles.font12Text80Medium,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                verticalSpace(5),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Color(0xFFFFD600),
+                    ),
+                    Text(
+                      "4.8 (4,279 reviews)",
+                      style:
+                          TextStyles.font12Text80Medium.copyWith(fontSize: 12),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )
-
         ],
       ),
     );
