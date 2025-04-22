@@ -12,5 +12,7 @@ abstract class ColorsManager {
   static const Color backgroundWhite = Color(0xffffffff);
   static const Color text20 = Color(0xffF5F5F5);
   static const Color text100 = Color(0xff242424);
+  static const Color text80 = Color(0xff616161);
+  static const Color primarySurface = Color(0xffF4F8FF);
   
 }

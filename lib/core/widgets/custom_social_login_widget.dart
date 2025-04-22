@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:medi_book/core/theming/colors.dart';
 
 class CustomSocialLoginWidget extends StatelessWidget {
-  const CustomSocialLoginWidget({super.key, required this.svgPath, required this.onTap});
+  const CustomSocialLoginWidget(
+      {super.key, required this.svgPath, required this.onTap});
 
   final String svgPath;
   final VoidCallback onTap;
@@ -14,8 +16,8 @@ class CustomSocialLoginWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 50,
-        height: 50,
+        width: 50.w,
+        height: 50.h,
         decoration: BoxDecoration(
           color: ColorsManager.text20,
           shape: BoxShape.circle,
