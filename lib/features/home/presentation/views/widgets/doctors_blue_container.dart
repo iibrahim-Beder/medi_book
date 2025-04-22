@@ -21,7 +21,7 @@ class DoctorsBlueContainer extends StatelessWidget {
             height: 167.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              image: const DecorationImage(image: AssetImage("assets/images/home_blue_pattern.png.png"),
+              image: const DecorationImage(image: AssetImage("assets/images/home_blue_pattern.png"),
               fit: BoxFit.cover
               )
             ),
