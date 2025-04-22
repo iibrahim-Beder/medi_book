@@ -4,7 +4,8 @@ import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/features/home/presentation/views/widgets/doctor_speciality_and_see_all.dart';
 import 'package:medi_book/features/home/presentation/views/widgets/doctor_speciality_list_view.dart';
 import 'package:medi_book/features/home/presentation/views/widgets/doctors_blue_container.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/home_top_bar.dart';
+import 'package:medi_book/features/home/presentation/views/widgets/doctors_list_veiw.dart';
+import 'package:medi_book/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:medi_book/features/home/presentation/views/widgets/recommendation_doctor_and_see_all.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -15,25 +16,29 @@ class HomeViewBody extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 25.h),
-            sliver: SliverList(
-                delegate: SliverChildListDelegate([
-              const HomeTopBar(),
-              verticalSpace(30),
-              const DoctorsBlueContainer(),
-              verticalSpace(24),
-              const DoctorSpecialityAndSeeAll(),
-              verticalSpace(16),
-              const DoctorSpecialityListView(),
-              verticalSpace(24),
-              const RecommendationDoctorAndSeeAll(),
-              verticalSpace(12),
-
-            ])),
-          )
+          HomeAppBar(isThereNotifications: true,),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                children: [
+                  const DoctorsBlueContainer(),
+                  verticalSpace(24),
+                  const DoctorSpecialityAndSeeAll(),
+                  verticalSpace(16),
+                  const DoctorSpecialityListView(),
+                  verticalSpace(24),
+                  const RecommendationDoctorAndSeeAll(),
+                  verticalSpace(10),
+                ],
+              ),
+            ),
+          ),
+          const DoctorsListVeiw(),
         ],
       ),
     );
   }
 }
+
+

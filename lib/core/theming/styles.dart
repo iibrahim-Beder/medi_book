@@ -44,6 +44,11 @@ abstract class TextStyles {
       color: ColorsManager.neutral60,
       fontWeight: FontWeightHelper.regular);
 
+      static TextStyle font12Text80Medium = TextStyle(
+      fontSize: 12.sp,
+      color: ColorsManager.text80,
+      fontWeight: FontWeightHelper.medium);
+
   static TextStyle font14Text50Medium = TextStyle(
       fontSize: 14.sp,
       color: ColorsManager.text50,
@@ -58,4 +63,11 @@ abstract class TextStyles {
       fontSize: 16.sp,
       color: ColorsManager.backgroundWhite,
       fontWeight: FontWeightHelper.semiBold);
+
+
+        static TextStyle font16Text100Bold = TextStyle(
+      fontSize: 16.sp,
+      color: ColorsManager.text100,
+      fontWeight: FontWeightHelper.bold);
+
 }
