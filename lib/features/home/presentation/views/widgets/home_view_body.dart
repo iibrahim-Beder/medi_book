@@ -5,6 +5,7 @@ import 'package:medi_book/features/home/presentation/views/widgets/doctor_specia
 import 'package:medi_book/features/home/presentation/views/widgets/doctor_speciality_list_view.dart';
 import 'package:medi_book/features/home/presentation/views/widgets/doctors_blue_container.dart';
 import 'package:medi_book/features/home/presentation/views/widgets/home_top_bar.dart';
+import 'package:medi_book/features/home/presentation/views/widgets/recommendation_doctor_and_see_all.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -24,7 +25,11 @@ class HomeViewBody extends StatelessWidget {
               verticalSpace(24),
               const DoctorSpecialityAndSeeAll(),
               verticalSpace(16),
-              const DoctorSpecialityListView()
+              const DoctorSpecialityListView(),
+              verticalSpace(24),
+              const RecommendationDoctorAndSeeAll(),
+              verticalSpace(12),
+
             ])),
           )
         ],
