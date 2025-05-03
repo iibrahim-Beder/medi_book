@@ -4,13 +4,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 
-class CoustomArrowBackBox extends StatelessWidget {
-  const CoustomArrowBackBox({super.key});
+class CoustomImageBox extends StatelessWidget {
+  const CoustomImageBox({super.key, required this.svgPath});
+  // CoustomArrowBackBox
 
+  final String svgPath;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         context.pop(context);
       },
       child: Container(
@@ -22,11 +24,9 @@ class CoustomArrowBackBox extends StatelessWidget {
           border: Border.all(color: ColorsManager.neutral40),
         ),
         padding: EdgeInsets.all(12),
-        child: SvgPicture.asset(
-          "assets/svgs/arrow_back.svg",
+        child: SvgPicture.asset(svgPath,
           fit: BoxFit.contain,
         ),
-      
       ),
     );
   }

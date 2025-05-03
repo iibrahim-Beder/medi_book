@@ -14,7 +14,7 @@ class ArrowBackBoxAndAddress extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CoustomArrowBackBox(),
+        CoustomImageBox(svgPath: "assets/svgs/arrow_back.svg",),
         Text(
           title,
           style: TextStyles.font18Text100semiBold,
