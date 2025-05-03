@@ -6,15 +6,18 @@ import 'package:medi_book/features/auth/presentation/views/login_view.dart';
 import 'package:medi_book/features/auth/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:medi_book/features/auth/presentation/views/signup_next_view.dart';
 import 'package:medi_book/features/auth/presentation/views/signup_view.dart';
+import 'package:medi_book/features/home/presentation/views/doctor_speciality_veiw.dart';
 import 'package:medi_book/features/home/presentation/views/home_view.dart';
 import 'package:medi_book/features/onboarding/presentation/views/onboarding_view.dart';
 
 abstract class AppRouter {
   static const String kOnboarding = 'onboarding';
   static const String kLogin = 'login';
-  static const String kHomeScreen = 'homeScreen';
   static const String kSignupScreen = 'signupScreen';
   static const String kSignupNextScreen = 'signupNextScreen';
+ 
+  static const String kHomeScreen = 'homeScreen';
+  static const String doctorsSpecialityScreen = 'DoctorsSpecialityScreen';
 
   static final router = GoRouter(
     routes: [
@@ -27,6 +30,11 @@ abstract class AppRouter {
         path: '/',
         name: kHomeScreen,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: '/doctorsSpecialityScreen',
+        name: doctorsSpecialityScreen,
+        builder: (context, state) => const DoctorSpecialityView(),
       ),
 
       ShellRoute(

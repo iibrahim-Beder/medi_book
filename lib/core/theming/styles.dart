@@ -70,4 +70,9 @@ abstract class TextStyles {
       color: ColorsManager.text100,
       fontWeight: FontWeightHelper.bold);
 
+      static TextStyle font18Text100semiBold = TextStyle(
+      fontSize: 18.sp,
+      color: ColorsManager.text100,
+      fontWeight: FontWeightHelper.semiBold);
+
 }
