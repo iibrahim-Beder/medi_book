@@ -12,10 +12,9 @@ class DoctorSpecialityViewBody extends StatelessWidget {
         child: const Column(
           children: [
         
-       ArrowBackBoxAndAddress(),            
+           ArrowBackBoxAndAddress(title: "Doctor Speciality",),            
         
-    
-        
+  
           ],
         ),
       ),
