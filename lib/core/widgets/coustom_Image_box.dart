@@ -5,10 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 
 class CoustomImageBox extends StatelessWidget {
-  const CoustomImageBox({super.key, required this.svgPath});
-  // CoustomArrowBackBox
+  const CoustomImageBox({super.key, required this.svgPath, this.borderColor = ColorsManager.text30});
 
   final String svgPath;
+  final Color borderColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,7 +21,7 @@ class CoustomImageBox extends StatelessWidget {
         decoration: BoxDecoration(
           color: ColorsManager.backgroundWhite,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: ColorsManager.neutral40),
+          border: Border.all(color: borderColor),
         ),
         padding: EdgeInsets.all(12),
         child: SvgPicture.asset(svgPath,

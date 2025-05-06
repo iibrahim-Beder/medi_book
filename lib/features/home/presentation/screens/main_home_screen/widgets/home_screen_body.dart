@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/doctor_speciality_and_see_all.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/doctor_speciality_list_view.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/doctors_blue_container.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/doctors_list_veiw.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/home_app_bar.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/recommendation_doctor_and_see_all.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctor_speciality_and_see_all.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctor_speciality_list_view.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctors_blue_container.dart';
+import 'package:medi_book/core/widgets/doctors_list_veiw.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/home_app_bar.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/recommendation_doctor_and_see_all.dart';
 
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+class HomeScreenBody extends StatelessWidget {
+  const HomeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-          const DoctorsListVeiw(),
+         DoctorsListVeiw(),
         ],
       ),
     );

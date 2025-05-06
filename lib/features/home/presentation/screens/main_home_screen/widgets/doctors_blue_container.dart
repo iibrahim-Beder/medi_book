@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
-import 'package:medi_book/features/home/presentation/views/widgets/nearby_button.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/nearby_button.dart';
 
 class DoctorsBlueContainer extends StatelessWidget {
   const DoctorsBlueContainer({super.key});

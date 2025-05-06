@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medi_book/core/routing/app_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/setup_error_state.dart';
 import 'package:medi_book/features/auth/presentation/manger/signup_cubit/signup_cubit.dart';
 import 'package:medi_book/features/auth/presentation/manger/signup_cubit/signup_state.dart';
+import 'package:medi_book/features/auth/routes/auth_routes.dart';
 
 class SignupBlockListener extends StatelessWidget {
   const SignupBlockListener({super.key});
@@ -61,7 +61,7 @@ class SignupBlockListener extends StatelessWidget {
                 disabledForegroundColor: Colors.grey.withOpacity(0.38),
               ),
               onPressed: () {
-                context.pushNamed(AppRouter.kLogin);
+                context.pushNamed(AuthRoutes.kLogin);
               },
               child: const Text('Continue'),
             ),

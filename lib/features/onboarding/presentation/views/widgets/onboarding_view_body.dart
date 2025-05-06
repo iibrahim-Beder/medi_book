@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medi_book/core/routing/app_router.dart';
 import 'package:medi_book/core/theming/styles.dart';
 import 'package:medi_book/core/widgets/custom_button.dart';
+import 'package:medi_book/features/auth/routes/auth_routes.dart';
 import 'package:medi_book/features/onboarding/presentation/views/widgets/doctor_image_and_text.dart';
 import 'package:medi_book/features/onboarding/presentation/views/widgets/logo_with_name_logo.dart';
 
@@ -37,7 +37,7 @@ class OnboardingViewBody extends StatelessWidget {
                     ),
                     CustomButton(
                       textValue: 'Get Started',
-                      voidCallback: () =>  context.pushReplacementNamed(AppRouter.kLogin)
+                      voidCallback: () =>  context.pushReplacementNamed(AuthRoutes.kLogin)
                     )
                   ],
                 ),
