@@ -31,6 +31,14 @@ class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
           onChanged: searchOperation,
           searchController: searchController,
         ),
+        searchController.text.isNotEmpty ? SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(top:  20, bottom: 25),
+            child: Center(
+              child: CircularProgressIndicator(color: ColorsManager.mainBlue,),
+            ),
+          ),
+        ): SliverToBoxAdapter(child: Container()),
         DoctorsListVeiw(
           isHasPadding: true,
           flutterDoctorsList: flutterDoctorsList,
