@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medi_book/core/routing/app_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
+import 'package:medi_book/features/auth/routes/auth_routes.dart';
 
 class AlreadyHaveAnAccountText extends StatelessWidget {
   const AlreadyHaveAnAccountText({super.key});
@@ -20,7 +20,7 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            context.pushNamed(AppRouter.kSignupScreen);
+            context.pushNamed(AuthRoutes.kSignupScreen);
           },
           child: Text(
             "Sign Up",
@@ -34,16 +34,3 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
 }
 
 
-//  RichText(
-//       textAlign: TextAlign.center,
-//         text: TextSpan(
-//           style: TextStyles.font12neutral60_400Weight.copyWith(fontSize: 11, color: ColorsManager.text100),
-//           children: <TextSpan>[
-//       TextSpan(
-//           text: "Already have an account yet?",
-//   ),
-//           TextSpan(
-//           text: " Sign Up",
-//           style: TextStyles.font12neutral60_400Weight.copyWith(color: ColorsManager.mainBlue)),
-          
-//     ])

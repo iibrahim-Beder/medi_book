@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
+import 'package:medi_book/features/home/routes/home_routes.dart';
 
-class DoctorSpecialityAndSeeAll extends StatelessWidget {
-  const DoctorSpecialityAndSeeAll({super.key});
+class RecommendationDoctorAndSeeAll extends StatelessWidget {
+  const RecommendationDoctorAndSeeAll({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +13,14 @@ class DoctorSpecialityAndSeeAll extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Doctor Speciality",
+          "Recommendation Doctor",
           style: TextStyles.font14MainBlueSemiBold
               .copyWith(color: ColorsManager.text100, fontSize: 18),
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(HomeRoutes.recommendationDoctorScreen);
+            },
             child: Text(
               "See All",
               style: TextStyles.font12Neutral60Regular
