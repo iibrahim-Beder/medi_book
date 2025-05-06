@@ -12,13 +12,19 @@ class SearchDoctorScreenBody extends StatefulWidget {
 }
 
 class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
-   
-   List<DoctorInfo> flutterDoctorsList = [];
-   final TextEditingController searchController = TextEditingController();
+  List<DoctorInfo> flutterDoctorsList = [];
+  final TextEditingController searchController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
+    
+    EnModes mode = searchController.text.isEmpty
+        ? EnModes.defaultMode
+        : EnModes.searchMood;
     return SafeArea(
         child: CustomScrollView(
+          controller: mode == EnModes.defaultMode ? ScrollController() : _scrollController,
       slivers: [
         CustomAppBarWithSearch(
           title: 'Recommendation Doctors',
@@ -31,30 +37,35 @@ class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
           onChanged: searchOperation,
           searchController: searchController,
         ),
-        searchController.text.isNotEmpty ? SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(top:  20, bottom: 25),
-            child: Center(
-              child: CircularProgressIndicator(color: ColorsManager.mainBlue,),
-            ),
-          ),
-        ): SliverToBoxAdapter(child: Container()),
         DoctorsListVeiw(
           isHasPadding: true,
           flutterDoctorsList: flutterDoctorsList,
-          searchController: searchController
+          mode: mode,
         ),
       ],
     ));
-  }
-  void searchOperation(String newValue) {
-  setState(() {
-    final query = newValue.toLowerCase();
 
-    flutterDoctorsList = doctorsList.where((doctor) {
-      final name = doctor.name?.toLowerCase() ?? '';
-      return name.contains(query);
-    }).toList();
-  });
-}
+  }
+
+  void searchOperation(String newValue) {
+    setState(() {
+      final query = newValue.toLowerCase();
+
+      flutterDoctorsList = doctorsList.where((doctor) {
+        final name = doctor.name?.toLowerCase() ?? '';
+        return name.contains(query);
+      }).toList();
+      if(searchController.text.isNotEmpty){
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    });
+      }
+       
+    });
+  }
+
 }

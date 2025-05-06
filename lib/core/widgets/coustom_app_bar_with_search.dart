@@ -26,6 +26,7 @@ class CustomAppBarWithSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return SliverAppBar(
       pinned: true,
       automaticallyImplyLeading: false,
@@ -39,6 +40,7 @@ class CustomAppBarWithSearch extends StatelessWidget {
             title: title,
             coustomWidget: widgetBox,
           ),
+          
           verticalSpace(20),
           Row(children: [
             Expanded(
