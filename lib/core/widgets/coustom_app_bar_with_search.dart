@@ -65,7 +65,7 @@ class CustomAppBarWithSearch extends StatelessWidget {
             ),
             horizontalSpace(10.w),
             GestureDetector(
-                onTap: () {},
+                onTap: onWidgetBoxTap,
                 child: SvgPicture.asset(
                   svgPathForTHeSecondRow,
                 ))

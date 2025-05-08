@@ -14,3 +14,13 @@ final List<Map<String, dynamic>> doctorSpecialityList = [
   {"name": "Optometry", "path": "assets/images/optometry.png"},
 
 ];
+
+
+final List<Map<String,String>> ratingList = [
+  {"rate": "All"},
+  {"rate": "5"},
+  {"rate": "4"},
+  {"rate": "3"},
+  {"rate": "2"},
+  {"rate": "1"},
+];

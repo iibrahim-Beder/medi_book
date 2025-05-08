@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:medi_book/core/theming/colors.dart';
+import 'package:medi_book/core/theming/font_weight_helper.dart';
+import 'package:medi_book/core/theming/styles.dart';
+
+class CoustomSearchBoutton extends StatelessWidget {
+  const CoustomSearchBoutton(
+      {super.key,
+      required this.text,
+      this.isHasStar = false,
+      this.ischecked = false,
+      required this.onPressed});
+  final String text;
+  final bool isHasStar;
+  final bool ischecked;
+  final void Function(String) onPressed; 
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: 12.w),
+      child: TextButton(
+          onPressed: () => onPressed(text),
+          style: TextButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
+              backgroundColor: ischecked
+                  ? ColorsManager.mainBlue
+                  : ColorsManager.secondarySurfaceText),
+          child: Row(
+            children: [
+              !isHasStar
+                  ? Container()
+                  : Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: SvgPicture.asset(
+                        "assets/svgs/star.svg",
+                        colorFilter: ischecked
+                            ? ColorFilter.mode(
+                                ColorsManager.backgroundWhite, BlendMode.srcIn)
+                            : ColorFilter.mode(
+                                ColorsManager.text40, BlendMode.srcIn),
+                      ),
+                    ),
+              Text(text,
+                  style: TextStyles.font14Text50Medium.copyWith(
+                      fontWeight: FontWeightHelper.regular,
+                      color: ischecked
+                          ? ColorsManager.backgroundWhite
+                          : ColorsManager.text50)),
+            ],
+          )),
+    );
+  }
+}
