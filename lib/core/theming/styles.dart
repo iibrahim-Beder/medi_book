@@ -58,7 +58,7 @@ abstract class TextStyles {
       fontSize: 14.sp,
       color: ColorsManager.mainBlue,
       fontWeight: FontWeightHelper.semiBold);
-
+      
   static TextStyle font16BackgroundWhiteSemiBold = TextStyle(
       fontSize: 16.sp,
       color: ColorsManager.backgroundWhite,

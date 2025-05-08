@@ -1,47 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/helpers/doctors_list.dart';
 import 'package:medi_book/core/helpers/doctors_list.dart' as DoctorsList;
-import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
+import 'package:medi_book/core/widgets/doctors_list_veiw_default_mode.dart';
+import 'package:medi_book/core/widgets/doctors_list_veiw_search_mood.dart';
+
+enum EnModes { searchMood, defaultMode }
 
 class DoctorsListVeiw extends StatelessWidget {
   DoctorsListVeiw(
       {super.key,
       this.isHasPadding = false,
       this.flutterDoctorsList = const [],
-      this.searchController});
+      this.mode = EnModes.defaultMode});
 
   final bool isHasPadding;
 
   final List<DoctorInfo> doctorsList = DoctorsList.doctorsList;
   final List<DoctorInfo> flutterDoctorsList;
-  final TextEditingController? searchController;
 
-  bool isSearchMode() {
-    if (searchController == null) return false;
-    if (searchController!.text.isEmpty) return false;
-
-    return true;
-  }
-
+  Enum mode;
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => Padding(
-          padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
-          child: DoctorsListVeiwItem(
-            padding:
-                isHasPadding ? EdgeInsets.only(left: 10.w) : EdgeInsets.zero,
-            doctorInfo: flutterDoctorsList.isEmpty
-                ? doctorsList[index]
-                : flutterDoctorsList[index],
-          ),
-        ),
-        childCount: !isSearchMode()
-            ? doctorsList.length
-            : flutterDoctorsList.length,
-      ),
-    );
+    switch (mode) {
+      case EnModes.defaultMode:
+        return DoctorsListVeiwDefaultMode(isHasPadding: isHasPadding);
+      case EnModes.searchMood:
+        return DoctorsListVeiwSearchMood(
+            isHasPadding: isHasPadding, filterDoctorsList: flutterDoctorsList);
+      default:
+        return SliverToBoxAdapter(child: Container());
+    }
   }
 }
+
+
