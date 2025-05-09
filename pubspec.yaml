@@ -30,7 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
+
+  # The following adds ability to move to selected items in a list "index-based scroll"
+  scrollable_positioned_list: ^0.3.8
+
   # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures, monads, lenses and other FP tools.
   dartz: ^0.10.1
 

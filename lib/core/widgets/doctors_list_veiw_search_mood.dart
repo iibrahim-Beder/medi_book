@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/helpers/doctors_list.dart';
+import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
 
 class DoctorsListVeiwSearchMood extends StatelessWidget {
@@ -29,7 +30,7 @@ class DoctorsListVeiwSearchMood extends StatelessWidget {
                   : Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 25),
                     child: Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(color: ColorsManager.mainBlue,),
                     ),
                   )),
           childCount: filterDoctorsList.length+1),

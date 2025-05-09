@@ -142,6 +142,7 @@ class PasswordAndConfirmPassword extends StatefulWidget {
 
 class _PasswordAndConfirmPasswordState
     extends State<PasswordAndConfirmPassword> {
+  
   late bool isObscurePassword = true;
   late bool isObscureConfirmPassword = true;
 
