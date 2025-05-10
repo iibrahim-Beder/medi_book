@@ -19,7 +19,7 @@ class RecommendationDoctorAndSeeAll extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              context.pushNamed(HomeRoutes.recommendationDoctorScreen);
+              context.pushNamed(HomeRoutes.searchDoctorScreen);
             },
             child: Text(
               "See All",
