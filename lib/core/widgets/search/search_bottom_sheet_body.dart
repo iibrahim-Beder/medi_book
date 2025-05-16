@@ -75,7 +75,7 @@ class _SearchBottomSheetBodyState extends State<SearchBottomSheetBody> {
             verticalSpace(16.h),
             Padding(
               padding: EdgeInsets.only(right: 24.w),
-              child: Line(),
+              child: Line(color: Colors.grey.shade200,),
             ),
             verticalSpace(24.h),
             Text(

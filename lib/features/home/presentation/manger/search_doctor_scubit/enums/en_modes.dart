@@ -1,0 +1,2 @@
+
+enum EnModes { searchMood, defaultMode }

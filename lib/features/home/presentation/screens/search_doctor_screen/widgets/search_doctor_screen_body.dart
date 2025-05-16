@@ -5,10 +5,12 @@ import 'package:medi_book/core/helpers/list_view/jump_to_the_end_list.dart';
 import 'package:medi_book/core/widgets/coustom_app_bar_with_search.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiw.dart';
 import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/controllers/doctors_ctrl.dart';
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/enums/en_modes.dart';
 import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/search_doctor_cubit.dart';
 import 'package:medi_book/features/home/presentation/screens/search_doctor_screen/helpers.dart';
-import 'package:medi_book/features/home/presentation/screens/search_doctor_screen/widgets/widget_box.dart';
-
+import 'package:medi_book/features/home/presentation/screens/widgets/widget_box.dart';
+  
+  
 class SearchDoctorScreenBody extends StatefulWidget {
   SearchDoctorScreenBody({super.key});
   @override
@@ -19,7 +21,7 @@ class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
 
   late DoctorsCtrl _doctorsCtrl;
 
-  late Enum _mode;
+  late EnModes _mode;
 
   @override
   void initState() {
@@ -53,9 +55,9 @@ class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
       controller: _doctorsCtrl.scrollCtrl,
       physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
-        CustomAppBarWithSearch(
+        CustomAppBarForSearch(
           title: 'Recommendation Doctors',
-          widgetBox: widgetBox(),
+          widgetBox: WidgetBox(),
           svgPathForTHeSecondRow: "assets/svgs/sort.svg",
           onWidgetBoxTap: () {
             showSearchOptionsBottomSheet(context);

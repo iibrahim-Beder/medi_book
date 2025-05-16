@@ -44,7 +44,7 @@ abstract class TextStyles {
       color: ColorsManager.neutral60,
       fontWeight: FontWeightHelper.regular);
 
-      static TextStyle font12Text80Medium = TextStyle(
+  static TextStyle font12Text80Medium = TextStyle(
       fontSize: 12.sp,
       color: ColorsManager.text80,
       fontWeight: FontWeightHelper.medium);
@@ -58,21 +58,29 @@ abstract class TextStyles {
       fontSize: 14.sp,
       color: ColorsManager.mainBlue,
       fontWeight: FontWeightHelper.semiBold);
-      
+
+  static TextStyle font14Neutral60Bold = TextStyle(
+      fontSize: 14.sp,
+      color: ColorsManager.neutral60,
+      fontWeight: FontWeightHelper.bold);
+
+  static TextStyle font14TextBodyRegular = TextStyle(
+      fontSize: 14.sp,
+      color: ColorsManager.textBody,
+      fontWeight: FontWeightHelper.regular);
+
   static TextStyle font16BackgroundWhiteSemiBold = TextStyle(
       fontSize: 16.sp,
       color: ColorsManager.backgroundWhite,
       fontWeight: FontWeightHelper.semiBold);
 
-
-        static TextStyle font16Text100Bold = TextStyle(
+  static TextStyle font16Text100Bold = TextStyle(
       fontSize: 16.sp,
       color: ColorsManager.text100,
       fontWeight: FontWeightHelper.bold);
 
-      static TextStyle font18Text100semiBold = TextStyle(
+  static TextStyle font18Text100semiBold = TextStyle(
       fontSize: 18.sp,
       color: ColorsManager.text100,
       fontWeight: FontWeightHelper.semiBold);
-
 }

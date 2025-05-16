@@ -6,8 +6,8 @@ import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/arrow_back_box_and_address.dart';
 import 'package:medi_book/core/widgets/custom_text_field.dart';
 
-class CustomAppBarWithSearch extends StatelessWidget {
-  const CustomAppBarWithSearch(
+class CustomAppBarForSearch extends StatelessWidget {
+  const CustomAppBarForSearch(
       {super.key,
       required this.title,
       required this.widgetBox,

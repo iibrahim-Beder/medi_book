@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # the following adds the flutter_rating_bar
+  flutter_rating_bar: ^4.0.1
 
   # The following adds ability to move to selected items in a list "index-based scroll"
   scrollable_positioned_list: ^0.3.8
