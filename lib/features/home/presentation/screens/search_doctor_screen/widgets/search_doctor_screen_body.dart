@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:medi_book/core/helpers/doctors_list.dart';
-import 'package:medi_book/core/theming/colors.dart';
-import 'package:medi_book/core/widgets/coustom_Image_box.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medi_book/core/helpers/list_view/jump_to_last_offset.dart';
+import 'package:medi_book/core/helpers/list_view/jump_to_the_end_list.dart';
 import 'package:medi_book/core/widgets/coustom_app_bar_with_search.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiw.dart';
-import 'package:medi_book/core/widgets/search/search_bottom_sheet_body.dart';
-
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/controllers/doctors_ctrl.dart';
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/enums/en_modes.dart';
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/search_doctor_cubit.dart';
+import 'package:medi_book/features/home/presentation/screens/search_doctor_screen/helpers.dart';
+import 'package:medi_book/features/home/presentation/screens/widgets/widget_box.dart';
+  
+  
 class SearchDoctorScreenBody extends StatefulWidget {
   SearchDoctorScreenBody({super.key});
   @override
@@ -13,71 +18,79 @@ class SearchDoctorScreenBody extends StatefulWidget {
 }
 
 class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
-  List<DoctorInfo> flutterDoctorsList = [];
-  final TextEditingController searchController = TextEditingController();
-  final ScrollController _scrollController = ScrollController();
+
+  late DoctorsCtrl _doctorsCtrl;
+
+  late EnModes _mode;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    // loading data from cubit
+    _doctorsCtrl = context.read<SearchDoctorCubit>().doctorsCtrl;
+
+
+    // select the mode when returning from another screen
+    _mode = _doctorsCtrl.searchCtrl.text.isEmpty
+        ? EnModes.defaultMode : EnModes.searchMood;
+
+    // select the behivior when returning from another screen depending on the mode
+    _mode == EnModes.searchMood
+        ? jumpToTheEndList(_doctorsCtrl.scrollCtrl)
+        : jumpToLastOffset(
+            _doctorsCtrl.lastOffset, _doctorsCtrl.scrollCtrl);
+
+    // adding listener to the scroll controller to be ubdated with its last offset so we can use it for backing to the last offset
+    _doctorsCtrl.scrollCtrl.addListener(() {
+      _doctorsCtrl.lastOffset =
+          _doctorsCtrl.scrollCtrl.offset;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    EnModes mode = searchController.text.isEmpty
-        ? EnModes.defaultMode
-        : EnModes.searchMood;
     return SafeArea(
         child: CustomScrollView(
-      controller:
-          mode == EnModes.defaultMode ? ScrollController() : _scrollController,
+      controller: _doctorsCtrl.scrollCtrl,
+      physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
-        CustomAppBarWithSearch(
+        CustomAppBarForSearch(
           title: 'Recommendation Doctors',
-          widgetBox: CoustomImageBox(
-            svgPath: "assets/svgs/more_vert.svg",
-            borderColor: ColorsManager.neutral40,
-          ),
+          widgetBox: WidgetBox(),
           svgPathForTHeSecondRow: "assets/svgs/sort.svg",
           onWidgetBoxTap: () {
-            showSearchOptions(context);
+            showSearchOptionsBottomSheet(context);
           },
-          onChanged: searchOperation,
-          searchController: searchController,
+          onChanged: refreshFunction,
+          searchController: _doctorsCtrl.searchCtrl,
         ),
         DoctorsListVeiw(
           isHasPadding: true,
-          flutterDoctorsList: flutterDoctorsList,
-          mode: mode,
+          flutterDoctorsList: _doctorsCtrl.flutterDocsList,
+          mode: _mode,
         ),
       ],
     ));
   }
 
-  void searchOperation(String newValue) {
+  void refreshFunction(String newValue) {
     setState(() {
-      final query = newValue.toLowerCase();
+      // check the mode because may be the controller has beed changed to be empty in this case we need to change the mode to default
+      _mode = _doctorsCtrl.searchCtrl.text.isNotEmpty
+          ? EnModes.searchMood
+          : EnModes.defaultMode;
 
-      flutterDoctorsList = doctorsList.where((doctor) {
-        final name = doctor.name?.toLowerCase() ?? '';
-        return name.contains(query);
-      }).toList();
-      if (searchController.text.isNotEmpty) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          _scrollController.animateTo(
-            _scrollController.position.maxScrollExtent,
-            duration: Duration(milliseconds: 300),
-            curve: Curves.easeOut,
-          );
-        });
-      }
+      // check if the mode is searchMood
+      _mode == EnModes.searchMood ? jumpToTheEndList(_doctorsCtrl.scrollCtrl) : null;
+
+      // check if the mode is searchMood to execute the function that filter the list
+      _mode == EnModes.searchMood
+          ? context
+              .read<SearchDoctorCubit>()
+              .doctorsCtrl
+              .filtterList(newValue)
+          : null;
     });
-  }
-
-  void showSearchOptions(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      enableDrag: false,
-      backgroundColor: Colors.transparent,
-      builder: (context) {
-        return const SearchBottomSheetBody();
-      },
-    );
   }
 }

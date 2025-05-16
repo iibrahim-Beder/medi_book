@@ -33,3 +33,5 @@ class DoctorInfo{
   DoctorInfo(this.name, this.path, this.workplace, this.rating, this.reviewNumber);
 
 }
+
+final List<String> doctorDetailsSections = ['About', 'Location', 'Reviews'];

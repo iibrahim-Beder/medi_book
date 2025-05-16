@@ -16,6 +16,6 @@ abstract class ColorsManager {
   static const Color text80 = Color(0xff616161);
   static const Color primarySurface = Color(0xffF4F8FF);
   static const Color secondarySurfaceText = Color(0xffF2F4F7);
-  
-  
+  static const Color warning100 = Color(0xffFFD600);
+
 }

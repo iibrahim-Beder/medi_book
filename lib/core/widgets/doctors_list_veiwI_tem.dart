@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medi_book/core/helpers/doctors_list.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
@@ -9,12 +10,13 @@ class DoctorsListVeiwItem extends StatelessWidget {
   const DoctorsListVeiwItem(
       {super.key,
       required this.padding,
-      required this.doctorInfo});
+      required this.doctorInfo,
+      this.isHasMessageIcon = false});
 
   final DoctorInfo doctorInfo;
-
-
   final EdgeInsetsGeometry padding;
+  final bool isHasMessageIcon;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,11 +60,9 @@ class DoctorsListVeiwItem extends StatelessWidget {
                   verticalSpace(5),
                   Row(
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Color(0xFFFFD600),
-                      ),
-                      Text( "${doctorInfo.rating} (${doctorInfo.reviewNumber} reviews)",
+                      SvgPicture.asset("assets/svgs/star.svg",color: ColorsManager.warning100,),
+                      Text(
+                        "${doctorInfo.rating} (${doctorInfo.reviewNumber} reviews)",
                         style: TextStyles.font12Text80Medium
                             .copyWith(fontSize: 12),
                         maxLines: 1,
@@ -72,7 +72,17 @@ class DoctorsListVeiwItem extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            isHasMessageIcon
+                ? Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding:  EdgeInsets.only(top: 25.h),
+                    child: GestureDetector(
+                        child: SvgPicture.asset("assets/svgs/message.svg")),
+                  ),
+                )
+                : Container(),
           ],
         ),
       ),

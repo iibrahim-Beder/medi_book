@@ -11,17 +11,21 @@ class CoustomSearchBoutton extends StatelessWidget {
       required this.text,
       this.isHasStar = false,
       this.ischecked = false,
-      required this.onPressed});
+      required this.onPressed,
+      required this.index});
+
   final String text;
   final bool isHasStar;
   final bool ischecked;
-  final void Function(String) onPressed; 
+  final void Function(int) onPressed;
+  final int index;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(right: 12.w),
       child: TextButton(
-          onPressed: () => onPressed(text),
+          onPressed: () => onPressed(index),
           style: TextButton.styleFrom(
               padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
               backgroundColor: ischecked

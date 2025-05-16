@@ -37,7 +37,6 @@ class AuthRepoImpl extends AuthRepo {
       CreateAccByEmailEntitie createAccountWithEmailEntitie) async {
     CreateAccByEmailRequestModel createAccByEmailRequestModel =
         CreateAccByEmailRequestModel.fromEntitie(createAccountWithEmailEntitie);
-    print("*************************");
     try {
       final response = await _apiService
           .createAccountWithEmailAndPassWord(createAccByEmailRequestModel);

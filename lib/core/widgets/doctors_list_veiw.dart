@@ -3,8 +3,8 @@ import 'package:medi_book/core/helpers/doctors_list.dart';
 import 'package:medi_book/core/helpers/doctors_list.dart' as DoctorsList;
 import 'package:medi_book/core/widgets/doctors_list_veiw_default_mode.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiw_search_mood.dart';
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/enums/en_modes.dart';
 
-enum EnModes { searchMood, defaultMode }
 
 class DoctorsListVeiw extends StatelessWidget {
   DoctorsListVeiw(
