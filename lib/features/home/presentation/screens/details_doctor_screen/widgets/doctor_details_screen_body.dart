@@ -41,66 +41,64 @@ class _DoctorDetailsScreenBodyState extends State<DoctorDetailsScreenBody> {
 
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Positioned(
-              child: CustomScrollView(
-                controller: _sectionCtrl.reviewsScrollCtrl,
-                physics: const AlwaysScrollableScrollPhysics(),
-                slivers: [
-                  CustomAppbarForDoctorDetails(
-                    title: 'Dr Randy Wigham',
-                    widgetBox: WidgetBox(),
-                    onTap: (enDoctorSection) {
-                      setState(() {
-                        // to change the selected section for the entire cuit
-                        _sectionCtrl.selectedSection = enDoctorSection;
+      child: Stack(
+        children: [
+          Positioned(
+            child: CustomScrollView(
+              controller: _sectionCtrl.reviewsScrollCtrl,
+              physics: const AlwaysScrollableScrollPhysics(),
+              slivers: [
+                CustomAppbarForDoctorDetails(
+                  title: 'Dr Randy Wigham',
+                  widgetBox: WidgetBox(),
+                  onTap: (enDoctorSection) {
+                    setState(() {
+                      // to change the selected section for the entire cuit
+                      _sectionCtrl.selectedSection = enDoctorSection;
 
-                        if (_sectionCtrl.selectedSection !=
-                            EnDoctorSection.reviews) {
-                          // jump to the top of the screen when it not reviews section
-                          jumpToLastOffset(0, _sectionCtrl.reviewsScrollCtrl);
-                          _sectionCtrl.selectedSection = enDoctorSection;
-                        } else {
-                          // jump to the last offset of the reviews section
-                          jumpToLastOffset(_sectionCtrl.reviewsLastOffset,
-                              _sectionCtrl.reviewsScrollCtrl);
-                        }
-                      });
-                    },
-                  ),
-                  SliverPadding(
-                    padding: EdgeInsets.only(top: 32.h),
-                    sliver: DoctorSectionView(),
-                  ),
-                ],
-              ),
+                      if (_sectionCtrl.selectedSection !=
+                          EnDoctorSection.reviews) {
+                        // jump to the top of the screen when it not reviews section
+                        jumpToLastOffset(0, _sectionCtrl.reviewsScrollCtrl);
+                        _sectionCtrl.selectedSection = enDoctorSection;
+                      } else {
+                        // jump to the last offset of the reviews section
+                        jumpToLastOffset(_sectionCtrl.reviewsLastOffset,
+                            _sectionCtrl.reviewsScrollCtrl);
+                      }
+                    });
+                  },
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 32.h),
+                  sliver: DoctorSectionView(),
+                ),
+              ],
             ),
-            // this to add shadow impact at the bottom
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0.h,
-              child: IgnorePointer(
-                child: Container(
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.white.withOpacity(0.0),
-                        Colors.white.withOpacity(0.7),
-                        Colors.white,
-                      ],
-                    ),
+          ),
+          // this to add shadow impact at the bottom
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0.h,
+            child: IgnorePointer(
+              child: Container(
+                height: 50.h,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.white.withOpacity(0.0),
+                      Colors.white.withOpacity(0.7),
+                      Colors.white,
+                    ],
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

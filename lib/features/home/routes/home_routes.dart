@@ -40,7 +40,7 @@ abstract class HomeRoutes {
             builder: (context, state) => const SearchDoctorScreen(),
           ),
           GoRoute(
-            path: "/detailsDoctorScreen",
+            path: "/",
             name: detailsDoctorScreen,
             builder: (context, state) => BlocProvider(
               create: (context) => DetailsDoctorCubit(),
@@ -48,7 +48,7 @@ abstract class HomeRoutes {
             ),
           ),
           GoRoute(
-            path: "/",
+            path: "/kjsf",
             name: bookAppointmentScreen,
             builder: (context, state) => const BookAppointmentScreen(),
           ),
