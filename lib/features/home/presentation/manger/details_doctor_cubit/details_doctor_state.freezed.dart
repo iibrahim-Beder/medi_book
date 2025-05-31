@@ -16,55 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DetailsDoctorState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(Failures failures) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(Failures failures)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(Failures failures)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) =>
+  EnDoctorSection get selectedSection => throw _privateConstructorUsedError;
+  double get reviewsLastOffset => throw _privateConstructorUsedError;
+  ScrollController get reviewsScrollCtrl => throw _privateConstructorUsedError;
+
+  /// Create a copy of DetailsDoctorState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DetailsDoctorStateCopyWith<DetailsDoctorState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -73,6 +32,11 @@ abstract class $DetailsDoctorStateCopyWith<$Res> {
   factory $DetailsDoctorStateCopyWith(
           DetailsDoctorState value, $Res Function(DetailsDoctorState) then) =
       _$DetailsDoctorStateCopyWithImpl<$Res, DetailsDoctorState>;
+  @useResult
+  $Res call(
+      {EnDoctorSection selectedSection,
+      double reviewsLastOffset,
+      ScrollController reviewsScrollCtrl});
 }
 
 /// @nodoc
@@ -87,374 +51,50 @@ class _$DetailsDoctorStateCopyWithImpl<$Res, $Val extends DetailsDoctorState>
 
   /// Create a copy of DetailsDoctorState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedSection = null,
+    Object? reviewsLastOffset = null,
+    Object? reviewsScrollCtrl = null,
+  }) {
+    return _then(_value.copyWith(
+      selectedSection: null == selectedSection
+          ? _value.selectedSection
+          : selectedSection // ignore: cast_nullable_to_non_nullable
+              as EnDoctorSection,
+      reviewsLastOffset: null == reviewsLastOffset
+          ? _value.reviewsLastOffset
+          : reviewsLastOffset // ignore: cast_nullable_to_non_nullable
+              as double,
+      reviewsScrollCtrl: null == reviewsScrollCtrl
+          ? _value.reviewsScrollCtrl
+          : reviewsScrollCtrl // ignore: cast_nullable_to_non_nullable
+              as ScrollController,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DetailsDoctorStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DetailsDoctorState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
+abstract class _$$DetailsDoctorStateImplCopyWith<$Res>
+    implements $DetailsDoctorStateCopyWith<$Res> {
+  factory _$$DetailsDoctorStateImplCopyWith(_$DetailsDoctorStateImpl value,
+          $Res Function(_$DetailsDoctorStateImpl) then) =
+      __$$DetailsDoctorStateImplCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'DetailsDoctorState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(Failures failures) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(Failures failures)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(Failures failures)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements DetailsDoctorState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$DetailsDoctorStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DetailsDoctorState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'DetailsDoctorState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(Failures failures) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(Failures failures)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(Failures failures)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements DetailsDoctorState {
-  const factory Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$DetailsDoctorStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DetailsDoctorState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SuccessImpl implements Success {
-  const _$SuccessImpl();
-
-  @override
-  String toString() {
-    return 'DetailsDoctorState.success()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(Failures failures) error,
-  }) {
-    return success();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(Failures failures)? error,
-  }) {
-    return success?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(Failures failures)? error,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Success implements DetailsDoctorState {
-  const factory Success() = _$SuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Failures failures});
+  $Res call(
+      {EnDoctorSection selectedSection,
+      double reviewsLastOffset,
+      ScrollController reviewsScrollCtrl});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$DetailsDoctorStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$DetailsDoctorStateImplCopyWithImpl<$Res>
+    extends _$DetailsDoctorStateCopyWithImpl<$Res, _$DetailsDoctorStateImpl>
+    implements _$$DetailsDoctorStateImplCopyWith<$Res> {
+  __$$DetailsDoctorStateImplCopyWithImpl(_$DetailsDoctorStateImpl _value,
+      $Res Function(_$DetailsDoctorStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DetailsDoctorState
@@ -462,133 +102,92 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failures = null,
+    Object? selectedSection = null,
+    Object? reviewsLastOffset = null,
+    Object? reviewsScrollCtrl = null,
   }) {
-    return _then(_$ErrorImpl(
-      failures: null == failures
-          ? _value.failures
-          : failures // ignore: cast_nullable_to_non_nullable
-              as Failures,
+    return _then(_$DetailsDoctorStateImpl(
+      selectedSection: null == selectedSection
+          ? _value.selectedSection
+          : selectedSection // ignore: cast_nullable_to_non_nullable
+              as EnDoctorSection,
+      reviewsLastOffset: null == reviewsLastOffset
+          ? _value.reviewsLastOffset
+          : reviewsLastOffset // ignore: cast_nullable_to_non_nullable
+              as double,
+      reviewsScrollCtrl: null == reviewsScrollCtrl
+          ? _value.reviewsScrollCtrl
+          : reviewsScrollCtrl // ignore: cast_nullable_to_non_nullable
+              as ScrollController,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements Error {
-  const _$ErrorImpl({required this.failures});
+class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
+  const _$DetailsDoctorStateImpl(
+      {required this.selectedSection,
+      required this.reviewsLastOffset,
+      required this.reviewsScrollCtrl});
 
   @override
-  final Failures failures;
+  final EnDoctorSection selectedSection;
+  @override
+  final double reviewsLastOffset;
+  @override
+  final ScrollController reviewsScrollCtrl;
 
   @override
   String toString() {
-    return 'DetailsDoctorState.error(failures: $failures)';
+    return 'DetailsDoctorState(selectedSection: $selectedSection, reviewsLastOffset: $reviewsLastOffset, reviewsScrollCtrl: $reviewsScrollCtrl)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.failures, failures) ||
-                other.failures == failures));
+            other is _$DetailsDoctorStateImpl &&
+            (identical(other.selectedSection, selectedSection) ||
+                other.selectedSection == selectedSection) &&
+            (identical(other.reviewsLastOffset, reviewsLastOffset) ||
+                other.reviewsLastOffset == reviewsLastOffset) &&
+            (identical(other.reviewsScrollCtrl, reviewsScrollCtrl) ||
+                other.reviewsScrollCtrl == reviewsScrollCtrl));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failures);
+  int get hashCode => Object.hash(
+      runtimeType, selectedSection, reviewsLastOffset, reviewsScrollCtrl);
 
   /// Create a copy of DetailsDoctorState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(Failures failures) error,
-  }) {
-    return error(failures);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(Failures failures)? error,
-  }) {
-    return error?.call(failures);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(Failures failures)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(failures);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+  _$$DetailsDoctorStateImplCopyWith<_$DetailsDoctorStateImpl> get copyWith =>
+      __$$DetailsDoctorStateImplCopyWithImpl<_$DetailsDoctorStateImpl>(
+          this, _$identity);
 }
 
-abstract class Error implements DetailsDoctorState {
-  const factory Error({required final Failures failures}) = _$ErrorImpl;
+abstract class _DetailsDoctorState implements DetailsDoctorState {
+  const factory _DetailsDoctorState(
+          {required final EnDoctorSection selectedSection,
+          required final double reviewsLastOffset,
+          required final ScrollController reviewsScrollCtrl}) =
+      _$DetailsDoctorStateImpl;
 
-  Failures get failures;
+  @override
+  EnDoctorSection get selectedSection;
+  @override
+  double get reviewsLastOffset;
+  @override
+  ScrollController get reviewsScrollCtrl;
 
   /// Create a copy of DetailsDoctorState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$DetailsDoctorStateImplCopyWith<_$DetailsDoctorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

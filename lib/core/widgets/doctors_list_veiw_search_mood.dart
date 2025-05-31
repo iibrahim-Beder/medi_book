@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medi_book/core/helpers/doctors_list.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
+import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';
 
 class DoctorsListVeiwSearchMood extends StatelessWidget {
   const DoctorsListVeiwSearchMood({
@@ -12,7 +12,7 @@ class DoctorsListVeiwSearchMood extends StatelessWidget {
   });
 
   final bool isHasPadding;
-  final List<DoctorInfo> filterDoctorsList;
+  final List<Doctor> filterDoctorsList;
   @override
   Widget build(BuildContext context) {
 
@@ -22,13 +22,13 @@ class DoctorsListVeiwSearchMood extends StatelessWidget {
           (context, index) => Padding(
               padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
               child: index < filterDoctorsList.length
-                  ? DoctorsListVeiwItem(
+                  ? DoctorsListViewItemAPI(
                       padding: isHasPadding
                           ? EdgeInsets.only(left: 10.w)
                           : EdgeInsets.zero,
                       doctorInfo: filterDoctorsList[index])
                   : Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 25),
+                    padding: EdgeInsets.only(top: 20.h, bottom: 25.h),
                     child: Center(
                       child: CircularProgressIndicator(color: ColorsManager.mainBlue,),
                     ),

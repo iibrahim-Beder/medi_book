@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
+import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
 import 'package:medi_book/features/home/routes/home_routes.dart';
 
 class DoctorSpecialityAndSeeAll extends StatelessWidget {
@@ -9,6 +11,7 @@ class DoctorSpecialityAndSeeAll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final specialties = context.read<MainHomeCubit>().state.specialtiesState.data;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -19,7 +22,8 @@ class DoctorSpecialityAndSeeAll extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-
+              // we navigate to doctor speciality screen just if the specialties list is not empty
+              // specialties.isEmpty ? context.pushNamed(HomeRoutes.doctorsSpecialityScreen) : null;
               context.pushNamed(HomeRoutes.doctorsSpecialityScreen);
             },
             child: Text(

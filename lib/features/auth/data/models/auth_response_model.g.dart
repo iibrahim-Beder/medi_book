@@ -8,28 +8,40 @@ part of 'auth_response_model.dart';
 
 AuthResponseModel _$AuthResponseModelFromJson(Map<String, dynamic> json) =>
     AuthResponseModel(
-      json['message'] as String?,
-      json['data'] == null
-          ? null
-          : UserData.fromJson(json['data'] as Map<String, dynamic>),
-      json['status'] as bool?,
-      (json['code'] as num?)?.toInt(),
+      statusCode: json['statusCode'] as String,
+      succeeded: json['succeeded'] as bool,
+      message: json['message'] as String,
+      data: JwtData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AuthResponseModelToJson(AuthResponseModel instance) =>
     <String, dynamic>{
+      'statusCode': instance.statusCode,
+      'succeeded': instance.succeeded,
       'message': instance.message,
-      'data': instance.userData,
-      'status': instance.status,
-      'code': instance.code,
+      'data': instance.data,
     };
 
-UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
-      token: json['token'] as String,
-      userName: json['userName'] as String,
+JwtData _$JwtDataFromJson(Map<String, dynamic> json) => JwtData(
+      accessToken: json['accessToken'] as String,
+      refreshToken:
+          RefreshToken.fromJson(json['refreshToken'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
-      'token': instance.token,
-      'userName': instance.userName,
+Map<String, dynamic> _$JwtDataToJson(JwtData instance) => <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
+    };
+
+RefreshToken _$RefreshTokenFromJson(Map<String, dynamic> json) => RefreshToken(
+      email: json['email'] as String,
+      tokenString: json['tokenString'] as String,
+      expireAt: DateTime.parse(json['expireAt'] as String),
+    );
+
+Map<String, dynamic> _$RefreshTokenToJson(RefreshToken instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'tokenString': instance.tokenString,
+      'expireAt': instance.expireAt.toIso8601String(),
     };

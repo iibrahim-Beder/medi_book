@@ -1,22 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
+import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
 import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctor_speciality_and_see_all.dart';
-import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctor_speciality_list_view.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctor_speciality_bloc_builder.dart';
 import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/doctors_blue_container.dart';
-import 'package:medi_book/core/widgets/doctors_list_veiw.dart';
 import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/home_app_bar.dart';
 import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/recommendation_doctor_and_see_all.dart';
+import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/recommendation_doctor_bloc_builder.dart';
 
-class HomeScreenBody extends StatelessWidget {
+class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
+
+  @override
+  State<HomeScreenBody> createState() => _HomeScreenBodyState();
+}
+
+class _HomeScreenBodyState extends State<HomeScreenBody> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    
+    super.initState();
+
+    _scrollController =
+        context.read<MainHomeCubit>().state.recommendedDoctorsState.scrollCtrl!;
+
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final state = context.read<MainHomeCubit>().state.recommendedDoctorsState;
+
+    if (_scrollController.position.pixels >=
+            _scrollController.position.maxScrollExtent - 200 &&
+        state.hasMoreData &&
+        !state.isLoadingMore) {
+       context.read<MainHomeCubit>().getMoreRecommendedDoctors();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
+        controller: _scrollController,
         slivers: [
-          HomeAppBar(isThereNotifications: true,),
+          HomeAppBar(
+            isThereNotifications: true,
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -26,19 +60,17 @@ class HomeScreenBody extends StatelessWidget {
                   verticalSpace(24),
                   const DoctorSpecialityAndSeeAll(),
                   verticalSpace(16),
-                  const DoctorSpecialityListView(),
+                  const SpecialtiesBlocBuilder(),
                   verticalSpace(24),
-                  const RecommendationDoctorAndSeeAll(),
+                  const RecommendationDoctorsAndSeeAll(),
                   verticalSpace(10),
                 ],
               ),
             ),
           ),
-         DoctorsListVeiw(),
+          const RecommendationDoctorBlocBuilder(),
         ],
       ),
     );
   }
 }
-
-
