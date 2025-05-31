@@ -1,2 +1,2 @@
 
-enum EnModes { searchMood, defaultMode }
+enum EnModes { searchMood, defaultMode, loading }

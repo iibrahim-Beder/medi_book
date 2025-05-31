@@ -4,8 +4,8 @@ import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/font_weight_helper.dart';
 import 'package:medi_book/core/theming/styles.dart';
 
-class AboutDoctorWidget extends StatelessWidget {
-  const AboutDoctorWidget({super.key});
+class AboutDoctorSection extends StatelessWidget {
+  const AboutDoctorSection({super.key});
 
   @override
   Widget build(BuildContext context) {

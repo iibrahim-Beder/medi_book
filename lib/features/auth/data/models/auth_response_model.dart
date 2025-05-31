@@ -1,28 +1,48 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:medi_book/features/auth/domain/entities/auth_response_entitie.dart';
 part 'auth_response_model.g.dart';
 
 @JsonSerializable()
-class AuthResponseModel extends AuthResponseEntitie {
-  final String? message;
-  @JsonKey(name: 'data')
-  final UserData? userData;
-  final bool? status;
-  final int? code;
+class AuthResponseModel{
+  final String statusCode;
+  final bool succeeded;
+  final String message;
+  final JwtData data;
 
-  AuthResponseModel(this.message, this.userData, this.status, this.code) : super(userData!.userName);
+  AuthResponseModel({
+    required this.statusCode,
+    required this.succeeded,
+    required this.message,
+    required this.data,
+  });
 
   factory AuthResponseModel.fromJson(Map<String, dynamic> json) =>
       _$AuthResponseModelFromJson(json);
 }
 
 @JsonSerializable()
-class UserData {
-  final String token;
-  final String userName;
+class JwtData {
+  final String accessToken;
+  final RefreshToken refreshToken;
 
-  UserData({required this.token, required this.userName});
+  JwtData({required this.accessToken, required this.refreshToken});
 
-  factory UserData.fromJson(Map<String, dynamic> json) =>
-      _$UserDataFromJson(json);
+  factory JwtData.fromJson(Map<String, dynamic> json) =>
+      _$JwtDataFromJson(json);
+}
+
+@JsonSerializable()
+class RefreshToken {
+  final String email;
+  final String tokenString;
+  final DateTime expireAt;
+
+RefreshToken({
+    required this.email,
+    required this.tokenString,
+    required this.expireAt,
+  });
+
+   factory RefreshToken.fromJson(Map<String, dynamic> json) =>
+      _$RefreshTokenFromJson(json);
+
 }

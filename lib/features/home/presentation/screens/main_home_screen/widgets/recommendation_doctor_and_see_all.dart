@@ -4,8 +4,8 @@ import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
 import 'package:medi_book/features/home/routes/home_routes.dart';
 
-class RecommendationDoctorAndSeeAll extends StatelessWidget {
-  const RecommendationDoctorAndSeeAll({super.key});
+class RecommendationDoctorsAndSeeAll extends StatelessWidget {
+  const RecommendationDoctorsAndSeeAll({super.key});
 
   @override
   Widget build(BuildContext context) {

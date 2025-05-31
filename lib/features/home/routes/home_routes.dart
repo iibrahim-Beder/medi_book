@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/details_doctor_cubit.dart';
+import 'package:medi_book/core/di/dependency_injection.dart';
+import 'package:medi_book/features/home/presentation/manger/book_appointment_cubit/book_appointment_cubit.dart';
+import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
 import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/search_doctor_cubit.dart';
 import 'package:medi_book/features/home/presentation/screens/book_appointment_screen/book_appointment_screen.dart';
 import 'package:medi_book/features/home/presentation/screens/details_doctor_screen/details_doctor_screen.dart';
@@ -19,13 +21,14 @@ abstract class HomeRoutes {
     ShellRoute(
         builder: (context, state, child) {
           return BlocProvider(
-            create: (_) => SearchDoctorCubit(),
+            create: (_) => MainHomeCubit(getIt())..getSpecialties()
+                                                 ..getRecommendedDoctors(),
             child: child,
           );
         },
         routes: [
           GoRoute(
-            path: '/homeScreen',
+            path: '/',
             name: kHomeScreen,
             builder: (context, state) => const HomeScreen(),
           ),
@@ -37,20 +40,23 @@ abstract class HomeRoutes {
           GoRoute(
             path: "/searchDoctorScreen",
             name: searchDoctorScreen,
-            builder: (context, state) => const SearchDoctorScreen(),
-          ),
-          GoRoute(
-            path: "/",
-            name: detailsDoctorScreen,
             builder: (context, state) => BlocProvider(
-              create: (context) => DetailsDoctorCubit(),
-              child: const DetailsDoctorScreen(),
+              create: (context) => SearchDoctorCubit(),
+              child: const SearchDoctorScreen(),
             ),
           ),
           GoRoute(
-            path: "/kjsf",
+            path: "/detailsDoctorScreen",
+            name: detailsDoctorScreen,
+            builder: (context, state) => const DetailsDoctorScreen(),
+          ),
+          GoRoute(
+            path: "/bookAppointmentScreen",
             name: bookAppointmentScreen,
-            builder: (context, state) => const BookAppointmentScreen(),
+            builder: (context, state) => BlocProvider(
+              create: (context) => BookAppointmentCubit(),
+              child: const BookAppointmentScreen(),
+            ),
           ),
         ])
   ];

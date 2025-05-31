@@ -65,11 +65,11 @@ class _SearchDoctorScreenBodyState extends State<SearchDoctorScreenBody> {
           onChanged: refreshFunction,
           searchController: _doctorsCtrl.searchCtrl,
         ),
-        DoctorsListVeiw(
-          isHasPadding: true,
-          flutterDoctorsList: _doctorsCtrl.flutterDocsList,
-          mode: _mode,
-        ),
+        // DoctorsListVeiw(
+        //   isHasPadding: true,
+        //   flutterDoctorsList: _doctorsCtrl.flutterDocsList,
+        //   mode: _mode,
+        // ),
       ],
     ));
   }

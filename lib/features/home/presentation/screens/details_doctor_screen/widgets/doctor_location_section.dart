@@ -3,8 +3,8 @@ import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/font_weight_helper.dart';
 import 'package:medi_book/core/theming/styles.dart';
 
-class DoctorLocationWidget extends StatelessWidget {
-  const DoctorLocationWidget({super.key});
+class DoctorLocationSection extends StatelessWidget {
+  const DoctorLocationSection({super.key});
 
   @override
   Widget build(BuildContext context) {

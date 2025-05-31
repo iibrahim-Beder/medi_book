@@ -7,7 +7,6 @@ class DoctorListViewReviewItem extends StatelessWidget {
 
   @override
   @override
-
   Widget build(BuildContext context) {
     return Column(
       children: [

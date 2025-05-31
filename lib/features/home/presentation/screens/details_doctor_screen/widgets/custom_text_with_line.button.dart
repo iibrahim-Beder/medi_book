@@ -19,10 +19,10 @@ class CustomTextWithLineButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // we use inkwell because it's to much faster than gesture detector in this case
+    // we use inkwell because it's to much faster than gesture detector in this case
     return InkWell(
       splashColor: Colors.transparent,
-      highlightColor: Colors.transparent, 
+      highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
       onTap: () => onTap(index),
       child: SizedBox(
@@ -41,12 +41,13 @@ class CustomTextWithLineButton extends StatelessWidget {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: Line(
-                  color: isSelected
-                      ? ColorsManager.mainBlue
-                      : Colors.grey.shade200,
-                  height: 2,
-                  width: MediaQuery.of(context).size.width - 32.w
-                ))
+                    boxDecoration: BoxDecoration(
+                      color: isSelected
+                          ? ColorsManager.mainBlue
+                          : Colors.grey.shade200,
+                    ),
+                    height: 2,
+                    width: MediaQuery.of(context).size.width - 32.w))
           ],
         ),
       ),

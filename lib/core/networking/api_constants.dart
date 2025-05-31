@@ -1,9 +1,5 @@
+
 class ApiConstants {
-  
-  static const String apiBaseUrl = "https://192.168.1.5:7238/api/MediBookAPI/";
-  static const String login = "LoginWithEmailAndPassWord";
-  static const String createAccountWithEmailAndPassWord = "CreateAccountWithEmailAndPassWord";
-
-
-
+  static const String baseUrl = "https://6329-102-45-116-71.ngrok-free.app/Api/v1/";
 }
+

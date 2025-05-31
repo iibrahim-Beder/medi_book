@@ -4,6 +4,7 @@ part 'login_request_model.g.dart';
 
 @JsonSerializable()
 class LoginRequestModel extends LoginEntitie {
+  
   final String email;
   final String passWord;
 

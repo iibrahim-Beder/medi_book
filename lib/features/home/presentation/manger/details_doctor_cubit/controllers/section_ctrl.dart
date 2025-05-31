@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/enums/en_doctor_section.dart';
 
-class SectionCtrl {
+class DrDetailsSectionCtrl {
 
   final ScrollController reviewsScrollCtrl = ScrollController();
   

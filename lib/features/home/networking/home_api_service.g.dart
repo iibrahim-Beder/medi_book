@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_service.dart';
+part of 'home_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,9 +8,9 @@ part of 'api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _ApiService implements ApiService {
-  _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://192.168.1.5:7238/api/MediBookAPI/';
+class _HomeApiService implements HomeApiService {
+  _HomeApiService(this._dio, {this.baseUrl, this.errorLogger}) {
+    baseUrl ??= 'https://6329-102-45-116-71.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -20,26 +20,31 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AuthResponseModel> login(LoginRequestModel body) async {
+  Future<GetPaginatedDoctorsModel> getPaginatedDoctors(
+    int pageNumber,
+    int pageSize,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageNumber': pageNumber,
+      r'pageSize': pageSize,
+    };
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<AuthResponseModel>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetPaginatedDoctorsModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'LoginWithEmailAndPassWord',
+            'https://6329-102-45-116-71.ngrok-free.app/Api/v1/DoctorOverview/List',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthResponseModel _value;
+    late GetPaginatedDoctorsModel _value;
     try {
-      _value = AuthResponseModel.fromJson(_result.data!);
+      _value = GetPaginatedDoctorsModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -48,28 +53,34 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<AuthResponseModel> createAccountWithEmailAndPassWord(
-    CreateAccByEmailRequestModel body,
-  ) async {
+  Future<BaseResponseModel<List<SpecialtyModel>>> getSpecialties() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<AuthResponseModel>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<BaseResponseModel<List<SpecialtyModel>>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'CreateAccountWithEmailAndPassWord',
+            'https://6329-102-45-116-71.ngrok-free.app/Api/v1/Speciality/List',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthResponseModel _value;
+    late BaseResponseModel<List<SpecialtyModel>> _value;
     try {
-      _value = AuthResponseModel.fromJson(_result.data!);
+      _value = BaseResponseModel<List<SpecialtyModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<SpecialtyModel>(
+                  (i) => SpecialtyModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
