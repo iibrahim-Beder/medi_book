@@ -25,7 +25,7 @@ class RecommendationDoctorBlocBuilder extends StatelessWidget {
             doctorsList: state.recommendedDoctorsState.data,
             flutterDoctorsList: [],
             mode: EnModes.defaultMode, 
-            isHasShimmerLoading: state.recommendedDoctorsState.hasMoreData,
+            isHasShimmerLoading: state.recommendedDoctorsState.isLoadingMore,
           );
         } 
         else {
