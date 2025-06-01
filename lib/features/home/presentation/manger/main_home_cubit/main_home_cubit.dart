@@ -1,10 +1,30 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';
 import 'package:medi_book/features/home/domain/repos/home_repo.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_state.dart';
 
 class MainHomeCubit extends Cubit<MainHomeState> {
   final HomeRepo homeRepo;
-  MainHomeCubit(this.homeRepo) : super(MainHomeState.initial());
+  ValueNotifier<int> itemsCountNotifier = ValueNotifier<int>(0);
+
+  MainHomeCubit(this.homeRepo) : super(MainHomeState.initial()) {
+    itemsCountNotifier =
+        ValueNotifier<int>(state.recommendedDoctorsState.data.length);
+    setupListener();
+  }
+
+  void setupListener() {
+    // itemsCountNotifier.addListener(() {
+    //   var statex = state.recommendedDoctorsState;
+    //   if (itemsCountNotifier.value == 20 &&
+    //       statex.hasMoreData &&
+    //       !statex.isLoadingMore) {
+    //     // getMoreRecommendedDoctors();
+
+    //   }
+    // });
+  }
 
   // Load specialties
   Future<void> getSpecialties() async {
@@ -63,9 +83,7 @@ class MainHomeCubit extends Cubit<MainHomeState> {
     });
   }
 
-
   Future<void> getMoreRecommendedDoctors() async {
-    
     emit(state.copyWith(
       recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
         isLoadingMore: true,
@@ -89,15 +107,43 @@ class MainHomeCubit extends Cubit<MainHomeState> {
       final updatedData = List.of(state.recommendedDoctorsState.data)
         ..addAll(doctors.doctors);
 
+      print(updatedData.length);
+
+      // this the code to make the list have a maximum of 20 elements
+      List<Doctor> limitedData = [];
+      bool _isHasJumped = false;
+      if (updatedData.length >= 20) {
+        limitedData = updatedData.sublist(updatedData.length - 20);
+        _isHasJumped = true;
+        print("yes");
+      } else {
+        limitedData = updatedData;
+        _isHasJumped = false;
+      }
+
+      // print(limitedData.length);
+
       emit(state.copyWith(
         recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
-          data: updatedData,
+          data: limitedData,
           isLoadingMore: false,
           currentPage: doctors.currentPage,
           hasMoreData: doctors.hasNextPage,
+          isHasJumped: _isHasJumped,
         ),
       ));
+      itemsCountNotifier.value = state.recommendedDoctorsState.data.length;
     });
+  }
+
+  void markJumped() {
+    emit(state.copyWith(
+      recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+        isHasJumped: false,
+      ),
+    ));
+
+    print("false jumped");
   }
 
   @override

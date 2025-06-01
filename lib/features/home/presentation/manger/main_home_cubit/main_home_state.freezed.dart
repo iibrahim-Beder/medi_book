@@ -389,6 +389,7 @@ mixin _$RecommendedDoctorsState {
   int get pageSize => throw _privateConstructorUsedError;
   List<Doctor> get data => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  bool get isHasJumped => throw _privateConstructorUsedError;
   ScrollController? get scrollCtrl => throw _privateConstructorUsedError;
 
   /// Create a copy of RecommendedDoctorsState
@@ -412,6 +413,7 @@ abstract class $RecommendedDoctorsStateCopyWith<$Res> {
       int pageSize,
       List<Doctor> data,
       String errorMessage,
+      bool isHasJumped,
       ScrollController? scrollCtrl});
 }
 
@@ -438,6 +440,7 @@ class _$RecommendedDoctorsStateCopyWithImpl<$Res,
     Object? pageSize = null,
     Object? data = null,
     Object? errorMessage = null,
+    Object? isHasJumped = null,
     Object? scrollCtrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -469,6 +472,10 @@ class _$RecommendedDoctorsStateCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isHasJumped: null == isHasJumped
+          ? _value.isHasJumped
+          : isHasJumped // ignore: cast_nullable_to_non_nullable
+              as bool,
       scrollCtrl: freezed == scrollCtrl
           ? _value.scrollCtrl
           : scrollCtrl // ignore: cast_nullable_to_non_nullable
@@ -494,6 +501,7 @@ abstract class _$$RecommendedDoctorsStateImplCopyWith<$Res>
       int pageSize,
       List<Doctor> data,
       String errorMessage,
+      bool isHasJumped,
       ScrollController? scrollCtrl});
 }
 
@@ -519,6 +527,7 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
     Object? pageSize = null,
     Object? data = null,
     Object? errorMessage = null,
+    Object? isHasJumped = null,
     Object? scrollCtrl = freezed,
   }) {
     return _then(_$RecommendedDoctorsStateImpl(
@@ -550,6 +559,10 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isHasJumped: null == isHasJumped
+          ? _value.isHasJumped
+          : isHasJumped // ignore: cast_nullable_to_non_nullable
+              as bool,
       scrollCtrl: freezed == scrollCtrl
           ? _value.scrollCtrl
           : scrollCtrl // ignore: cast_nullable_to_non_nullable
@@ -569,6 +582,7 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
       this.pageSize = 5,
       final List<Doctor> data = const [],
       this.errorMessage = '',
+      this.isHasJumped = false,
       this.scrollCtrl})
       : _data = data;
 
@@ -600,11 +614,14 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
   @JsonKey()
   final String errorMessage;
   @override
+  @JsonKey()
+  final bool isHasJumped;
+  @override
   final ScrollController? scrollCtrl;
 
   @override
   String toString() {
-    return 'RecommendedDoctorsState(isLoading: $isLoading, isLoadingMore: $isLoadingMore, hasMoreData: $hasMoreData, currentPage: $currentPage, pageSize: $pageSize, data: $data, errorMessage: $errorMessage, scrollCtrl: $scrollCtrl)';
+    return 'RecommendedDoctorsState(isLoading: $isLoading, isLoadingMore: $isLoadingMore, hasMoreData: $hasMoreData, currentPage: $currentPage, pageSize: $pageSize, data: $data, errorMessage: $errorMessage, isHasJumped: $isHasJumped, scrollCtrl: $scrollCtrl)';
   }
 
   @override
@@ -625,6 +642,8 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.isHasJumped, isHasJumped) ||
+                other.isHasJumped == isHasJumped) &&
             (identical(other.scrollCtrl, scrollCtrl) ||
                 other.scrollCtrl == scrollCtrl));
   }
@@ -639,6 +658,7 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
       pageSize,
       const DeepCollectionEquality().hash(_data),
       errorMessage,
+      isHasJumped,
       scrollCtrl);
 
   /// Create a copy of RecommendedDoctorsState
@@ -660,6 +680,7 @@ abstract class _RecommendedDoctorsState implements RecommendedDoctorsState {
       final int pageSize,
       final List<Doctor> data,
       final String errorMessage,
+      final bool isHasJumped,
       final ScrollController? scrollCtrl}) = _$RecommendedDoctorsStateImpl;
 
   @override
@@ -676,6 +697,8 @@ abstract class _RecommendedDoctorsState implements RecommendedDoctorsState {
   List<Doctor> get data;
   @override
   String get errorMessage;
+  @override
+  bool get isHasJumped;
   @override
   ScrollController? get scrollCtrl;
 

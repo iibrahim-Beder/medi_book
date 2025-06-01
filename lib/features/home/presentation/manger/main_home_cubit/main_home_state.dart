@@ -39,6 +39,7 @@ class RecommendedDoctorsState with _$RecommendedDoctorsState {
     @Default(5) int pageSize,
     @Default([]) List<Doctor> data,
     @Default('') String errorMessage,
+    @Default(false) bool isHasJumped,
     ScrollController? scrollCtrl,
   }) = _RecommendedDoctorsState;
 

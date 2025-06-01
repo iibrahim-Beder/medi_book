@@ -22,13 +22,10 @@ class DoctorsListVeiwDefaultMode extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           if (index == doctorsList.length && isHasShimmerLoading) {
-            return AnimatedOpacity(
-              opacity: isHasShimmerLoading ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 1),
-              child: DoctorListCardShimmerLoading(
-                shimmerNumber: 3,
-              ),
-            );
+            // return DoctorListCardShimmerLoading(
+            //   shimmerNumber: 3,
+            // );
+            return Container();
           } else {
             return Padding(
               padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
@@ -41,7 +38,8 @@ class DoctorsListVeiwDefaultMode extends StatelessWidget {
             );
           }
         },
-        childCount: doctorsList.length + (isHasShimmerLoading ? 1 : 0),
+        childCount: doctorsList.length 
+        // + (isHasShimmerLoading ? 1 : 0),
       ),
     );
   }
