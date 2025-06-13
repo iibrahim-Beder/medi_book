@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:medi_book/core/helpers/paginated_state.dart';
 import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';
 import 'package:medi_book/features/home/domain/entities/specialty.dart';
+import 'package:medi_book/features/home/dtos/doctors_filter_dto.dart';
 
 part 'main_home_state.freezed.dart';
 
-enum EnRecDocModes { shimmerLoading, loadingIndicator, noLoading }
+enum EnRecDocModes { shimmerLoading, noLoading }
 
 @freezed
 class MainHomeState with _$MainHomeState {
@@ -32,17 +34,14 @@ class SpecialtiesState with _$SpecialtiesState {
 @freezed
 class RecommendedDoctorsState with _$RecommendedDoctorsState {
   const factory RecommendedDoctorsState({
-    @Default(false) bool isLoading,
-    @Default(false) bool isLoadingMore,
-    @Default(false) bool hasMoreData,
-    @Default(1) int currentPage,
-    @Default(5) int pageSize,
-    @Default([]) List<Doctor> data,
-    @Default('') String errorMessage,
+    PaginatedState<Doctor>? paginatedState, 
+    DoctorsFilterDto? doctorsFilterDto,
     ScrollController? scrollCtrl,
   }) = _RecommendedDoctorsState;
 
   factory RecommendedDoctorsState.initial() => RecommendedDoctorsState(
         scrollCtrl: ScrollController(),
+        doctorsFilterDto: DoctorsFilterDto(pageNumber: 1, pageSize: 5, orderBy: EnDoctorOverviewOrdering.name, isRecommended: true),
+        paginatedState: PaginatedState<Doctor>(),
       );
 }

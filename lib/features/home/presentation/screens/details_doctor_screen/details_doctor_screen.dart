@@ -10,7 +10,7 @@ class DetailsDoctorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-          padding: EdgeInsets.only(left: 24.w, right: 24.w,bottom: 25.h),
+          padding: EdgeInsets.only(left: 24.w, right: 24.w,bottom: 8.h),
           child: DoctorDetailsScreenBody(),
         ),
         bottomNavigationBar: Padding(

@@ -69,8 +69,7 @@ import 'package:dio/dio.dart';
 //   }
 // }
 //************ */
-import 'package:dio/dio.dart';
-import 'package:medi_book/core/networking/api_constants.dart';
+
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -88,7 +87,7 @@ class DioFactory {
         ..options.connectTimeout = timeout
         ..options.receiveTimeout = timeout;
        
-       dio?.options.headers['Authorization'] = 'Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjIiLCJFbWFpbCI6IkFobWFkQGdtYWlsLmNvbSIsImV4cCI6MTc0OTEyOTc3MiwiaXNzIjoiTWVkaUJvb2suQXV0aCIsImF1ZCI6Ik1lZGlCb29rLldlYkNsaWVudCJ9.nkRKnRrvuavyp2vNQUiO2oapoXNMxBxZDCFKHvpGjI0';
+       dio?.options.headers['Authorization'] = 'Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJBaG1hZEBnbWFpbC5jb20iLCJleHAiOjE3NDk4MTM2MjksImlzcyI6Ik1lZGlCb29rLkF1dGgiLCJhdWQiOiJNZWRpQm9vay5XZWJDbGllbnQifQ.y_s-ve37St-l17UF1Xzh8I4uPZe2Zdm88Z0sYngwA74';
 
       addDioInterceptor();
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/widgets/doctor_list_card_shimmer_loading.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
 import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';
@@ -37,6 +38,7 @@ class DoctorsListVeiwDefaultMode extends StatelessWidget {
                     ? EdgeInsets.only(left: 10.w)
                     : EdgeInsets.zero,
                 doctorInfo: doctorsList[index],
+                onTap: () => context.pushNamed('detailsDoctorScreen',extra: doctorsList[index],),
               ),
             );
           }

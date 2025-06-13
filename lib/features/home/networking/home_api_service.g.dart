@@ -10,7 +10,7 @@ part of 'home_api_service.dart';
 
 class _HomeApiService implements HomeApiService {
   _HomeApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://6329-102-45-116-71.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -20,31 +20,37 @@ class _HomeApiService implements HomeApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<GetPaginatedDoctorsModel> getPaginatedDoctors(
-    int pageNumber,
-    int pageSize,
+  Future<PaginatedResponseModel<List<DoctorModel>>> getPaginatedDoctors(
+    Map<String, dynamic> query,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'pageNumber': pageNumber,
-      r'pageSize': pageSize,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(query);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GetPaginatedDoctorsModel>(
+    final _options = _setStreamType<PaginatedResponseModel<List<DoctorModel>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://6329-102-45-116-71.ngrok-free.app/Api/v1/DoctorOverview/List',
+            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorOverview/List',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late GetPaginatedDoctorsModel _value;
+    late PaginatedResponseModel<List<DoctorModel>> _value;
     try {
-      _value = GetPaginatedDoctorsModel.fromJson(_result.data!);
+      _value = PaginatedResponseModel<List<DoctorModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<DoctorModel>(
+                  (i) => DoctorModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -62,7 +68,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://6329-102-45-116-71.ngrok-free.app/Api/v1/Speciality/List',
+            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/Speciality/List',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -77,6 +83,118 @@ class _HomeApiService implements HomeApiService {
             ? json
                 .map<SpecialtyModel>(
                   (i) => SpecialtyModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<DoctorProfileModel> getDoctorProfile(int id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<DoctorProfileModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorProfile/Get',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late DoctorProfileModel _value;
+    try {
+      _value = DoctorProfileModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<BaseResponseModel<List<DoctorLocationModel>>> getDoctorLocations(
+    int id,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options =
+        _setStreamType<BaseResponseModel<List<DoctorLocationModel>>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseModel<List<DoctorLocationModel>> _value;
+    try {
+      _value = BaseResponseModel<List<DoctorLocationModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<DoctorLocationModel>(
+                  (i) => DoctorLocationModel.fromJson(
+                    i as Map<String, dynamic>,
+                  ),
+                )
+                .toList()
+            : List.empty(),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PaginatedResponseModel<List<DoctorReviewModel>>> getDoctorReviews(
+    int id,
+    int pageNumber,
+    int pageSize,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageNumber': pageNumber,
+      r'pageSize': pageSize,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options =
+        _setStreamType<PaginatedResponseModel<List<DoctorReviewModel>>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorReviews/List',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PaginatedResponseModel<List<DoctorReviewModel>> _value;
+    try {
+      _value = PaginatedResponseModel<List<DoctorReviewModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<DoctorReviewModel>(
+                  (i) => DoctorReviewModel.fromJson(i as Map<String, dynamic>),
                 )
                 .toList()
             : List.empty(),

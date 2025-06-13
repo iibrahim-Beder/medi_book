@@ -8,6 +8,8 @@ class DoctorListCardShimmerLoading extends StatelessWidget {
   const DoctorListCardShimmerLoading({super.key, required this.shimmerNumber});
 
   final int shimmerNumber;
+  final Color? highlightColor = ColorsManager.primarySurfaceHighlight;
+  final Color? baseColor = ColorsManager.primarySurfaceBaseLight;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class DoctorListCardShimmerLoading extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: ContainerShimmerLoading(height: 110, width: 110),
+                    child: ContainerShimmerLoading(height: 110, width: 110,baseColor: baseColor,highlightColor: highlightColor,),
                   ),
                   horizontalSpace(12),
                   Expanded(
@@ -50,11 +52,11 @@ class DoctorListCardShimmerLoading extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ContainerShimmerLoading(height: 18, width: 180),
+                        ContainerShimmerLoading(height: 18, width: 180,baseColor: baseColor,highlightColor: highlightColor,),
                         verticalSpace(15),
-                        ContainerShimmerLoading(height: 14, width: 150),
+                        ContainerShimmerLoading(height: 14, width: 150,baseColor: baseColor,highlightColor: highlightColor,),
                         verticalSpace(15),
-                        ContainerShimmerLoading(height: 14, width: 155),
+                        ContainerShimmerLoading(height: 14, width: 155,baseColor: baseColor,highlightColor: highlightColor,),
                       ],
                     ),
                   ),

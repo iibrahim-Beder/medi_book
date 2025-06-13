@@ -28,7 +28,7 @@ class TextWithLineButtonListView extends StatelessWidget {
                 onTap: (value) {
                   context
                       .read<DetailsDoctorCubit>()
-                      .changeSection(EnDoctorSection.values[value]);
+                      .updateSelectedSection(EnDoctorSection.values[value]);
                 },
               ),
             ),

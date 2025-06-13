@@ -7,19 +7,22 @@ import 'package:medi_book/core/widgets/arrow_back_box_and_address.dart';
 import 'package:medi_book/core/widgets/custom_text_field.dart';
 
 class CustomAppBarForSearch extends StatelessWidget {
-  const CustomAppBarForSearch(
-      {super.key,
-      required this.title,
-      required this.widgetBox,
-      required this.svgPathForTHeSecondRow,
-      required this.onWidgetBoxTap,
-      required this.searchController,
-      required this.onChanged});
+  const CustomAppBarForSearch({
+    super.key,
+    required this.title,
+    required this.widgetBox,
+    required this.svgPathForTHeSecondRow,
+    required this.onWidgetBoxTap,
+    required this.searchController,
+    required this.onChanged,
+    this.focusNode,
+  });
 
   final String title;
   final Widget widgetBox;
   final String svgPathForTHeSecondRow;
   final VoidCallback onWidgetBoxTap;
+  final FocusNode? focusNode;
 
   final TextEditingController searchController;
   final Function(String)? onChanged;
@@ -53,6 +56,7 @@ class CustomAppBarForSearch extends StatelessWidget {
                 validator: (String? value) {},
                 controller: searchController,
                 onChanged: onChanged,
+                focusNode: focusNode,
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.h),
                 focusedBorder: OutlineInputBorder(

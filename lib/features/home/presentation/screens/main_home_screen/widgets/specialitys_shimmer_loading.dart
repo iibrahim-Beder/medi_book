@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
+import 'package:medi_book/core/widgets/circular_shimmer_loading.dart';
 import 'package:medi_book/core/widgets/container_shimmer_loading.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SpecialtiesShimmerLoading extends StatelessWidget {
   const SpecialtiesShimmerLoading({super.key});
+
+  final Color? highlightColor = ColorsManager.primarySurfaceHighlight;
+  final Color? baseColor = ColorsManager.primarySurfaceBaseLight;
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +23,14 @@ class SpecialtiesShimmerLoading extends StatelessWidget {
               padding:
                   EdgeInsets.only(right: 25.w, left: index == 0 ? 10.w : 0),
               child: Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Shimmer.fromColors(
-                      highlightColor: ColorsManager.primarySurfaceHighlight,
-                      baseColor: ColorsManager.primarySurfaceBaseLight,
-                    child: Container(
-                      height: 56.h,
-                      width: 56.w,
-                      decoration: BoxDecoration(
-                          color: ColorsManager.primarySurface,
-                          shape: BoxShape.circle),
-                    ),
-                  ),
+                  CircularShimmerLoading(height: 56, baseColor: baseColor, highlightColor: highlightColor,),
                   verticalSpace(16),
                   ContainerShimmerLoading(
                     height: 12,
                     width: 52, 
+                    baseColor: baseColor,
+                    highlightColor: highlightColor,
                   ),
                 ],
               ));

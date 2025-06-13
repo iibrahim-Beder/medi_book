@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
   
+  visibility_detector: ^0.4.0
+  # A library useful for creating timeago strings
+  timeago: ^3.7.1
+
   # This is a cached image widget that provides a simple way to display images from a remote URL.
   cached_network_image: ^3.4.1
 

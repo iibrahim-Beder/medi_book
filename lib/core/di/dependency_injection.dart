@@ -9,7 +9,9 @@ import 'package:medi_book/features/auth/presentation/manger/signup_cubit/signup_
 import 'package:medi_book/features/home/data/repos/auth_repo_impl.dart';
 import 'package:medi_book/features/home/domain/repos/home_repo.dart';
 import 'package:medi_book/features/home/networking/home_api_service.dart';
+import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/details_doctor_cubit.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/search_doctor_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -24,5 +26,8 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepoImpl(getIt()));
   getIt.registerFactory<MainHomeCubit>(() => MainHomeCubit(getIt()));
+  getIt.registerFactory<SearchDoctorCubit>(() => SearchDoctorCubit(getIt()));
+  getIt.registerFactory<DetailsDoctorCubit>(() => DetailsDoctorCubit(getIt()));
+
 
 }

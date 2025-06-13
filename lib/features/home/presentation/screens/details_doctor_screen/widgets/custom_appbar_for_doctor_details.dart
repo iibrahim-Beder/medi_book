@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medi_book/core/helpers/doctors_list.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/arrow_back_box_and_address.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
-import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';
 import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/details_doctor_cubit.dart';
 import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/details_doctor_state.dart';
 import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/enums/en_doctor_section.dart';
@@ -39,10 +37,13 @@ class CustomAppbarForDoctorDetails extends StatelessWidget {
                   coustomWidget: widgetBox,
                 ),
                 verticalSpace(20),
-                DoctorsListViewItem(
-                  doctorInfo: doctorsList[selectedSection.index],
+                // block builder
+                DoctorsListViewItemAPI(
+                  doctorInfo: context.read<DetailsDoctorCubit>().state.doctor!,
                   padding: EdgeInsets.only(left: 0.w),
                   isHasMessageIcon: true,
+                  color: ColorsManager.backgroundWhite,
+                  is3DRemark: false,
                 ),
                 verticalSpace(20),
                 TextWithLineButtonListView(),

@@ -4,7 +4,7 @@ import 'package:medi_book/core/widgets/doctor_list_flat_shimmer_loading.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiw.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_state.dart';
-import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/enums/en_modes.dart';
+import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/search_doctor_state.dart';
 
 class RecommendationDoctorBlocBuilder extends StatelessWidget {
   const RecommendationDoctorBlocBuilder({super.key});
@@ -14,18 +14,18 @@ class RecommendationDoctorBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainHomeCubit, MainHomeState>(
       buildWhen: (previous, current) =>
-          previous.recommendedDoctorsState.isLoading != current.recommendedDoctorsState.isLoading ||
-          previous.recommendedDoctorsState.isLoadingMore != current.recommendedDoctorsState.isLoadingMore,
+          previous.recommendedDoctorsState.paginatedState!.isLoading != current.recommendedDoctorsState.paginatedState!.isLoading ||
+          previous.recommendedDoctorsState.paginatedState!.isLoadingMore != current.recommendedDoctorsState.paginatedState!.isLoadingMore,
       builder: (context, state) {
-        if (state.recommendedDoctorsState.isLoading) {
+        final paginatedState = context.read<MainHomeCubit>().state.recommendedDoctorsState.paginatedState;
+        if (paginatedState!.isLoading) {
           return DoctorListFlatShimmerLoading(shimmerNumber: 5,);
-        } else if (state.recommendedDoctorsState.data.isNotEmpty) {
+        } else if (paginatedState.data.isNotEmpty) {
           return DoctorsListVeiw(
             isHasPadding: false,
-            doctorsList: state.recommendedDoctorsState.data,
-            flutterDoctorsList: [],
+            doctorsList: paginatedState.data,
             mode: EnModes.defaultMode, 
-            isHasShimmerLoading: state.recommendedDoctorsState.hasMoreData,
+            isHasShimmerLoading: paginatedState.isLoadingMore,
           );
         } 
         else {

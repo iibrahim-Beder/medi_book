@@ -34,68 +34,76 @@ class MainHomeCubit extends Cubit<MainHomeState> {
   Future<void> getRecommendedDoctors() async {
     emit(state.copyWith(
       recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+          paginatedState:
+              state.recommendedDoctorsState.paginatedState!.copyWith(
         isLoading: true,
-        errorMessage: '',
-      ),
+      )),
     ));
 
-    final result = await homeRepo.getPaginatedDoctors(
-      state.recommendedDoctorsState.currentPage,
-      state.recommendedDoctorsState.pageSize,
-    );
+    final result = await homeRepo
+        .getFilteredDoctors(state.recommendedDoctorsState.doctorsFilterDto!);
 
     result.fold((error) {
       emit(state.copyWith(
         recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+            paginatedState:
+                state.recommendedDoctorsState.paginatedState!.copyWith(
           isLoading: false,
           errorMessage: error.message,
-        ),
+        )),
       ));
-    }, (doctors) {
+    }, (paginatedDoctors) {
       emit(state.copyWith(
         recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+            paginatedState:
+                state.recommendedDoctorsState.paginatedState!.copyWith(
           isLoading: false,
-          data: doctors.doctors,
-          hasMoreData: doctors.hasNextPage,
-          currentPage: doctors.currentPage,
-        ),
+          data: paginatedDoctors.data,
+          hasMoreData: paginatedDoctors.hasNextPage,
+          currentPage: paginatedDoctors.currentPage,
+        )),
       ));
     });
   }
 
-
   Future<void> getMoreRecommendedDoctors() async {
-    
     emit(state.copyWith(
       recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+          paginatedState:
+              state.recommendedDoctorsState.paginatedState!.copyWith(
         isLoadingMore: true,
-        errorMessage: '',
-      ),
+      )),
     ));
 
-    final result = await homeRepo.getPaginatedDoctors(
-      state.recommendedDoctorsState.currentPage + 1,
-      state.recommendedDoctorsState.pageSize,
+    final result = await homeRepo.getFilteredDoctors(
+      state.recommendedDoctorsState.doctorsFilterDto!.copyWith(
+          pageNumber:
+              state.recommendedDoctorsState.paginatedState!.currentPage + 1),
     );
 
     result.fold((error) {
       emit(state.copyWith(
         recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+            paginatedState:
+                state.recommendedDoctorsState.paginatedState!.copyWith(
           isLoadingMore: false,
           errorMessage: error.message,
-        ),
+        )),
       ));
-    }, (doctors) {
-      final updatedData = List.of(state.recommendedDoctorsState.data)
-        ..addAll(doctors.doctors);
+    }, (paginatedDoctors) {
+      final updatedData =
+          List.of(state.recommendedDoctorsState.paginatedState!.data)
+            ..addAll(paginatedDoctors.data);
 
       emit(state.copyWith(
         recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
-          data: updatedData,
+            paginatedState:
+                state.recommendedDoctorsState.paginatedState!.copyWith(
           isLoadingMore: false,
-          currentPage: doctors.currentPage,
-          hasMoreData: doctors.hasNextPage,
-        ),
+          data: updatedData,
+          hasMoreData: paginatedDoctors.hasNextPage,
+          currentPage: paginatedDoctors.currentPage,
+        )),
       ));
     });
   }

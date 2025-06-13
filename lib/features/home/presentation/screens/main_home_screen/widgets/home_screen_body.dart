@@ -32,12 +32,12 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   }
 
   void _onScroll() {
-    final state = context.read<MainHomeCubit>().state.recommendedDoctorsState;
+    final paginatedState = context.read<MainHomeCubit>().state.recommendedDoctorsState.paginatedState;
 
     if (_scrollController.position.pixels >=
             _scrollController.position.maxScrollExtent - 200 &&
-        state.hasMoreData &&
-        !state.isLoadingMore) {
+        paginatedState!.hasMoreData &&
+        !paginatedState.isLoadingMore) {
        context.read<MainHomeCubit>().getMoreRecommendedDoctors();
     }
   }
