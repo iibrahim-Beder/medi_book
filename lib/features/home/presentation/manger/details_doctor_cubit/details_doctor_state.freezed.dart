@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DetailsDoctorState {
   EnDoctorSection get selectedSection => throw _privateConstructorUsedError;
-  double get reviewsLastOffset => throw _privateConstructorUsedError;
+  int get reviewsLastindex => throw _privateConstructorUsedError;
+  double get reviewsAlignment => throw _privateConstructorUsedError;
   PaginatedState<DoctorReview> get paginatedState =>
       throw _privateConstructorUsedError;
   DoctorProfileState get doctorProfileState =>
@@ -41,7 +42,8 @@ abstract class $DetailsDoctorStateCopyWith<$Res> {
   @useResult
   $Res call(
       {EnDoctorSection selectedSection,
-      double reviewsLastOffset,
+      int reviewsLastindex,
+      double reviewsAlignment,
       PaginatedState<DoctorReview> paginatedState,
       DoctorProfileState doctorProfileState,
       DoctorLocationsState doctorLocationsState,
@@ -68,7 +70,8 @@ class _$DetailsDoctorStateCopyWithImpl<$Res, $Val extends DetailsDoctorState>
   @override
   $Res call({
     Object? selectedSection = null,
-    Object? reviewsLastOffset = null,
+    Object? reviewsLastindex = null,
+    Object? reviewsAlignment = null,
     Object? paginatedState = null,
     Object? doctorProfileState = null,
     Object? doctorLocationsState = null,
@@ -79,9 +82,13 @@ class _$DetailsDoctorStateCopyWithImpl<$Res, $Val extends DetailsDoctorState>
           ? _value.selectedSection
           : selectedSection // ignore: cast_nullable_to_non_nullable
               as EnDoctorSection,
-      reviewsLastOffset: null == reviewsLastOffset
-          ? _value.reviewsLastOffset
-          : reviewsLastOffset // ignore: cast_nullable_to_non_nullable
+      reviewsLastindex: null == reviewsLastindex
+          ? _value.reviewsLastindex
+          : reviewsLastindex // ignore: cast_nullable_to_non_nullable
+              as int,
+      reviewsAlignment: null == reviewsAlignment
+          ? _value.reviewsAlignment
+          : reviewsAlignment // ignore: cast_nullable_to_non_nullable
               as double,
       paginatedState: null == paginatedState
           ? _value.paginatedState
@@ -146,7 +153,8 @@ abstract class _$$DetailsDoctorStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {EnDoctorSection selectedSection,
-      double reviewsLastOffset,
+      int reviewsLastindex,
+      double reviewsAlignment,
       PaginatedState<DoctorReview> paginatedState,
       DoctorProfileState doctorProfileState,
       DoctorLocationsState doctorLocationsState,
@@ -174,7 +182,8 @@ class __$$DetailsDoctorStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedSection = null,
-    Object? reviewsLastOffset = null,
+    Object? reviewsLastindex = null,
+    Object? reviewsAlignment = null,
     Object? paginatedState = null,
     Object? doctorProfileState = null,
     Object? doctorLocationsState = null,
@@ -185,9 +194,13 @@ class __$$DetailsDoctorStateImplCopyWithImpl<$Res>
           ? _value.selectedSection
           : selectedSection // ignore: cast_nullable_to_non_nullable
               as EnDoctorSection,
-      reviewsLastOffset: null == reviewsLastOffset
-          ? _value.reviewsLastOffset
-          : reviewsLastOffset // ignore: cast_nullable_to_non_nullable
+      reviewsLastindex: null == reviewsLastindex
+          ? _value.reviewsLastindex
+          : reviewsLastindex // ignore: cast_nullable_to_non_nullable
+              as int,
+      reviewsAlignment: null == reviewsAlignment
+          ? _value.reviewsAlignment
+          : reviewsAlignment // ignore: cast_nullable_to_non_nullable
               as double,
       paginatedState: null == paginatedState
           ? _value.paginatedState
@@ -214,7 +227,8 @@ class __$$DetailsDoctorStateImplCopyWithImpl<$Res>
 class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
   const _$DetailsDoctorStateImpl(
       {required this.selectedSection,
-      required this.reviewsLastOffset,
+      required this.reviewsLastindex,
+      required this.reviewsAlignment,
       required this.paginatedState,
       required this.doctorProfileState,
       required this.doctorLocationsState,
@@ -223,7 +237,9 @@ class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
   @override
   final EnDoctorSection selectedSection;
   @override
-  final double reviewsLastOffset;
+  final int reviewsLastindex;
+  @override
+  final double reviewsAlignment;
   @override
   final PaginatedState<DoctorReview> paginatedState;
   @override
@@ -235,7 +251,7 @@ class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
 
   @override
   String toString() {
-    return 'DetailsDoctorState(selectedSection: $selectedSection, reviewsLastOffset: $reviewsLastOffset, paginatedState: $paginatedState, doctorProfileState: $doctorProfileState, doctorLocationsState: $doctorLocationsState, doctor: $doctor)';
+    return 'DetailsDoctorState(selectedSection: $selectedSection, reviewsLastindex: $reviewsLastindex, reviewsAlignment: $reviewsAlignment, paginatedState: $paginatedState, doctorProfileState: $doctorProfileState, doctorLocationsState: $doctorLocationsState, doctor: $doctor)';
   }
 
   @override
@@ -245,8 +261,10 @@ class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
             other is _$DetailsDoctorStateImpl &&
             (identical(other.selectedSection, selectedSection) ||
                 other.selectedSection == selectedSection) &&
-            (identical(other.reviewsLastOffset, reviewsLastOffset) ||
-                other.reviewsLastOffset == reviewsLastOffset) &&
+            (identical(other.reviewsLastindex, reviewsLastindex) ||
+                other.reviewsLastindex == reviewsLastindex) &&
+            (identical(other.reviewsAlignment, reviewsAlignment) ||
+                other.reviewsAlignment == reviewsAlignment) &&
             (identical(other.paginatedState, paginatedState) ||
                 other.paginatedState == paginatedState) &&
             (identical(other.doctorProfileState, doctorProfileState) ||
@@ -260,7 +278,8 @@ class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
   int get hashCode => Object.hash(
       runtimeType,
       selectedSection,
-      reviewsLastOffset,
+      reviewsLastindex,
+      reviewsAlignment,
       paginatedState,
       doctorProfileState,
       doctorLocationsState,
@@ -279,7 +298,8 @@ class _$DetailsDoctorStateImpl implements _DetailsDoctorState {
 abstract class _DetailsDoctorState implements DetailsDoctorState {
   const factory _DetailsDoctorState(
       {required final EnDoctorSection selectedSection,
-      required final double reviewsLastOffset,
+      required final int reviewsLastindex,
+      required final double reviewsAlignment,
       required final PaginatedState<DoctorReview> paginatedState,
       required final DoctorProfileState doctorProfileState,
       required final DoctorLocationsState doctorLocationsState,
@@ -288,7 +308,9 @@ abstract class _DetailsDoctorState implements DetailsDoctorState {
   @override
   EnDoctorSection get selectedSection;
   @override
-  double get reviewsLastOffset;
+  int get reviewsLastindex;
+  @override
+  double get reviewsAlignment;
   @override
   PaginatedState<DoctorReview> get paginatedState;
   @override

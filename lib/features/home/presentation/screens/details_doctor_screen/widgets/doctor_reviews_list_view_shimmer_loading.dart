@@ -17,7 +17,7 @@ class DoctorReviewsListViewShimmerLoading extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 0),
         child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
           itemCount: 3,
           itemBuilder: (context, index) {
             return Padding(

@@ -386,6 +386,7 @@ mixin _$RecommendedDoctorsState {
       throw _privateConstructorUsedError;
   DoctorsFilterDto? get doctorsFilterDto => throw _privateConstructorUsedError;
   ScrollController? get scrollCtrl => throw _privateConstructorUsedError;
+  bool get showBackToTopButton => throw _privateConstructorUsedError;
 
   /// Create a copy of RecommendedDoctorsState
   /// with the given fields replaced by the non-null parameter values.
@@ -403,7 +404,8 @@ abstract class $RecommendedDoctorsStateCopyWith<$Res> {
   $Res call(
       {PaginatedState<Doctor>? paginatedState,
       DoctorsFilterDto? doctorsFilterDto,
-      ScrollController? scrollCtrl});
+      ScrollController? scrollCtrl,
+      bool showBackToTopButton});
 
   $PaginatedStateCopyWith<Doctor, $Res>? get paginatedState;
   $DoctorsFilterDtoCopyWith<$Res>? get doctorsFilterDto;
@@ -428,6 +430,7 @@ class _$RecommendedDoctorsStateCopyWithImpl<$Res,
     Object? paginatedState = freezed,
     Object? doctorsFilterDto = freezed,
     Object? scrollCtrl = freezed,
+    Object? showBackToTopButton = null,
   }) {
     return _then(_value.copyWith(
       paginatedState: freezed == paginatedState
@@ -442,6 +445,10 @@ class _$RecommendedDoctorsStateCopyWithImpl<$Res,
           ? _value.scrollCtrl
           : scrollCtrl // ignore: cast_nullable_to_non_nullable
               as ScrollController?,
+      showBackToTopButton: null == showBackToTopButton
+          ? _value.showBackToTopButton
+          : showBackToTopButton // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -487,7 +494,8 @@ abstract class _$$RecommendedDoctorsStateImplCopyWith<$Res>
   $Res call(
       {PaginatedState<Doctor>? paginatedState,
       DoctorsFilterDto? doctorsFilterDto,
-      ScrollController? scrollCtrl});
+      ScrollController? scrollCtrl,
+      bool showBackToTopButton});
 
   @override
   $PaginatedStateCopyWith<Doctor, $Res>? get paginatedState;
@@ -513,6 +521,7 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
     Object? paginatedState = freezed,
     Object? doctorsFilterDto = freezed,
     Object? scrollCtrl = freezed,
+    Object? showBackToTopButton = null,
   }) {
     return _then(_$RecommendedDoctorsStateImpl(
       paginatedState: freezed == paginatedState
@@ -527,6 +536,10 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
           ? _value.scrollCtrl
           : scrollCtrl // ignore: cast_nullable_to_non_nullable
               as ScrollController?,
+      showBackToTopButton: null == showBackToTopButton
+          ? _value.showBackToTopButton
+          : showBackToTopButton // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -535,7 +548,10 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
 
 class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
   const _$RecommendedDoctorsStateImpl(
-      {this.paginatedState, this.doctorsFilterDto, this.scrollCtrl});
+      {this.paginatedState,
+      this.doctorsFilterDto,
+      this.scrollCtrl,
+      required this.showBackToTopButton});
 
   @override
   final PaginatedState<Doctor>? paginatedState;
@@ -543,10 +559,12 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
   final DoctorsFilterDto? doctorsFilterDto;
   @override
   final ScrollController? scrollCtrl;
+  @override
+  final bool showBackToTopButton;
 
   @override
   String toString() {
-    return 'RecommendedDoctorsState(paginatedState: $paginatedState, doctorsFilterDto: $doctorsFilterDto, scrollCtrl: $scrollCtrl)';
+    return 'RecommendedDoctorsState(paginatedState: $paginatedState, doctorsFilterDto: $doctorsFilterDto, scrollCtrl: $scrollCtrl, showBackToTopButton: $showBackToTopButton)';
   }
 
   @override
@@ -559,12 +577,14 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
             (identical(other.doctorsFilterDto, doctorsFilterDto) ||
                 other.doctorsFilterDto == doctorsFilterDto) &&
             (identical(other.scrollCtrl, scrollCtrl) ||
-                other.scrollCtrl == scrollCtrl));
+                other.scrollCtrl == scrollCtrl) &&
+            (identical(other.showBackToTopButton, showBackToTopButton) ||
+                other.showBackToTopButton == showBackToTopButton));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, paginatedState, doctorsFilterDto, scrollCtrl);
+  int get hashCode => Object.hash(runtimeType, paginatedState, doctorsFilterDto,
+      scrollCtrl, showBackToTopButton);
 
   /// Create a copy of RecommendedDoctorsState
   /// with the given fields replaced by the non-null parameter values.
@@ -580,7 +600,8 @@ abstract class _RecommendedDoctorsState implements RecommendedDoctorsState {
   const factory _RecommendedDoctorsState(
       {final PaginatedState<Doctor>? paginatedState,
       final DoctorsFilterDto? doctorsFilterDto,
-      final ScrollController? scrollCtrl}) = _$RecommendedDoctorsStateImpl;
+      final ScrollController? scrollCtrl,
+      required final bool showBackToTopButton}) = _$RecommendedDoctorsStateImpl;
 
   @override
   PaginatedState<Doctor>? get paginatedState;
@@ -588,6 +609,8 @@ abstract class _RecommendedDoctorsState implements RecommendedDoctorsState {
   DoctorsFilterDto? get doctorsFilterDto;
   @override
   ScrollController? get scrollCtrl;
+  @override
+  bool get showBackToTopButton;
 
   /// Create a copy of RecommendedDoctorsState
   /// with the given fields replaced by the non-null parameter values.

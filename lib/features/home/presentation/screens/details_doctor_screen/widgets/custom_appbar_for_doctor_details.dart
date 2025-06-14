@@ -9,6 +9,7 @@ import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit
 import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/details_doctor_state.dart';
 import 'package:medi_book/features/home/presentation/manger/details_doctor_cubit/enums/en_doctor_section.dart';
 import 'package:medi_book/features/home/presentation/screens/details_doctor_screen/widgets/text_with_Line_button_list_view.dart';
+
 class CustomAppbarForDoctorDetails extends StatelessWidget {
   const CustomAppbarForDoctorDetails({
     super.key,
@@ -18,37 +19,37 @@ class CustomAppbarForDoctorDetails extends StatelessWidget {
 
   final String title;
   final Widget widgetBox;
+
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<DetailsDoctorCubit, DetailsDoctorState,EnDoctorSection>(
+    return BlocSelector<DetailsDoctorCubit, DetailsDoctorState, EnDoctorSection>(
       selector: (state) => state.selectedSection,
       builder: (context, selectedSection) {
-        return SliverAppBar(
-            pinned: true,
-            automaticallyImplyLeading: false,
-            scrolledUnderElevation: 0.0,
-            toolbarHeight: 285.h,
-            backgroundColor: ColorsManager.backgroundWhite,
-            flexibleSpace: Column(
-              children: [
-                verticalSpace(30),
-                ArrowBackBoxAndAddress(
-                  title: title,
-                  coustomWidget: widgetBox,
-                ),
-                verticalSpace(20),
-                // block builder
-                DoctorsListViewItemAPI(
-                  doctorInfo: context.read<DetailsDoctorCubit>().state.doctor!,
-                  padding: EdgeInsets.only(left: 0.w),
-                  isHasMessageIcon: true,
-                  color: ColorsManager.backgroundWhite,
-                  is3DRemark: false,
-                ),
-                verticalSpace(20),
-                TextWithLineButtonListView(),
-              ],
-            ));
+        return Container(
+          width: double.infinity,
+          color: ColorsManager.backgroundWhite,
+        
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(30),
+              ArrowBackBoxAndAddress(
+                title: title,
+                coustomWidget: widgetBox,
+              ),
+              verticalSpace(20),
+              DoctorsListViewItemAPI(
+                doctorInfo: context.read<DetailsDoctorCubit>().state.doctor!,
+                padding: EdgeInsets.only(left: 0.w),
+                isHasMessageIcon: true,
+                color: ColorsManager.backgroundWhite,
+                is3DRemark: false,
+              ),
+              verticalSpace(20),
+              TextWithLineButtonListView(),
+            ],
+          ),
+        );
       },
     );
   }

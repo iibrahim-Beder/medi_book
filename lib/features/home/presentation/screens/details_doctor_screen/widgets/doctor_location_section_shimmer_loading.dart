@@ -11,18 +11,20 @@ class DoctorLocationSectionShimmerLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ContainerShimmerLoading(height: 15, width: 170, radius: BorderRadius.circular(6),baseColor: baseColor,highlightColor: highlightColor,),
-        verticalSpace(12),
-        ContainerShimmerLoading(height: 10, width: 150, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
-        verticalSpace(12),
-        ContainerShimmerLoading(height: 13, width: 180, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
-        verticalSpace(20),
-        ContainerShimmerLoading(height: 258, width: 327, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
-      
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ContainerShimmerLoading(height: 15, width: 170, radius: BorderRadius.circular(6),baseColor: baseColor,highlightColor: highlightColor,),
+          verticalSpace(12),
+          ContainerShimmerLoading(height: 10, width: 150, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
+          verticalSpace(12),
+          ContainerShimmerLoading(height: 13, width: 180, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
+          verticalSpace(20),
+          ContainerShimmerLoading(height: 258, width: 327, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
+        
+        ],
+      ),
     );
   }
 }

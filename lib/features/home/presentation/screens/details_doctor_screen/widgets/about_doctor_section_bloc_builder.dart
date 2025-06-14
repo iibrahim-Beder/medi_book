@@ -10,22 +10,20 @@ class AboutDoctorSectionBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: BlocBuilder<DetailsDoctorCubit, DetailsDoctorState>(
-        buildWhen: (previous, current) =>
-            previous.doctorProfileState != current.doctorProfileState,
-        builder: (context, state) {
-          if (state.doctorProfileState.isLoding) {
-            return const AboutDoctorSectionShimmerLoading();
-          } else if (state.doctorProfileState.doctorProfile != null) {
-            return AboutDoctorSection(doctorProfile: state.doctorProfileState.doctorProfile!);
-          } else {
-            return Center(
-              child: Text("${state.doctorProfileState.errorMessage}"),
-            );
-          }
-        },
-      ),
+    return BlocBuilder<DetailsDoctorCubit, DetailsDoctorState>(
+      buildWhen: (previous, current) =>
+          previous.doctorProfileState != current.doctorProfileState,
+      builder: (context, state) {
+        if (state.doctorProfileState.isLoding) {
+          return const AboutDoctorSectionShimmerLoading();
+        } else if (state.doctorProfileState.doctorProfile != null) {
+          return AboutDoctorSection(doctorProfile: state.doctorProfileState.doctorProfile!);
+        } else {
+          return Center(
+            child: Text("${state.doctorProfileState.errorMessage}"),
+          );
+        }
+      },
     );
   }
 }

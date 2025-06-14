@@ -11,7 +11,8 @@ part 'details_doctor_state.freezed.dart';
 class DetailsDoctorState with _$DetailsDoctorState {
   const factory DetailsDoctorState({
     required EnDoctorSection selectedSection,
-    required double reviewsLastOffset,
+    required int reviewsLastindex,
+    required double reviewsAlignment,
     required PaginatedState<DoctorReview> paginatedState,
     required DoctorProfileState doctorProfileState,
     required DoctorLocationsState doctorLocationsState,
@@ -20,7 +21,8 @@ class DetailsDoctorState with _$DetailsDoctorState {
 
   factory DetailsDoctorState.initial() => DetailsDoctorState(
         selectedSection: EnDoctorSection.about,
-        reviewsLastOffset: 0.0,
+        reviewsLastindex: 0,
+        reviewsAlignment: 0.0,
         paginatedState: PaginatedState(),
         doctorProfileState: DoctorProfileState(),
         doctorLocationsState: DoctorLocationsState(),

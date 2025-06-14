@@ -12,28 +12,30 @@ class DoctorLocationSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(
-        "Practice Place",
-        style: TextStyles.font16Text100Bold
-            .copyWith(fontWeight: FontWeightHelper.semiBold),
-      ),
-      verticalSpace(12),
-      Text(
-        "${locations[0].city}, ${locations[0].country}",
-        style: TextStyles.font14TextBodyRegular,
-      ),
-      verticalSpace(18),
-      Text(
-        "Location Map",
-        style: TextStyles.font16Text100Bold
-            .copyWith(fontWeight: FontWeightHelper.semiBold),
-      ),
-      verticalSpace(12),
-      ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.asset("assets/images/map.png")),
-      verticalSpace(24),
-    ]);
+    return SingleChildScrollView(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(
+          "Practice Place",
+          style: TextStyles.font16Text100Bold
+              .copyWith(fontWeight: FontWeightHelper.semiBold),
+        ),
+        verticalSpace(12),
+        Text(
+          "${locations[0].city}, ${locations[0].country}",
+          style: TextStyles.font14TextBodyRegular,
+        ),
+        verticalSpace(18),
+        Text(
+          "Location Map",
+          style: TextStyles.font16Text100Bold
+              .copyWith(fontWeight: FontWeightHelper.semiBold),
+        ),
+        verticalSpace(12),
+        ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset("assets/images/map.png")),
+        verticalSpace(24),
+      ]),
+    );
   }
 }

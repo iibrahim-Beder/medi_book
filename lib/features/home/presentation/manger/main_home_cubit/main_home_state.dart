@@ -37,11 +37,13 @@ class RecommendedDoctorsState with _$RecommendedDoctorsState {
     PaginatedState<Doctor>? paginatedState, 
     DoctorsFilterDto? doctorsFilterDto,
     ScrollController? scrollCtrl,
+    required bool showBackToTopButton,
   }) = _RecommendedDoctorsState;
 
   factory RecommendedDoctorsState.initial() => RecommendedDoctorsState(
         scrollCtrl: ScrollController(),
         doctorsFilterDto: DoctorsFilterDto(pageNumber: 1, pageSize: 5, orderBy: EnDoctorOverviewOrdering.name, isRecommended: true),
         paginatedState: PaginatedState<Doctor>(),
+        showBackToTopButton: false,
       );
 }

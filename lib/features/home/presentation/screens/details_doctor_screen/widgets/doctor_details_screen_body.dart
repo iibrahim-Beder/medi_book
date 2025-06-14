@@ -16,39 +16,11 @@ class DoctorDetailsScreenBody extends StatefulWidget {
 }
 
 class _DoctorDetailsScreenBodyState extends State<DoctorDetailsScreenBody> {
-  late ScrollController _reviewsScrollCtrl;
   @override
   initState() {
     super.initState();
 
-    _reviewsScrollCtrl = context.read<DetailsDoctorCubit>().reviewsScrollCtrl;
-
-    // listen to scroll controller events
-    _reviewsScrollCtrl.addListener(_onScroll);
-
-    _reviewsScrollCtrl.addListener(() {
-      print(_reviewsScrollCtrl.offset);
-      context.read<DetailsDoctorCubit>().handleScrollChange(_reviewsScrollCtrl.offset);
-    });
-
-    // // // jump to last offset when the widget is built
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   context.read<DetailsDoctorCubit>().jumpToStoredOffset();
-    // });
   }
-
-  void _onScroll() {
-    context.read<DetailsDoctorCubit>().handleScrollChange(_reviewsScrollCtrl.offset);
-    final paginatedState =
-        context.read<DetailsDoctorCubit>().state.paginatedState;
-    if (_reviewsScrollCtrl.position.pixels >=
-            _reviewsScrollCtrl.position.maxScrollExtent - 100 &&
-        paginatedState.hasMoreData &&
-        !paginatedState.isLoadingMore) {
-      context.read<DetailsDoctorCubit>().geMoreDoctorReviews();
-    }
-  }
-
   Widget build(BuildContext context) {
     final cubit = context.read<DetailsDoctorCubit>();
     final String fullName =
@@ -63,17 +35,17 @@ class _DoctorDetailsScreenBodyState extends State<DoctorDetailsScreenBody> {
         },
         child: Stack(
           children: [
-            CustomScrollView(
-              controller: _reviewsScrollCtrl,
-              physics: const AlwaysScrollableScrollPhysics(),
-              slivers: [
+            Column(
+              children: [
                 CustomAppbarForDoctorDetails(
                   title: fullName,
                   widgetBox: WidgetBox(),
                 ),
-                SliverPadding(
-                  padding: EdgeInsets.only(top: 32.h),
-                  sliver: DoctorSectionView(),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 32.h),
+                    child: DoctorSectionView(),
+                  ),
                 ),
               ],
             ),

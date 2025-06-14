@@ -10,7 +10,7 @@ part of 'home_api_service.dart';
 
 class _HomeApiService implements HomeApiService {
   _HomeApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://bd8e-41-239-156-222.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -32,7 +32,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorOverview/List',
+            'https://bd8e-41-239-156-222.ngrok-free.app/Api/v1/DoctorOverview/List',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -68,7 +68,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/Speciality/List',
+            'https://bd8e-41-239-156-222.ngrok-free.app/Api/v1/Speciality/List',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -104,7 +104,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorProfile/Get',
+            'https://bd8e-41-239-156-222.ngrok-free.app/Api/v1/DoctorProfile/Get',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -134,7 +134,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
+            'https://bd8e-41-239-156-222.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -180,7 +180,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://5b7e-41-239-152-40.ngrok-free.app/Api/v1/DoctorReviews/List',
+            'https://bd8e-41-239-156-222.ngrok-free.app/Api/v1/DoctorReviews/List',
             queryParameters: queryParameters,
             data: _data,
           )

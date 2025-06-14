@@ -12,17 +12,19 @@ class AboutDoctorSectionShimmerLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ContainerShimmerLoading(height: 15, width: 170, radius: BorderRadius.circular(6),baseColor: baseColor,highlightColor: highlightColor,),
-        verticalSpace(12),
-        ContainerShimmerLoading(height: 140, width: 400, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
-        verticalSpace(20),
-        ContainerShimmerLoading(height: 17, width: 170, radius: BorderRadius.circular(3),baseColor:baseColor,highlightColor: highlightColor,),
-        verticalSpace(12),
-        ContainerShimmerLoading(height: 17, width: 120, radius: BorderRadius.circular(3),baseColor:baseColor,highlightColor: highlightColor,),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ContainerShimmerLoading(height: 15, width: 170, radius: BorderRadius.circular(6),baseColor: baseColor,highlightColor: highlightColor,),
+          verticalSpace(12),
+          ContainerShimmerLoading(height: 140, width: 400, radius: BorderRadius.circular(6),baseColor:baseColor,highlightColor: highlightColor,),
+          verticalSpace(20),
+          ContainerShimmerLoading(height: 17, width: 170, radius: BorderRadius.circular(3),baseColor:baseColor,highlightColor: highlightColor,),
+          verticalSpace(12),
+          ContainerShimmerLoading(height: 17, width: 120, radius: BorderRadius.circular(3),baseColor:baseColor,highlightColor: highlightColor,),
+        ],
+      ),
     );
   }
 }

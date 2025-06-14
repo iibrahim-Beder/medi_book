@@ -12,57 +12,60 @@ class AboutDoctorSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(
-        "About Me",
-        style: TextStyles.font16Text100Bold
-            .copyWith(fontWeight: FontWeightHelper.semiBold),
-      ),
-      verticalSpace(12),
-      Text(doctorProfile.bio,
-        style: TextStyles.font14TextBodyRegular,
-      ),
-      verticalSpace(24),
-      Text(
-        "Working Time",
-        style: TextStyles.font16Text100Bold
-            .copyWith(fontWeight: FontWeightHelper.semiBold),
-      ),
-      verticalSpace(12),
-      Text(
-        doctorProfile.workingTime,
-        style: TextStyles.font14TextBodyRegular,
-      ),
-      verticalSpace(24),
-      Text(
-        "STR",
-        style: TextStyles.font16Text100Bold
-            .copyWith(fontWeight: FontWeightHelper.semiBold),
-      ),
-      verticalSpace(12),
-      Text(
-        doctorProfile.licenceNumber,
-        style: TextStyles.font14TextBodyRegular,
-      ),
-      verticalSpace(24),
-      Text(
-        "Pengalaman Praktik",
-        style: TextStyles.font16Text100Bold
-            .copyWith(fontWeight: FontWeightHelper.semiBold),
-      ),
-      verticalSpace(12),
-      Text(
-           "${doctorProfile.yearsOfExperience} Of Experience",
-        style: TextStyles.font14Text50Medium
-            .copyWith(color: ColorsManager.text100),
-      ),
-      verticalSpace(4),
-      Text(
-        "${doctorProfile.practiceStartYear} - Now",
-        style: TextStyles.font14TextBodyRegular,
-      ),
-      // this for shadowing effect
-      verticalSpace(40)
-    ]);
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(
+          "About Me",
+          style: TextStyles.font16Text100Bold
+              .copyWith(fontWeight: FontWeightHelper.semiBold),
+        ),
+        verticalSpace(12),
+        Text(doctorProfile.bio,
+          style: TextStyles.font14TextBodyRegular,
+        ),
+        verticalSpace(24),
+        Text(
+          "Working Time",
+          style: TextStyles.font16Text100Bold
+              .copyWith(fontWeight: FontWeightHelper.semiBold),
+        ),
+        verticalSpace(12),
+        Text(
+          doctorProfile.workingTime,
+          style: TextStyles.font14TextBodyRegular,
+        ),
+        verticalSpace(24),
+        Text(
+          "STR",
+          style: TextStyles.font16Text100Bold
+              .copyWith(fontWeight: FontWeightHelper.semiBold),
+        ),
+        verticalSpace(12),
+        Text(
+          doctorProfile.licenceNumber,
+          style: TextStyles.font14TextBodyRegular,
+        ),
+        verticalSpace(24),
+        Text(
+          "Pengalaman Praktik",
+          style: TextStyles.font16Text100Bold
+              .copyWith(fontWeight: FontWeightHelper.semiBold),
+        ),
+        verticalSpace(12),
+        Text(
+             "${doctorProfile.yearsOfExperience} Of Experience",
+          style: TextStyles.font14Text50Medium
+              .copyWith(color: ColorsManager.text100),
+        ),
+        verticalSpace(4),
+        Text(
+          "${doctorProfile.practiceStartYear} - Now",
+          style: TextStyles.font14TextBodyRegular,
+        ),
+        // this for shadowing effect
+        verticalSpace(40),
+      ]),
+    );
   }
 }

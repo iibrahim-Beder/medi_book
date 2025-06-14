@@ -39,7 +39,6 @@ class MainHomeCubit extends Cubit<MainHomeState> {
         isLoading: true,
       )),
     ));
-
     final result = await homeRepo
         .getFilteredDoctors(state.recommendedDoctorsState.doctorsFilterDto!);
 
@@ -106,6 +105,14 @@ class MainHomeCubit extends Cubit<MainHomeState> {
         )),
       ));
     });
+  }
+
+  void updateBackToTopButtonState(bool show) {
+    emit(state.copyWith(
+      recommendedDoctorsState: state.recommendedDoctorsState.copyWith(
+        showBackToTopButton: show,
+      ),
+    ));
   }
 
   @override

@@ -15,12 +15,11 @@ class DoctorReviewsSectionBlocBuilder extends StatelessWidget {
     return BlocBuilder<DetailsDoctorCubit, DetailsDoctorState>(
       builder: (context, state) {
         if (state.paginatedState.isLoading) {
-          return SliverToBoxAdapter(child: DoctorReviewsListViewShimmerLoading());
+          return DoctorReviewsListViewShimmerLoading();
         } else if (state.paginatedState.data.isNotEmpty) {
-          return DoctorReviewsSliverList(
+          return DoctorReviewsList(
             reviews: state.paginatedState.data,
             isHasShimmerLoading: state.paginatedState.isLoadingMore, 
-
           );
         } else {
           return Center(child: Text("${state.paginatedState.errorMessage}"));
