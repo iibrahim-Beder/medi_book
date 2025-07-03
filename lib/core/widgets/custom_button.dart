@@ -5,20 +5,21 @@ import 'package:medi_book/core/theming/styles.dart';
 
 // ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
-  CustomButton({
-    super.key,
-    required this.textValue,
-    required this.voidCallback
-  });
+  CustomButton(
+      {super.key,
+      required this.textValue,
+      required this.voidCallback,
+      this.isLoading
+      });
 
   String textValue;
   VoidCallback voidCallback;
+  bool? isLoading;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: voidCallback,
-        
         style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(ColorsManager.mainBlue),
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,

@@ -14,4 +14,11 @@ extension DoctorModelMapper on DoctorModel {
       imageUrl: "$baseUrl/$imagePath",
     );
   }
+
+}
+
+extension DoctorListMapper on List<DoctorModel> {
+  List<Doctor> toEntity(String baseUrl) {
+    return map((doctorModel) => doctorModel.toEntity(baseUrl)).toList();
+  }
 }

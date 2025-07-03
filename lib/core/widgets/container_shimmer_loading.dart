@@ -5,24 +5,25 @@ import 'package:shimmer/shimmer.dart';
 
 // ignore: must_be_immutable
 class ContainerShimmerLoading extends StatelessWidget {
-  ContainerShimmerLoading({
-    super.key,
-    required this.height,
-    required this.width,
-    this.radius,
-  });
+  ContainerShimmerLoading(
+      {super.key,
+      required this.height,
+      required this.width,
+      this.radius,
+      this.highlightColor,
+      this.baseColor});
 
   final double height;
   final double width;
-  BorderRadiusGeometry? radius;
-  final Color highlightColor = ColorsManager.primarySurfaceHighlight;
-  final Color baseColor = ColorsManager.primarySurfaceBaseLight;
+  final BorderRadiusGeometry? radius;
+  final Color? baseColor;
+  final Color? highlightColor;
 
-  @override
+  // @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      highlightColor: ColorsManager.primarySurfaceHighlight,
-      baseColor: ColorsManager.primarySurfaceBaseLight,
+      highlightColor: highlightColor ?? ColorsManager.backgroundWhite,
+      baseColor: baseColor ?? ColorsManager.text30,
       child: Container(
         height: height.h,
         width: width.w,

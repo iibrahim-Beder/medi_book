@@ -1,0 +1,46 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'doctors_filtered_and_searched_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$DoctorsFilteredAndSearchedDtoImpl
+    _$$DoctorsFilteredAndSearchedDtoImplFromJson(Map<String, dynamic> json) =>
+        _$DoctorsFilteredAndSearchedDtoImpl(
+          pageNumber: (json['pageNumber'] as num).toInt(),
+          pageSize: (json['pageSize'] as num).toInt(),
+          orderBy:
+              $enumDecode(_$EnDoctorOverviewOrderingEnumMap, json['orderBy']),
+          searchBy: $enumDecodeNullable(
+              _$EnDoctorOverviewSearchByEnumMap, json['searchBy']),
+          searchValue: json['searchValue'] as String?,
+          specialtyId: (json['specialtyId'] as num?)?.toInt(),
+          numberOfRatings: (json['numberOfRatings'] as num?)?.toInt(),
+          isRecommended: json['isRecommended'] as bool?,
+        );
+
+Map<String, dynamic> _$$DoctorsFilteredAndSearchedDtoImplToJson(
+        _$DoctorsFilteredAndSearchedDtoImpl instance) =>
+    <String, dynamic>{
+      'pageNumber': instance.pageNumber,
+      'pageSize': instance.pageSize,
+      'orderBy': _$EnDoctorOverviewOrderingEnumMap[instance.orderBy]!,
+      'searchBy': _$EnDoctorOverviewSearchByEnumMap[instance.searchBy],
+      'searchValue': instance.searchValue,
+      'specialtyId': instance.specialtyId,
+      'numberOfRatings': instance.numberOfRatings,
+      'isRecommended': instance.isRecommended,
+    };
+
+const _$EnDoctorOverviewOrderingEnumMap = {
+  EnDoctorOverviewOrdering.name: 1,
+  EnDoctorOverviewOrdering.ratingAverage: 2,
+};
+
+const _$EnDoctorOverviewSearchByEnumMap = {
+  EnDoctorOverviewSearchBy.none: 0,
+  EnDoctorOverviewSearchBy.name: 1,
+  EnDoctorOverviewSearchBy.ratingAverage: 2,
+};

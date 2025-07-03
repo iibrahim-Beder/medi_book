@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:medi_book/core/networking/base_response_model.dart';
-import 'package:medi_book/features/home/data/models/get_doctors_model.dart';
+import 'package:medi_book/core/networking/paginated_response_model.dart';
+import 'package:medi_book/features/home/data/models/doctor_model.dart';
 import 'package:medi_book/features/home/data/models/specialty_model.dart';
 import 'package:medi_book/features/home/networking/home_endpoints.dart';
 import 'package:retrofit/error_logger.dart';
@@ -12,9 +13,10 @@ abstract class HomeApiService {
   factory HomeApiService(Dio dio, {String baseUrl}) = _HomeApiService;
 
   @GET(HomeEndpoints.getDoctors)
-  Future<GetPaginatedDoctorsModel> getPaginatedDoctors(
-      @Query('pageNumber') int pageNumber, @Query('pageSize') int pageSize);
+  Future<PaginatedResponseModel<List<DoctorModel>>> getPaginatedDoctors(
+      @Queries() Map<String, dynamic> query);
 
   @GET(HomeEndpoints.getSpecialties)
   Future<BaseResponseModel<List<SpecialtyModel>>> getSpecialties();
+
 }

@@ -1,3 +1,5 @@
+// import 'package:intl/intl.dart';
+
 final List<DoctorInfo> doctorsList = [
   DoctorInfo("Dr. Randy Wigha", "assets/images/rendy.png",
       "General | RSUD Gatot Subroto", "4.8", "54"),
@@ -78,6 +80,40 @@ List<String> timesList = [
   "14:30 PM",
   "15:00 PM"
 ];
+
+class DayItem {
+  final int id;
+  final String day; 
+  final String date; 
+
+  DayItem({
+    required this.id,
+    required this.day,
+    required this.date,
+  });
+
+  @override
+  String toString() => 'DayItem(id: $id, day: $day, date: $date)';
+}
+// List<DayItem> generateNext14Days() {
+//   final List<DayItem> days = [];
+//   final now = DateTime.now();
+
+//   for (int i = 0; i < 14; i++) {
+//     final date = now.add(Duration(days: i));
+
+//     final dayShort = DateFormat('EEE', 'en').format(date);  
+//     final dayNumber = DateFormat('d').format(date);         
+
+//     days.add(DayItem(
+//       id: i + 1,
+//       day: dayShort,
+//       date: dayNumber,
+//     ));
+//   }
+
+//   return days;
+// }
 
 class AppointmentType {
    String typeName;

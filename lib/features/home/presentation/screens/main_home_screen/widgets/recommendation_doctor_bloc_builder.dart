@@ -4,36 +4,36 @@ import 'package:medi_book/core/widgets/doctor_list_flat_shimmer_loading.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiw.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_state.dart';
-import 'package:medi_book/features/home/presentation/manger/search_doctor_scubit/enums/en_modes.dart';
 
 class RecommendationDoctorBlocBuilder extends StatelessWidget {
   const RecommendationDoctorBlocBuilder({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MainHomeCubit, MainHomeState>(
       buildWhen: (previous, current) =>
-          previous.recommendedDoctorsState.isLoading != current.recommendedDoctorsState.isLoading ||
-          previous.recommendedDoctorsState.isLoadingMore != current.recommendedDoctorsState.isLoadingMore,
+          previous.recommendedDoctorsState.paginatedState!.isLoading !=
+              current.recommendedDoctorsState.paginatedState!.isLoading ||
+          previous.recommendedDoctorsState.paginatedState!.isLoadingMore !=
+              current.recommendedDoctorsState.paginatedState!.isLoadingMore,
       builder: (context, state) {
-        if (state.recommendedDoctorsState.isLoading) {
-          return DoctorListFlatShimmerLoading(shimmerNumber: 5,);
-        } else if (state.recommendedDoctorsState.data.isNotEmpty) {
-          return DoctorsListVeiw(
-            isHasPadding: false,
-            doctorsList: state.recommendedDoctorsState.data,
-            flutterDoctorsList: [],
-            mode: EnModes.defaultMode, 
-            isHasShimmerLoading: state.recommendedDoctorsState.isLoadingMore,
+        final paginatedState = state.recommendedDoctorsState.paginatedState;
+        if (paginatedState == null) return const SizedBox.shrink();
+
+        if (paginatedState.isLoading) {
+          return DoctorListFlatShimmerLoading(
+            shimmerNumber: 5,
           );
-        } 
-        else {
-          return Container();
+        } else if (paginatedState.data.isNotEmpty) {
+          return DoctorsListVeiw(
+            isHasPadding: true,
+            doctorsList: paginatedState.data,
+            isHasShimmerLoading: state.recommendedDoctorsState.paginatedState!.isLoadingMore,
+          );
+        } else {
+          return const SizedBox.shrink();
         }
       },
     );
   }
 }
-
-

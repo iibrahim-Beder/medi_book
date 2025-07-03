@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medi_book/core/helpers/spacing.dart';
+import 'package:medi_book/core/theming/colors.dart';
+import 'package:medi_book/core/widgets/arrow_back_box_and_address.dart';
+import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
+import 'package:medi_book/features/doctor_details/presentation/manger/details_doctor_cubit/details_doctor_cubit.dart';
+import 'package:medi_book/features/doctor_details/presentation/manger/details_doctor_cubit/details_doctor_state.dart';
+import 'package:medi_book/features/doctor_details/presentation/screen/widgets/text_with_Line_button_list_view.dart';
+
+class CustomAppbarForDoctorDetails extends StatelessWidget {
+  const CustomAppbarForDoctorDetails({
+    super.key,
+    required this.title,
+    required this.widgetBox,
+  });
+
+  final String title;
+  final Widget widgetBox;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<DetailsDoctorCubit, DetailsDoctorState,
+        EnDoctorSection>(
+      selector: (state) => state.selectedSection,
+      builder: (context, selectedSection) {
+        return Container(
+          width: double.infinity,
+          color: ColorsManager.backgroundWhite,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(30),
+              ArrowBackBoxAndAddress(
+                title: title,
+                coustomWidget: widgetBox,
+              ),
+              verticalSpace(20),
+              DoctorsListViewItemAPI(
+                doctorInfo: context.read<DetailsDoctorCubit>().state.doctor!,
+                padding: EdgeInsets.only(left: 0.w),
+                isHasMessageIcon: true,
+                color: ColorsManager.backgroundWhite,
+                is3DRemark: false,
+                impageSize: 90,
+              ),
+              verticalSpace(10),
+              TextWithLineButtonListView(
+                selectedSectionIndex: selectedSection.index,
+                data: EnDoctorSection.values
+                    .map((e) =>
+                        e.name.replaceFirst(e.name[0], e.name[0].toUpperCase()))
+                    .toList(),
+                onTap: (int index) {
+                  context
+                      .read<DetailsDoctorCubit>()
+                      .updateSelectedSection(EnDoctorSection.values[index]);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

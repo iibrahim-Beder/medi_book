@@ -5,13 +5,13 @@ part 'base_response_model.g.dart';
 class BaseResponseModel<T> {
   final String statusCode;
   final bool succeeded;
-  final String message;
+  final String? message;
   final T data;
 
   BaseResponseModel({
     required this.statusCode,
     required this.succeeded,
-    required this.message,
+    this.message,
     required this.data,
   });
 
@@ -20,9 +20,4 @@ class BaseResponseModel<T> {
     T Function(Object? json) fromJsonT,
   ) =>
       _$BaseResponseModelFromJson(json, fromJsonT);
-
-  Map<String, dynamic> toJson(
-    Object Function(T value) toJsonT,
-  ) =>
-      _$BaseResponseModelToJson(this, toJsonT);
 }

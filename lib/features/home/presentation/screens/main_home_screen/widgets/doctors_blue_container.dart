@@ -45,7 +45,7 @@ class DoctorsBlueContainer extends StatelessWidget {
               style: TextStyles.font15Text100Medium
                   .copyWith(fontSize: 18, color: ColorsManager.backgroundWhite),
             )),
-        Positioned(bottom: 15.h, left: 18.w, child: NearbyButton()),
+        Positioned(bottom: 15.h, left: 18.w, child: CustomSmallButton(title: 'Find Nearby',)),
       ]),
     );
   }

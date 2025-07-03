@@ -31,6 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
   
+  # A library useful for creating fuzzy timestamps. (e.g. "15 minutes ago")
+  timeago: ^3.7.1
+
   # This is a cached image widget that provides a simple way to display images from a remote URL.
   cached_network_image: ^3.4.1
 

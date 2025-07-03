@@ -34,7 +34,7 @@ class CoustomSearchBoutton extends StatelessWidget {
           child: Row(
             children: [
               !isHasStar
-                  ? Container()
+                  ? SizedBox.shrink()
                   : Padding(
                       padding: EdgeInsets.only(right: 10.w),
                       child: SvgPicture.asset(

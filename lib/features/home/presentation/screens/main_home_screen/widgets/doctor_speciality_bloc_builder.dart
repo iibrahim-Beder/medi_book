@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medi_book/features/home/domain/entities/specialty.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_cubit.dart';
 import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main_home_state.dart';
 import 'package:medi_book/features/home/presentation/screens/main_home_screen/widgets/specialitys_list_view.dart';
@@ -20,21 +19,13 @@ class SpecialtiesBlocBuilder extends StatelessWidget {
               current.specialtiesState.errorMessage,
       builder: (context, state) {
         if (state.specialtiesState.isLoading) {
-          return _setupLoading();
+          return SpecialtiesShimmerLoading();
         } else if (state.specialtiesState.data.isNotEmpty) {
-          return _setupSuccess(state.specialtiesState.data);
+          return SpecialtiesListView(specialties: state.specialtiesState.data);
         } else {
           return SizedBox.shrink();
         }
       },
     );
   }
-}
-
-Widget _setupSuccess(List<Speciality> specialties) {
-  return SpecialtiesListView(specialties: specialties);
-}
-
-Widget _setupLoading() {
-  return SpecialtiesShimmerLoading();
 }

@@ -13,7 +13,7 @@ BaseResponseModel<T> _$BaseResponseModelFromJson<T>(
     BaseResponseModel<T>(
       statusCode: json['statusCode'] as String,
       succeeded: json['succeeded'] as bool,
-      message: json['message'] as String,
+      message: json['message'] as String?,
       data: fromJsonT(json['data']),
     );
 

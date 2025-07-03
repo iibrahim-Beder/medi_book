@@ -382,15 +382,10 @@ abstract class _SpecialtiesState implements SpecialtiesState {
 
 /// @nodoc
 mixin _$RecommendedDoctorsState {
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get isLoadingMore => throw _privateConstructorUsedError;
-  bool get hasMoreData => throw _privateConstructorUsedError;
-  int get currentPage => throw _privateConstructorUsedError;
-  int get pageSize => throw _privateConstructorUsedError;
-  List<Doctor> get data => throw _privateConstructorUsedError;
-  String get errorMessage => throw _privateConstructorUsedError;
-  bool get isHasJumped => throw _privateConstructorUsedError;
-  ScrollController? get scrollCtrl => throw _privateConstructorUsedError;
+  PaginatedState<Doctor>? get paginatedState =>
+      throw _privateConstructorUsedError;
+  DoctorsFilterDto? get doctorsFilterDto => throw _privateConstructorUsedError;
+  bool get showBackToTopButton => throw _privateConstructorUsedError;
 
   /// Create a copy of RecommendedDoctorsState
   /// with the given fields replaced by the non-null parameter values.
@@ -406,15 +401,12 @@ abstract class $RecommendedDoctorsStateCopyWith<$Res> {
       _$RecommendedDoctorsStateCopyWithImpl<$Res, RecommendedDoctorsState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      bool isLoadingMore,
-      bool hasMoreData,
-      int currentPage,
-      int pageSize,
-      List<Doctor> data,
-      String errorMessage,
-      bool isHasJumped,
-      ScrollController? scrollCtrl});
+      {PaginatedState<Doctor>? paginatedState,
+      DoctorsFilterDto? doctorsFilterDto,
+      bool showBackToTopButton});
+
+  $PaginatedStateCopyWith<Doctor, $Res>? get paginatedState;
+  $DoctorsFilterDtoCopyWith<$Res>? get doctorsFilterDto;
 }
 
 /// @nodoc
@@ -433,54 +425,53 @@ class _$RecommendedDoctorsStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
-    Object? isLoadingMore = null,
-    Object? hasMoreData = null,
-    Object? currentPage = null,
-    Object? pageSize = null,
-    Object? data = null,
-    Object? errorMessage = null,
-    Object? isHasJumped = null,
-    Object? scrollCtrl = freezed,
+    Object? paginatedState = freezed,
+    Object? doctorsFilterDto = freezed,
+    Object? showBackToTopButton = null,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
+      paginatedState: freezed == paginatedState
+          ? _value.paginatedState
+          : paginatedState // ignore: cast_nullable_to_non_nullable
+              as PaginatedState<Doctor>?,
+      doctorsFilterDto: freezed == doctorsFilterDto
+          ? _value.doctorsFilterDto
+          : doctorsFilterDto // ignore: cast_nullable_to_non_nullable
+              as DoctorsFilterDto?,
+      showBackToTopButton: null == showBackToTopButton
+          ? _value.showBackToTopButton
+          : showBackToTopButton // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoadingMore: null == isLoadingMore
-          ? _value.isLoadingMore
-          : isLoadingMore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasMoreData: null == hasMoreData
-          ? _value.hasMoreData
-          : hasMoreData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentPage: null == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      pageSize: null == pageSize
-          ? _value.pageSize
-          : pageSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Doctor>,
-      errorMessage: null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-      isHasJumped: null == isHasJumped
-          ? _value.isHasJumped
-          : isHasJumped // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scrollCtrl: freezed == scrollCtrl
-          ? _value.scrollCtrl
-          : scrollCtrl // ignore: cast_nullable_to_non_nullable
-              as ScrollController?,
     ) as $Val);
+  }
+
+  /// Create a copy of RecommendedDoctorsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaginatedStateCopyWith<Doctor, $Res>? get paginatedState {
+    if (_value.paginatedState == null) {
+      return null;
+    }
+
+    return $PaginatedStateCopyWith<Doctor, $Res>(_value.paginatedState!,
+        (value) {
+      return _then(_value.copyWith(paginatedState: value) as $Val);
+    });
+  }
+
+  /// Create a copy of RecommendedDoctorsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DoctorsFilterDtoCopyWith<$Res>? get doctorsFilterDto {
+    if (_value.doctorsFilterDto == null) {
+      return null;
+    }
+
+    return $DoctorsFilterDtoCopyWith<$Res>(_value.doctorsFilterDto!, (value) {
+      return _then(_value.copyWith(doctorsFilterDto: value) as $Val);
+    });
   }
 }
 
@@ -494,15 +485,14 @@ abstract class _$$RecommendedDoctorsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      bool isLoadingMore,
-      bool hasMoreData,
-      int currentPage,
-      int pageSize,
-      List<Doctor> data,
-      String errorMessage,
-      bool isHasJumped,
-      ScrollController? scrollCtrl});
+      {PaginatedState<Doctor>? paginatedState,
+      DoctorsFilterDto? doctorsFilterDto,
+      bool showBackToTopButton});
+
+  @override
+  $PaginatedStateCopyWith<Doctor, $Res>? get paginatedState;
+  @override
+  $DoctorsFilterDtoCopyWith<$Res>? get doctorsFilterDto;
 }
 
 /// @nodoc
@@ -520,53 +510,23 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
-    Object? isLoadingMore = null,
-    Object? hasMoreData = null,
-    Object? currentPage = null,
-    Object? pageSize = null,
-    Object? data = null,
-    Object? errorMessage = null,
-    Object? isHasJumped = null,
-    Object? scrollCtrl = freezed,
+    Object? paginatedState = freezed,
+    Object? doctorsFilterDto = freezed,
+    Object? showBackToTopButton = null,
   }) {
     return _then(_$RecommendedDoctorsStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
+      paginatedState: freezed == paginatedState
+          ? _value.paginatedState
+          : paginatedState // ignore: cast_nullable_to_non_nullable
+              as PaginatedState<Doctor>?,
+      doctorsFilterDto: freezed == doctorsFilterDto
+          ? _value.doctorsFilterDto
+          : doctorsFilterDto // ignore: cast_nullable_to_non_nullable
+              as DoctorsFilterDto?,
+      showBackToTopButton: null == showBackToTopButton
+          ? _value.showBackToTopButton
+          : showBackToTopButton // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoadingMore: null == isLoadingMore
-          ? _value.isLoadingMore
-          : isLoadingMore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasMoreData: null == hasMoreData
-          ? _value.hasMoreData
-          : hasMoreData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentPage: null == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      pageSize: null == pageSize
-          ? _value.pageSize
-          : pageSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Doctor>,
-      errorMessage: null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-      isHasJumped: null == isHasJumped
-          ? _value.isHasJumped
-          : isHasJumped // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scrollCtrl: freezed == scrollCtrl
-          ? _value.scrollCtrl
-          : scrollCtrl // ignore: cast_nullable_to_non_nullable
-              as ScrollController?,
     ));
   }
 }
@@ -575,53 +535,20 @@ class __$$RecommendedDoctorsStateImplCopyWithImpl<$Res>
 
 class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
   const _$RecommendedDoctorsStateImpl(
-      {this.isLoading = false,
-      this.isLoadingMore = false,
-      this.hasMoreData = false,
-      this.currentPage = 1,
-      this.pageSize = 5,
-      final List<Doctor> data = const [],
-      this.errorMessage = '',
-      this.isHasJumped = false,
-      this.scrollCtrl})
-      : _data = data;
+      {this.paginatedState,
+      this.doctorsFilterDto,
+      required this.showBackToTopButton});
 
   @override
-  @JsonKey()
-  final bool isLoading;
+  final PaginatedState<Doctor>? paginatedState;
   @override
-  @JsonKey()
-  final bool isLoadingMore;
+  final DoctorsFilterDto? doctorsFilterDto;
   @override
-  @JsonKey()
-  final bool hasMoreData;
-  @override
-  @JsonKey()
-  final int currentPage;
-  @override
-  @JsonKey()
-  final int pageSize;
-  final List<Doctor> _data;
-  @override
-  @JsonKey()
-  List<Doctor> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
-
-  @override
-  @JsonKey()
-  final String errorMessage;
-  @override
-  @JsonKey()
-  final bool isHasJumped;
-  @override
-  final ScrollController? scrollCtrl;
+  final bool showBackToTopButton;
 
   @override
   String toString() {
-    return 'RecommendedDoctorsState(isLoading: $isLoading, isLoadingMore: $isLoadingMore, hasMoreData: $hasMoreData, currentPage: $currentPage, pageSize: $pageSize, data: $data, errorMessage: $errorMessage, isHasJumped: $isHasJumped, scrollCtrl: $scrollCtrl)';
+    return 'RecommendedDoctorsState(paginatedState: $paginatedState, doctorsFilterDto: $doctorsFilterDto, showBackToTopButton: $showBackToTopButton)';
   }
 
   @override
@@ -629,37 +556,17 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RecommendedDoctorsStateImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.isLoadingMore, isLoadingMore) ||
-                other.isLoadingMore == isLoadingMore) &&
-            (identical(other.hasMoreData, hasMoreData) ||
-                other.hasMoreData == hasMoreData) &&
-            (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage) &&
-            (identical(other.pageSize, pageSize) ||
-                other.pageSize == pageSize) &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.isHasJumped, isHasJumped) ||
-                other.isHasJumped == isHasJumped) &&
-            (identical(other.scrollCtrl, scrollCtrl) ||
-                other.scrollCtrl == scrollCtrl));
+            (identical(other.paginatedState, paginatedState) ||
+                other.paginatedState == paginatedState) &&
+            (identical(other.doctorsFilterDto, doctorsFilterDto) ||
+                other.doctorsFilterDto == doctorsFilterDto) &&
+            (identical(other.showBackToTopButton, showBackToTopButton) ||
+                other.showBackToTopButton == showBackToTopButton));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isLoadingMore,
-      hasMoreData,
-      currentPage,
-      pageSize,
-      const DeepCollectionEquality().hash(_data),
-      errorMessage,
-      isHasJumped,
-      scrollCtrl);
+      runtimeType, paginatedState, doctorsFilterDto, showBackToTopButton);
 
   /// Create a copy of RecommendedDoctorsState
   /// with the given fields replaced by the non-null parameter values.
@@ -673,34 +580,16 @@ class _$RecommendedDoctorsStateImpl implements _RecommendedDoctorsState {
 
 abstract class _RecommendedDoctorsState implements RecommendedDoctorsState {
   const factory _RecommendedDoctorsState(
-      {final bool isLoading,
-      final bool isLoadingMore,
-      final bool hasMoreData,
-      final int currentPage,
-      final int pageSize,
-      final List<Doctor> data,
-      final String errorMessage,
-      final bool isHasJumped,
-      final ScrollController? scrollCtrl}) = _$RecommendedDoctorsStateImpl;
+      {final PaginatedState<Doctor>? paginatedState,
+      final DoctorsFilterDto? doctorsFilterDto,
+      required final bool showBackToTopButton}) = _$RecommendedDoctorsStateImpl;
 
   @override
-  bool get isLoading;
+  PaginatedState<Doctor>? get paginatedState;
   @override
-  bool get isLoadingMore;
+  DoctorsFilterDto? get doctorsFilterDto;
   @override
-  bool get hasMoreData;
-  @override
-  int get currentPage;
-  @override
-  int get pageSize;
-  @override
-  List<Doctor> get data;
-  @override
-  String get errorMessage;
-  @override
-  bool get isHasJumped;
-  @override
-  ScrollController? get scrollCtrl;
+  bool get showBackToTopButton;
 
   /// Create a copy of RecommendedDoctorsState
   /// with the given fields replaced by the non-null parameter values.

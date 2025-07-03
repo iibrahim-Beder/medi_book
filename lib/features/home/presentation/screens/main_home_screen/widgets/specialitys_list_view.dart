@@ -15,6 +15,7 @@ class SpecialtiesListView extends StatelessWidget {
     return SizedBox(
       height: 100.h,
       child: ListView.builder(
+        padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
         itemCount: specialties.length,
         itemBuilder: (context, index) {

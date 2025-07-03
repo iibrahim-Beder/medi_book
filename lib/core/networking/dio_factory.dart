@@ -69,8 +69,7 @@ import 'package:dio/dio.dart';
 //   }
 // }
 //************ */
-import 'package:dio/dio.dart';
-import 'package:medi_book/core/networking/api_constants.dart';
+
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -78,24 +77,27 @@ class DioFactory {
 
   static Dio? dio;
 
-  static Future<Dio> getDio() async {
-    Duration timeout = const Duration(seconds: 30);
+static Future<Dio> getDio() async {
+  Duration timeout = const Duration(seconds: 30);
 
-    if (dio == null) {
-      dio = Dio();
+  if (dio == null) {
+    dio = Dio();
 
-      dio!
-        ..options.connectTimeout = timeout
-        ..options.receiveTimeout = timeout;
-       
-       dio?.options.headers['Authorization'] = 'Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjIiLCJFbWFpbCI6IkFobWFkQGdtYWlsLmNvbSIsImV4cCI6MTc0OTEyOTc3MiwiaXNzIjoiTWVkaUJvb2suQXV0aCIsImF1ZCI6Ik1lZGlCb29rLldlYkNsaWVudCJ9.nkRKnRrvuavyp2vNQUiO2oapoXNMxBxZDCFKHvpGjI0';
+    dio!
+      ..options.connectTimeout = timeout
+      ..options.receiveTimeout = timeout;
 
-      addDioInterceptor();
-    }
+    dio!.options.headers.addAll({
+      'Authorization': 'Bearer eyJhbGciOiJodHRwOi8vd3d3Lm...',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    });
 
-    return dio!;
+    addDioInterceptor();
   }
 
+  return dio!;
+}
   static void addDioInterceptor() {
     dio?.interceptors.add(
       PrettyDioLogger(
