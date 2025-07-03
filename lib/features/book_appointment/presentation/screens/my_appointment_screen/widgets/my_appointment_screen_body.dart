@@ -88,6 +88,8 @@ class AppointmentCard extends StatelessWidget {
           paddingOfIconMessage: EdgeInsets.only(top: 25, right: 10),
           impageSize: 90,
           isHasLine: true,
+          highlightColorShimmer: ColorsManager.backgroundWhite,
+          baseColorShimmer: ColorsManager.text30,
         
         ));
   }
