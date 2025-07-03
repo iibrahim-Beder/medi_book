@@ -264,7 +264,7 @@ class DoctorsListViewItemAPI extends StatelessWidget {
             verticalSpace(16),
             isHasLine
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                    padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Line(
                       boxDecoration: BoxDecoration(
                           color: ColorsManager.secondarySurfaceText),
