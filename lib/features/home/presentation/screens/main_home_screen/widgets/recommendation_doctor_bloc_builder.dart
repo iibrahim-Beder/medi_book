@@ -29,6 +29,7 @@ class RecommendationDoctorBlocBuilder extends StatelessWidget {
             isHasPadding: true,
             doctorsList: paginatedState.data,
             isHasShimmerLoading: state.recommendedDoctorsState.paginatedState!.isLoadingMore,
+            
           );
         } else {
           return const SizedBox.shrink();

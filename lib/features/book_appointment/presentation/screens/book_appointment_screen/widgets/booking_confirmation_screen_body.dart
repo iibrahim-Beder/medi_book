@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
-import 'package:medi_book/core/theming/styles.dart';
 import 'package:medi_book/core/widgets/arrow_back_box_and_address.dart';
 import 'package:medi_book/core/widgets/custom_button.dart';
 import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';

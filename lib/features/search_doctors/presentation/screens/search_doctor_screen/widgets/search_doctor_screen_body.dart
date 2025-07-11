@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medi_book/core/navigation_cubit/navigation_cubit.dart';
 import 'package:medi_book/core/widgets/coustom_app_bar_with_search.dart';
 import 'package:medi_book/features/search_doctors/presentation/manger/search_doctor_scubit/search_doctor_cubit.dart';
 import 'package:medi_book/features/search_doctors/presentation/manger/search_doctor_scubit/search_doctor_state.dart';
@@ -40,6 +41,7 @@ class SearchDoctorScreenBody extends StatelessWidget {
                   widgetBox: WidgetBox(),
                   svgPathForTHeSecondRow: "assets/svgs/sort.svg",
                   onWidgetBoxTap: () {
+                    context.read<NavigationCubit>().toggleShowen();
                     showSearchOptionsBottomSheet(context);
                   },
                   onChanged: (_) => onSearchChanged?.call(),

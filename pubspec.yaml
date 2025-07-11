@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # A custom switch widget that can have a custom height and width, borders, border radius, colors, toggle size, custom text and icons inside the toggle.
+  flutter_switch: ^0.3.2
   
   # A library useful for creating fuzzy timestamps. (e.g. "15 minutes ago")
   timeago: ^3.7.1

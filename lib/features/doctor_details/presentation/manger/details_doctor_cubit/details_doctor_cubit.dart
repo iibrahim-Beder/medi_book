@@ -9,9 +9,13 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class DetailsDoctorCubit extends Cubit<DetailsDoctorState> {
   final DoctorDetailsRepo doctorDetailsRepo;
+  final Doctor? doctor;
 
-  DetailsDoctorCubit(this.doctorDetailsRepo)
-      : super(DetailsDoctorState.initial());
+  DetailsDoctorCubit(this.doctorDetailsRepo, this.doctor)
+      : super(DetailsDoctorState.initial()) {
+    initializeDoctor(doctor!);
+    getDoctorProfile(doctor!.id);
+  }
 
   final ItemPositionsListener reviewsPositionsListener =
       ItemPositionsListener.create();
@@ -153,5 +157,4 @@ class DetailsDoctorCubit extends Cubit<DetailsDoctorState> {
       PaginatedState<DoctorReview> newPaginatedState) {
     emit(state.copyWith(paginatedState: newPaginatedState));
   }
-
 }

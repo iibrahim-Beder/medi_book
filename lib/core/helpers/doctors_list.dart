@@ -146,3 +146,19 @@ List<CriticalityOption> criticalityOptionList = [
 ];
 
 List<String> paymentOptionsList = ["Credit Card", "Bank Transfer", "PayPal"];
+
+List<String> bottomNavigationTabsItems = [
+  'assets/svgs/home.svg',
+  'assets/svgs/message.svg',
+  'assets/svgs/search.svg',
+  'assets/svgs/bottom_navigation_Appointment.svg',
+  'assets/images/bottom_navigation_my_profile.png',
+];
+
+final List<String> supportedLanguageNames = [
+  'Arabic',
+  'English',
+  'Spanish',
+  'French',
+  'Chinese',
+];

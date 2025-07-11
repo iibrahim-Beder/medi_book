@@ -9,20 +9,19 @@ class MediBookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-       designSize: const Size(375,812),
-       minTextAdapt: true,
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
       child: MaterialApp.router(
-      
         title: "Medi Book",
         theme: ThemeData(
-          
-          primaryColor: ColorsManager.mainBlue,
-          scaffoldBackgroundColor: Colors.white
-          
-        ),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: ColorsManager.mainBlue, 
+              brightness: Brightness.light,
+            ),
+            primaryColor: ColorsManager.mainBlue,
+            scaffoldBackgroundColor: Colors.white),
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
-        
       ),
     );
   }

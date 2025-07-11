@@ -34,7 +34,7 @@ class SearchBottomSheetBody extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
               color: ColorsManager.backgroundWhite,
-              borderRadius: BorderRadius.circular(20)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r))),
           height: MediaQuery.of(context).size.height * 0.6,
           width: double.infinity,
           child: Padding(

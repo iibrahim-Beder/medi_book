@@ -12,7 +12,10 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
   final Doctor? doctor;
 
   BookAppointmentCubit(this.bookAppointmentRepo, [this.doctor])
-      : super(BookAppointmentState.initial());
+      : super(BookAppointmentState.initial()) {
+    fetchDoctorDayTimeSlots(DateTime.now(), doctorID: doctor?.id);
+    fetchDoctorAvailableDays(doctor!.id);
+  }
 
   void updateSelectAppointmentType(AppointmentType selectedAppointmentType) {
     emit(state.copyWith(selectedType: selectedAppointmentType));
@@ -39,22 +42,26 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
     final id = doctorID ?? doctor!.id;
     _emitLoadingDoctorDayTimeSlots();
 
-    final result = await bookAppointmentRepo.getDoctorAvailableTimeSlots(doctorId: id, day: day);
+    final result = await bookAppointmentRepo.getDoctorAvailableTimeSlots(
+        doctorId: id, day: day);
 
     result.fold(
       (error) => _emitErrorDoctorDayTimeSlots(error.message),
-      (doctorDayTimeSlots) => _emitSuccessDoctorDayTimeSlots(doctorDayTimeSlots),
+      (doctorDayTimeSlots) =>
+          _emitSuccessDoctorDayTimeSlots(doctorDayTimeSlots),
     );
   }
 
   Future<void> fetchDoctorAvailableDays(int doctorID) async {
     _emitLoadingDoctorAvailableDays();
 
-    final result = await bookAppointmentRepo.getDoctorAvailableDays(doctorId: doctorID);
+    final result =
+        await bookAppointmentRepo.getDoctorAvailableDays(doctorId: doctorID);
 
     result.fold(
       (error) => _emitErrorDoctorAvailableDays(error.message),
-      (doctorAvailableDays) => _emitSuccessDoctorAvailableDays(doctorAvailableDays),
+      (doctorAvailableDays) =>
+          _emitSuccessDoctorAvailableDays(doctorAvailableDays),
     );
   }
 
@@ -73,7 +80,8 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
 
     result.fold(
       (error) => _emitErrorAddInitiateBooking(
-        error.message,),
+        error.message,
+      ),
       (initiateBooking) => _emitSuccessAddInitiateBooking(initiateBooking),
     );
   }
@@ -82,58 +90,67 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
 
   void _emitLoadingDoctorDayTimeSlots() {
     emit(state.copyWith(
-      doctorDayTimeSlotsState: state.doctorDayTimeSlotsState.copyWith(isLoading: true),
+      doctorDayTimeSlotsState:
+          state.doctorDayTimeSlotsState.copyWith(isLoading: true),
     ));
   }
 
   void _emitSuccessDoctorDayTimeSlots(List<DoctorTimeSlot> slots) {
     emit(state.copyWith(
-      doctorDayTimeSlotsState: state.doctorDayTimeSlotsState.copyWith(isLoading: false, data: slots),
+      doctorDayTimeSlotsState:
+          state.doctorDayTimeSlotsState.copyWith(isLoading: false, data: slots),
       selectedTimeSlot: slots.isNotEmpty ? slots.first : null,
     ));
   }
 
   void _emitErrorDoctorDayTimeSlots(String error) {
     emit(state.copyWith(
-      doctorDayTimeSlotsState: state.doctorDayTimeSlotsState.copyWith(isLoading: false, errorMessage: error),
+      doctorDayTimeSlotsState: state.doctorDayTimeSlotsState
+          .copyWith(isLoading: false, errorMessage: error),
     ));
   }
 
   void _emitLoadingDoctorAvailableDays() {
     emit(state.copyWith(
-      doctorAvailableDaysState: state.doctorAvailableDaysState.copyWith(isLoading: true),
+      doctorAvailableDaysState:
+          state.doctorAvailableDaysState.copyWith(isLoading: true),
     ));
   }
 
   void _emitSuccessDoctorAvailableDays(List<AvailableWorkDay> days) {
     emit(state.copyWith(
-      doctorAvailableDaysState: state.doctorAvailableDaysState.copyWith(isLoading: false, data: days),
+      doctorAvailableDaysState:
+          state.doctorAvailableDaysState.copyWith(isLoading: false, data: days),
       seletedDay: days.isNotEmpty ? days.first : null,
     ));
   }
 
   void _emitErrorDoctorAvailableDays(String error) {
     emit(state.copyWith(
-      doctorAvailableDaysState: state.doctorAvailableDaysState.copyWith(isLoading: false, errorMessage: error),
+      doctorAvailableDaysState: state.doctorAvailableDaysState
+          .copyWith(isLoading: false, errorMessage: error),
     ));
   }
 
   void _emitLoadingAddInitiateBooking() {
     emit(state.copyWith(
-      addInitiateBookingState: state.addInitiateBookingState.copyWith(isLoading: true),
+      addInitiateBookingState:
+          state.addInitiateBookingState.copyWith(isLoading: true),
     ));
   }
 
   void _emitSuccessAddInitiateBooking(dynamic initiateBooking) {
     emit(state.copyWith(
-      addInitiateBookingState: state.addInitiateBookingState.copyWith(isLoading: false, data: initiateBooking),
+      addInitiateBookingState: state.addInitiateBookingState
+          .copyWith(isLoading: false, data: initiateBooking),
       currentSection: EnAppointmentSection.payment,
     ));
   }
 
   void _emitErrorAddInitiateBooking(String error) {
     emit(state.copyWith(
-      addInitiateBookingState: state.addInitiateBookingState.copyWith(isLoading: false, errorMessage: error),
+      addInitiateBookingState: state.addInitiateBookingState
+          .copyWith(isLoading: false, errorMessage: error),
     ));
   }
 }

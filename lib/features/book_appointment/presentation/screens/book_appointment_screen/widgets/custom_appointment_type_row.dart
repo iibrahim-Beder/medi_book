@@ -6,7 +6,6 @@ import 'package:medi_book/core/theming/styles.dart';
 import 'package:medi_book/core/widgets/line.dart';
 import 'package:medi_book/features/book_appointment/presentation/screens/book_appointment_screen/widgets/custom_radio_button.dart';
 
-// **************************************
 class ImageTitleWithDivider extends StatelessWidget {
   const ImageTitleWithDivider(
       {super.key,
@@ -14,7 +13,7 @@ class ImageTitleWithDivider extends StatelessWidget {
       this.selectedValue,
       this.index,
       required this.title,
-      required this.imagePath,
+      this.imagePath,
       this.isHasRadio = true,
       this.subtitle1,
       this.subtitle2,
@@ -22,7 +21,7 @@ class ImageTitleWithDivider extends StatelessWidget {
       this.button});
 
   final String title;
-  final String imagePath;
+  final String? imagePath;
   final Function(int)? onTap;
   final int? index;
   final String? selectedValue;
@@ -65,7 +64,7 @@ class ImageWithTitlesRow extends StatelessWidget {
   const ImageWithTitlesRow({
     super.key,
     required this.imageCrossAxisAlignment,
-    required this.imagePath,
+     this.imagePath,
     required this.title,
     required this.subtitle1,
     required this.subtitle2,
@@ -77,7 +76,7 @@ class ImageWithTitlesRow extends StatelessWidget {
   });
 
   final CrossAxisAlignment? imageCrossAxisAlignment;
-  final String imagePath;
+  final String? imagePath;
   final String title;
   final String? subtitle1;
   final String? subtitle2;
@@ -92,7 +91,7 @@ class ImageWithTitlesRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: imageCrossAxisAlignment ?? CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset(imagePath),
+        imagePath != null ? SvgPicture.asset(imagePath!) : SizedBox.shrink(),
         horizontalSpace(10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -22,5 +22,6 @@ abstract class ColorsManager {
   static const Color secondarySurfaceText = Color(0xffF2F4F7);
   static const Color warning100 = Color(0xffFFD600);
   static const Color green = Color(0xff22C55E);
+  static const Color red = Color(0xffFF4C5E);
 
 }

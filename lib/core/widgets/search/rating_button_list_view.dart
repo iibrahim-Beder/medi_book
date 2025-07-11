@@ -28,7 +28,7 @@ class RatingButtonListView extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: ratingList.length,
             itemBuilder: (context, index) {
-              return CoustomSearchBoutton(
+              return CoustomFilterBoutton(
                 text: ratingList[index]['rate']!,
                 onPressed: onPressed,
                 ischecked: ratingIndex == index ? true : false,

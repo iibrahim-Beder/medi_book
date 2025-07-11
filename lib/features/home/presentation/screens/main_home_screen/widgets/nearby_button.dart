@@ -4,10 +4,18 @@ import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
 
 class CustomSmallButton extends StatelessWidget {
-  const CustomSmallButton({super.key, this.is3DRemark = true, this.colorOfRadius, required this.title});
+  const CustomSmallButton(
+      {super.key,
+      this.is3DRemark = true,
+      this.colorOfRadius,
+      required this.title, 
+      this.color, 
+      this.style});
   final bool is3DRemark;
   final Color? colorOfRadius;
   final String title;
+  final Color? color;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +37,13 @@ class CustomSmallButton extends StatelessWidget {
         onPressed: () {},
         style: ButtonStyle(
           backgroundColor:
-              WidgetStatePropertyAll(ColorsManager.backgroundWhite),
+              WidgetStatePropertyAll(color ?? ColorsManager.backgroundWhite),
           minimumSize: WidgetStatePropertyAll(Size(109.w, 38.h)),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
-              side: BorderSide(color: colorOfRadius ?? ColorsManager.backgroundWhite),
+              side: BorderSide(
+                  color: colorOfRadius ?? ColorsManager.backgroundWhite),
             ),
           ),
           overlayColor: WidgetStatePropertyAll(
@@ -43,7 +52,7 @@ class CustomSmallButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: TextStyles.font12Neutral60Regular
+          style: style ?? TextStyles.font12Neutral60Regular
               .copyWith(color: ColorsManager.mainBlue),
         ),
       ),
