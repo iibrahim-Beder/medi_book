@@ -10,7 +10,7 @@ part of 'doctor_details_api_service.dart';
 
 class _DoctorDetailsApiService implements DoctorDetailsApiService {
   _DoctorDetailsApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://a658-41-239-133-128.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://b8bf3600ca92.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -29,7 +29,7 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/DoctorProfile/Get',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/DoctorProfile/Get',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -59,7 +59,7 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -105,11 +105,13 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/DoctorReviews/List',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/DoctorReviews/List',
             queryParameters: queryParameters,
             data: _data,
           )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late PaginatedResponseModel<List<DoctorReviewModel>> _value;

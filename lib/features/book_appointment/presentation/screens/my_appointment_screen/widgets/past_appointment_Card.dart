@@ -10,7 +10,9 @@ import 'package:medi_book/core/widgets/line.dart';
 import 'package:medi_book/features/home/domain/entities/paginated_doctors.dart';
 
 class PastAppointmentCard extends StatelessWidget {
-  const PastAppointmentCard({super.key});
+  const PastAppointmentCard({super.key, required this.isSuccessCompleted});
+
+  final bool isSuccessCompleted;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class PastAppointmentCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
           child: Column(
             children: [
-              TextContent(),
+              TextContent(isSuccessCompleted: isSuccessCompleted,),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -64,7 +66,7 @@ class PastAppointmentCard extends StatelessWidget {
                       rating: 4.8,
                       numberOfReviews: 120,
                       imageUrl:
-                          'https://7cb5-102-46-91-223.ngrok-free.app//uploads/images/persons/rendy.png',
+                          'https://b8bf3600ca92.ngrok-free.app//uploads/images/persons/rendy.png',
                     ),
                     color: Colors.white,
                     isHasMessageIcon: true,
@@ -85,8 +87,9 @@ class PastAppointmentCard extends StatelessWidget {
 }
 
 class TextContent extends StatelessWidget {
-  const TextContent({super.key});
+  const TextContent({super.key, required this.isSuccessCompleted});
 
+  final bool isSuccessCompleted;
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -94,9 +97,9 @@ class TextContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Appointment done',
+          isSuccessCompleted ?  'Appointment done' : 'Appointment cancelled',
             style: TextStyles.font12Neutral60Regular
-                .copyWith(color: ColorsManager.green),
+                .copyWith(color: isSuccessCompleted ? ColorsManager.green : ColorsManager.red),
           ),
           verticalSpace(8),
           Text(

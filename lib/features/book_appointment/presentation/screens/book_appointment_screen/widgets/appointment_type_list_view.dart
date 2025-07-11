@@ -27,7 +27,6 @@ class AppointmentTypeListView extends StatelessWidget {
             imagePath: appointmentTypeList[index].imagePath,
             title: appointmentTypeList[index].typeName,
             onTap: (value) {
-              // emit selected appointment type
               context
                   .read<BookAppointmentCubit>()
                   .updateSelectAppointmentType(appointmentTypeList[value]);

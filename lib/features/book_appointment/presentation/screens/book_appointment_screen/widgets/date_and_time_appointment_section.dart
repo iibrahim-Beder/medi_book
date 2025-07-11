@@ -29,7 +29,6 @@ class DateAndTimeAppointmentSection extends StatelessWidget {
         ),
       ),
       verticalSpace(24),
-      // block builder
       const AvailableTimeSlotsGridVeiwBlockBuilder(),
       verticalSpace(24),
       Text(

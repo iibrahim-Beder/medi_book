@@ -23,7 +23,6 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
   @override
   initState() {
     super.initState();
-
     _scrollController = ScrollController();
     _doctorSearchController = TextEditingController();
     _spCtrl = ItemScrollController();
@@ -51,7 +50,9 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
   void onSearchChanged() {
     if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
     _debounceTimer = Timer(const Duration(milliseconds: 400), () {
-      context.read<SearchDoctorCubit>().fetchInitialSearchResults(_doctorSearchController.text);
+      context
+          .read<SearchDoctorCubit>()
+          .fetchInitialSearchResults(_doctorSearchController.text);
       _scrollController.jumpTo(0);
     });
   }

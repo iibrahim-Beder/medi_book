@@ -62,11 +62,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: HomeScreenBody(scrollController: scrollController),
-      floatingActionButton: BackToTopButtonBockBuilder(
-        scrollController: scrollController,
+      floatingActionButton: Center(
+        heightFactor: 1,
+        widthFactor: 6,
+        child: BackToTopButtonBockBuilder(
+          scrollController: scrollController,
+        ),
       ),
     );
   }
+
+  @override
+  void didChangeDependencies() {
+    context.read<MainHomeCubit>().updateBackToTopButtonState(false);
+    super.didChangeDependencies();
+  }
+
 
   @override
   void dispose() {

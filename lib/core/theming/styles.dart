@@ -10,6 +10,12 @@ abstract class TextStyles {
     fontWeight: FontWeightHelper.bold,
   );
 
+  static TextStyle font20Text100SemiBold = TextStyle(
+    fontSize: 20.sp,
+    color: ColorsManager.text100,
+    fontWeight: FontWeightHelper.semiBold,
+  );
+
   static TextStyle font13Text100Regular = TextStyle(
     fontSize: 13.sp,
     color: ColorsManager.text100,

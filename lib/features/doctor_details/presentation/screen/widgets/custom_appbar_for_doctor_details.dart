@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
+import 'package:medi_book/core/navigation_cubit/navigation_cubit.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/arrow_back_box_and_address.dart';
 import 'package:medi_book/core/widgets/doctors_list_veiwI_tem.dart';
@@ -35,6 +37,10 @@ class CustomAppbarForDoctorDetails extends StatelessWidget {
               ArrowBackBoxAndAddress(
                 title: title,
                 coustomWidget: widgetBox,
+                onTap: (){
+                  context.read<NavigationCubit>().toggleShowen();
+                  context.pop();
+                },
               ),
               verticalSpace(20),
               DoctorsListViewItemAPI(

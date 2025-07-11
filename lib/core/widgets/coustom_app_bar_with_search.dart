@@ -15,8 +15,10 @@ class NormalAppBarForSearch extends StatelessWidget {
     required this.onWidgetBoxTap,
     required this.searchController,
     required this.onChanged,
-    this.focusNode, 
+    this.focusNode,
     this.color,
+    this.isHasMoreVertBoutton = true,
+    this.isHasFiltersBoutton = true,
   });
 
   final String title;
@@ -27,6 +29,8 @@ class NormalAppBarForSearch extends StatelessWidget {
   final TextEditingController searchController;
   final Function(String)? onChanged;
   final Color? color;
+  final bool isHasMoreVertBoutton;
+  final bool isHasFiltersBoutton;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class NormalAppBarForSearch extends StatelessWidget {
         children: [
           ArrowBackBoxAndAddress(
             title: title,
-            coustomWidget: widgetBox,
+            coustomWidget: isHasMoreVertBoutton ? widgetBox : SizedBox.shrink(),
           ),
           verticalSpace(20),
           Row(
@@ -58,7 +62,7 @@ class NormalAppBarForSearch extends StatelessWidget {
                   validator: (String? value) {},
                   controller: searchController,
                   onChanged: onChanged,
-                  // focusNode: focusNode,
+                  focusNode: focusNode,
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 20.h,
                     vertical: 10.h,
@@ -72,12 +76,14 @@ class NormalAppBarForSearch extends StatelessWidget {
                 ),
               ),
               horizontalSpace(10.w),
-              GestureDetector(
-                onTap: onWidgetBoxTap,
-                child: SvgPicture.asset(
-                  svgPathForTHeSecondRow,
-                ),
-              ),
+              isHasFiltersBoutton
+                  ? GestureDetector(
+                      onTap: onWidgetBoxTap,
+                      child: SvgPicture.asset(
+                        svgPathForTHeSecondRow,
+                      ),
+                    )
+                  : SizedBox.shrink(),
             ],
           ),
         ],

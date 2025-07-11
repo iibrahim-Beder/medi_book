@@ -7,11 +7,16 @@ class ArrowBackBoxAndAddress extends StatelessWidget {
   const ArrowBackBoxAndAddress(
       {super.key,
       this.coustomWidget = const SizedBox.shrink(),
-      required this.title, this.onTap});
+      required this.title,
+      this.onTap,
+      this.color, this.backgroundColor, this.borderColor});
 
   final String title;
   final Widget coustomWidget;
   final VoidCallback? onTap;
+  final Color? color;
+  final Color? backgroundColor;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +27,16 @@ class ArrowBackBoxAndAddress extends StatelessWidget {
           svgPath: "assets/svgs/arrow_back.svg",
           borderColor: coustomWidget is CoustomImageBox
               ? (coustomWidget as CoustomImageBox).borderColor
-              : ColorsManager.text30,
-              onTap: onTap,
+              : borderColor?? ColorsManager.text30,
+          onTap: onTap,
+          color: color,
+          backgroundColor: backgroundColor,
+  
+          
         ),
         Text(
           title,
-          style: TextStyles.font18Text100semiBold,
+          style:  TextStyles.font18Text100semiBold.copyWith(color: color?? ColorsManager.text100),
         ),
         coustomWidget
       ],

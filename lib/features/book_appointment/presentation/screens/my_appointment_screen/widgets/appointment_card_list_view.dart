@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medi_book/features/book_appointment/presentation/screens/my_appointment_screen/appointment_card.dart';
+import 'package:medi_book/features/book_appointment/presentation/screens/my_appointment_screen/widgets/appointment_card.dart';
 
 class AppointmentCardListView extends StatelessWidget {
   const AppointmentCardListView({super.key});

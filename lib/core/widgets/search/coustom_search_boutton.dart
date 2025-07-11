@@ -5,8 +5,8 @@ import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/font_weight_helper.dart';
 import 'package:medi_book/core/theming/styles.dart';
 
-class CoustomSearchBoutton extends StatelessWidget {
-  const CoustomSearchBoutton(
+class CoustomFilterBoutton extends StatelessWidget {
+  const CoustomFilterBoutton(
       {super.key,
       required this.text,
       this.isHasStar = false,

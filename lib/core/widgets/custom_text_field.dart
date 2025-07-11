@@ -15,9 +15,9 @@ class CustomTextField extends StatelessWidget {
     this.enabledBorder,
     this.contentPadding,
     required this.validator,
-    this.controller, 
-    this.keyboardType = TextInputType.text,  
-    this.onChanged,
+    this.controller,
+    this.keyboardType = TextInputType.text,
+    this.onChanged, this.focusNode,
   }) : super(key: key);
 
   final String hintText;
@@ -32,10 +32,12 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       onChanged: onChanged,
       keyboardType: keyboardType,
       controller: controller,
@@ -84,7 +86,6 @@ class CustomTextField extends StatelessWidget {
       validator: (value) {
         return validator!(value);
       },
-      
     );
   }
 }

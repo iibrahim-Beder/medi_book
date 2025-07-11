@@ -8,6 +8,6 @@ import 'package:medi_book/features/doctor_details/presentation/manger/details_do
 Future<void> initDoctorDetailsFeature(GetIt getIt) async {
   getIt.registerLazySingleton<DoctorDetailsApiService>(() => DoctorDetailsApiService(getIt()));
   getIt.registerLazySingleton<DoctorDetailsRepo>(() => DoctorDetailsRepoImpl(getIt()));
-  getIt.registerFactory<DetailsDoctorCubit>(() => DetailsDoctorCubit(getIt()));
+  getIt.registerFactory<DetailsDoctorCubit>(() => DetailsDoctorCubit(getIt(),null));
 
 }

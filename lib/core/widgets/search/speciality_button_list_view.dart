@@ -32,7 +32,7 @@ class SpecialityButtonListView extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Padding(
                 padding: EdgeInsets.only(right: 12.w),
-                child: CoustomSearchBoutton(
+                child: CoustomFilterBoutton(
                   text: cubit.specialtiesList![index].name,
                   onPressed: (r) => onPressed(r),
                   ischecked: spIndex == index ? true : false,

@@ -47,7 +47,7 @@ class AppointmentCard extends StatelessWidget {
                 rating: 4.8,
                 numberOfReviews: 120,
                 imageUrl:
-                    'https://7cb5-102-46-91-223.ngrok-free.app//uploads/images/persons/rendy.png',
+                    'https://6ef8ebbd6610.ngrok-free.app//uploads/images/persons/rendy.png',
               ),
               color: Colors.white,
               isHasMessageIcon: true,

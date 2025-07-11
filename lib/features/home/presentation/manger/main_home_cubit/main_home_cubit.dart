@@ -8,7 +8,10 @@ import 'package:medi_book/features/home/presentation/manger/main_home_cubit/main
 class MainHomeCubit extends Cubit<MainHomeState> {
   final HomeRepo homeRepo;
 
-  MainHomeCubit(this.homeRepo) : super(MainHomeState.initial());
+  MainHomeCubit(this.homeRepo) : super(MainHomeState.initial()) {
+    getSpecialties();
+    getRecommendedDoctors();
+  }
 
   /// Load specialties
   Future<void> getSpecialties() async {

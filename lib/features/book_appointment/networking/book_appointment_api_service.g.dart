@@ -10,7 +10,7 @@ part of 'book_appointment_api_service.dart';
 
 class _BookAppointmentApiService implements BookAppointmentApiService {
   _BookAppointmentApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://a658-41-239-133-128.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://b8bf3600ca92.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -35,7 +35,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/Bookings/GetDoctorDayTimeSlots',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/Bookings/GetDoctorDayTimeSlots',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -76,7 +76,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/Bookings/GetDoctorAvailableWorkDays',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/Bookings/GetDoctorAvailableWorkDays',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -118,7 +118,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/Bookings/AddInitialBookingTimeSlot',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/Bookings/AddInitialBookingTimeSlot',
             queryParameters: queryParameters,
             data: _data,
           )

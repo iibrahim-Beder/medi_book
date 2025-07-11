@@ -11,7 +11,9 @@ class SearchDoctorCubit extends Cubit<SearchDoctorState> {
   List<Speciality>? specialtiesList;
 
   SearchDoctorCubit(this.homeRepo, [this.specialtiesList])
-      : super(SearchDoctorState.initial());
+      : super(SearchDoctorState.initial()) {
+    fetchInitialSearchResults(null);
+  }
 
   /// Load initial doctor search results (first page)
   Future<void> fetchInitialSearchResults(String? searchValue) {
@@ -96,5 +98,4 @@ class SearchDoctorCubit extends Cubit<SearchDoctorState> {
       ),
     ));
   }
-  
 }

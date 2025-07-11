@@ -10,7 +10,7 @@ part of 'auth_api_service.dart';
 
 class _AuthApiService implements AuthApiService {
   _AuthApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://a658-41-239-133-128.ngrok-free.app/Api/v1/Auth/';
+    baseUrl ??= 'https://b8bf3600ca92.ngrok-free.app/Api/v1/Auth/';
   }
 
   final Dio _dio;
@@ -30,7 +30,7 @@ class _AuthApiService implements AuthApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/Auth/LoginWithEmailAndPassWord',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/Auth/LoginWithEmailAndPassWord',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -60,7 +60,7 @@ class _AuthApiService implements AuthApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://a658-41-239-133-128.ngrok-free.app/Api/v1/Auth/CreateAccountWithEmailAndPassWord',
+            'https://b8bf3600ca92.ngrok-free.app/Api/v1/Auth/CreateAccountWithEmailAndPassWord',
             queryParameters: queryParameters,
             data: _data,
           )
