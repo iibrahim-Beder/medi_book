@@ -53,7 +53,7 @@ class ChatCubit extends Cubit<ChatState> {
     });
   }
 
-  Future<void> pauseRecording() async {
+  Future<void>  pauseRecording() async {
     final path = await _recorderController.stop();
     recordedChunks.add(path ?? '');
 
