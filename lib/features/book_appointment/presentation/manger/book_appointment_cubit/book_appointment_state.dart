@@ -64,5 +64,6 @@ class AddInitiateBookingState with _$AddInitiateBookingState{
     InitiateBookingResponse? data,
     @Default('') String errorMessage,
   }) = _AddInitiateBookingState;
+
   
 }

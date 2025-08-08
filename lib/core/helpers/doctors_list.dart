@@ -162,3 +162,102 @@ final List<String> supportedLanguageNames = [
   'French',
   'Chinese',
 ];
+
+class ChatMessage {
+  final String text;
+  final ChatUser author;
+  final DateTime createdAt;
+
+  ChatMessage({
+    required this.text,
+    required this.author,
+    required this.createdAt,
+  });
+}
+
+class ChatUser {
+  final String id;
+  final String name;
+
+  ChatUser({required this.id, required this.name});
+}
+  final ChatUser currentUser = ChatUser(id: 'user1', name: 'Me');
+  final ChatUser otherUser = ChatUser(id: 'user2', name: 'Dr. Randy');
+
+final List<ChatMessage> messages = [
+      ChatMessage(
+        text: 'Hi, Dr. Randy 🙏',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+      ),
+      ChatMessage(
+        text: 'Good morning, how can I help you?',
+        author: otherUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 4)),
+      ),
+      ChatMessage(
+        text: 'I have a headache and body aches.',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 3)),
+      ),
+        ChatMessage(
+        text: 'Hi, Dr. Randy 🙏',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+      ),
+      ChatMessage(
+        text: 'Good morning, how can I help you?',
+        author: otherUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 4)),
+      ),
+      ChatMessage(
+        text: 'I have a headache and body aches.',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 3)),
+      ),
+        ChatMessage(
+        text: 'Hi, Dr. Randy 🙏',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+      ),
+      ChatMessage(
+        text: 'Good morning, how can I help you?',
+        author: otherUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 4)),
+      ),
+      ChatMessage(
+        text: 'I have a headache and body aches.',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 3)),
+      ),
+        ChatMessage(
+        text: 'Hi, Dr. Randy 🙏',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+      ),
+      ChatMessage(
+        text: 'Good morning, how can I help you?',
+        author: otherUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 4)),
+      ),
+      ChatMessage(
+        text: 'I have a headache and body aches.',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 3)),
+      ),
+        ChatMessage(
+        text: 'Hi, Dr. Randy 🙏',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+      ),
+      ChatMessage(
+        text: 'Good morning, how can I help you?',
+        author: otherUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 4)),
+      ),
+      ChatMessage(
+        text: 'I have a headache and body aches.',
+        author: currentUser,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 3)),
+      ),
+    ];

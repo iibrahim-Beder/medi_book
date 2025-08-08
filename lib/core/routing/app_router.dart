@@ -24,15 +24,16 @@ abstract class AppRouter {
       if (routeMatches.isNotEmpty) {
         final currentRouteMatch = routeMatches.last;
         final routeName = currentRouteMatch.route.name;
-
         for (final element in BottomNavigationTab.values) {
           if (element.name == routeName) {
             navigationCubit.setShown(true);
             // navigationCubit.changeNavigation(element);
+
+            navigationCubit.changeNavigation(element);
             break;
           }
+
           navigationCubit.setShown(false);
-          
         }
       }
     });

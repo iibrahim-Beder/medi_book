@@ -92,6 +92,7 @@ class SearchDoctorCubit extends Cubit<SearchDoctorState> {
 
   /// Reusable method to emit new paginated state
   void _emitPaginatedStateUpdate(PaginatedState<Doctor> newPaginatedState) {
+    if (isClosed) return;
     emit(state.copyWith(
       doctorsListState: state.doctorsListState.copyWith(
         doctorPaginatedState: newPaginatedState,

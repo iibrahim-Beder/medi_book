@@ -88,7 +88,7 @@ static Future<Dio> getDio() async {
       ..options.receiveTimeout = timeout;
 
     dio!.options.headers.addAll({
-      'Authorization': 'Bearer eyJhbGciOiJodHRwOi8vd3d3Lm...',
+      'Authorization': 'Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJBaG1hZEBnbWFpbC5jb20iLCJleHAiOjE3NTQ3MTE2MjksImlzcyI6Ik1lZGlCb29rLkF1dGgiLCJhdWQiOiJNZWRpQm9vay5XZWJDbGllbnQifQ.fGnJO-vk5H1hwL_9_Zb_vFWoGxn1-SqZtcGvGg8Hbck',
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     });

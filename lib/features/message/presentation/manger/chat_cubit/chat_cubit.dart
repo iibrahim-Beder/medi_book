@@ -32,13 +32,17 @@ class ChatCubit extends Cubit<ChatState> {
     emit(state.copyWith(hasPermission: true));
   }
 
-  void updateTypingState(bool isTyping) {
-    emit(state.copyWith(isTyping: isTyping));
+  // void updateTypingState(bool isTyping) {
+  //   emit(state.copyWith(isTyping: isTyping));
+  // }
+
+  void updateMode(Mode mode) {
+    emit(state.copyWith(mode: mode));
   }
 
   Future<void> startRecording() async {
     emit(state.copyWith(
-      isRecording: true,
+      mode: Mode.recording,
       recordingDuration: Duration.zero,
       totalRecordingDuration: Duration.zero,
       recordingPath: null,
@@ -53,16 +57,19 @@ class ChatCubit extends Cubit<ChatState> {
     });
   }
 
-  Future<void>  pauseRecording() async {
+  Future<void> pauseRecording() async {
     final path = await _recorderController.stop();
     recordedChunks.add(path ?? '');
+
+    print("****************${path}",);
 
     _recordingTimer?.cancel();
 
     emit(state.copyWith(
-      isRecording: false,
+      mode: Mode.paused,
       recordingPath: path,
-      totalRecordingDuration: state.totalRecordingDuration + state.recordingDuration,
+      totalRecordingDuration:
+          state.totalRecordingDuration + state.recordingDuration,
       recordingDuration: Duration.zero,
     ));
   }
@@ -71,7 +78,7 @@ class ChatCubit extends Cubit<ChatState> {
     await _recorderController.record();
 
     emit(state.copyWith(
-      isRecording: true,
+      mode: Mode.recording,
       recordingDuration: Duration.zero,
     ));
 
@@ -81,14 +88,25 @@ class ChatCubit extends Cubit<ChatState> {
     });
   }
 
+  void toggleRecording() {
+    if (state.mode == Mode.initial) {
+      startRecording();
+    } else if (state.mode == Mode.recording) {
+      pauseRecording();
+    } else if (state.mode == Mode.paused) {
+      resumeRecording();
+    }
+  }
+
   Future<void> stopRecording() async {
     _recordingTimer?.cancel();
     final path = await _recorderController.stop();
 
     emit(state.copyWith(
-      isRecording: false,
+      mode: Mode.initial,
       recordingPath: path,
-      totalRecordingDuration: state.totalRecordingDuration + state.recordingDuration,
+      totalRecordingDuration:
+          state.totalRecordingDuration + state.recordingDuration,
       recordingDuration: Duration.zero,
     ));
   }

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/features/message/presentation/manger/chat_cubit/chat_cubit.dart';
 import 'package:medi_book/features/message/presentation/screens/chat/widgets/bloc/recording_duration_timer_bloc_selector.dart';
+import 'package:medi_book/features/message/presentation/screens/chat/widgets/voice_recording_bottom_sheet_body.dart';
 
 class VoiceRecordingWaveform extends StatelessWidget {
   const VoiceRecordingWaveform({
@@ -27,7 +28,10 @@ class VoiceRecordingWaveform extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: InkWell(
-                  onTap: () => context.read<ChatCubit>().pauseRecording(),
+                  onTap: () {
+                    context.read<ChatCubit>().toggleRecording();
+                    voiceRecordingBottomSheet(context);
+                  },
                   child: Container(
                       height: 30.h,
                       width: 30.w,
@@ -63,4 +67,20 @@ class VoiceRecordingWaveform extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> voiceRecordingBottomSheet(BuildContext context) async {
+  final cubit = context.read<ChatCubit>();
+  showModalBottomSheet<bool>(
+    context: context,
+    isScrollControlled: true,
+    enableDrag: false,
+    backgroundColor: Colors.transparent,
+    builder: (_) {
+      return BlocProvider.value(
+        value: cubit,
+        child: VoiceRecordingBottomSheetBody(),
+      );
+    },
+  );
 }

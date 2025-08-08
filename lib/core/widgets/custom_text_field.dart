@@ -17,7 +17,8 @@ class CustomTextField extends StatelessWidget {
     required this.validator,
     this.controller,
     this.keyboardType = TextInputType.text,
-    this.onChanged, this.focusNode,
+    this.onChanged,
+    this.focusNode,
   }) : super(key: key);
 
   final String hintText;

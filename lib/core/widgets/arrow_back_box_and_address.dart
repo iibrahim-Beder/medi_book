@@ -9,7 +9,10 @@ class ArrowBackBoxAndAddress extends StatelessWidget {
       this.coustomWidget = const SizedBox.shrink(),
       required this.title,
       this.onTap,
-      this.color, this.backgroundColor, this.borderColor});
+      this.color,
+      this.backgroundColor,
+      this.borderColor,
+      this.leftWidget});
 
   final String title;
   final Widget coustomWidget;
@@ -17,26 +20,27 @@ class ArrowBackBoxAndAddress extends StatelessWidget {
   final Color? color;
   final Color? backgroundColor;
   final Color? borderColor;
+  final Widget? leftWidget;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CoustomImageBox(
-          svgPath: "assets/svgs/arrow_back.svg",
-          borderColor: coustomWidget is CoustomImageBox
-              ? (coustomWidget as CoustomImageBox).borderColor
-              : borderColor?? ColorsManager.text30,
-          onTap: onTap,
-          color: color,
-          backgroundColor: backgroundColor,
-  
-          
-        ),
+        leftWidget ??
+            CoustomImageBox(
+              svgPath: "assets/svgs/arrow_back.svg",
+              borderColor: coustomWidget is CoustomImageBox
+                  ? (coustomWidget as CoustomImageBox).borderColor
+                  : borderColor ?? ColorsManager.text30,
+              onTap: onTap,
+              color: color,
+              backgroundColor: backgroundColor,
+            ),
         Text(
           title,
-          style:  TextStyles.font18Text100semiBold.copyWith(color: color?? ColorsManager.text100),
+          style: TextStyles.font18Text100semiBold
+              .copyWith(color: color ?? ColorsManager.text100),
         ),
         coustomWidget
       ],

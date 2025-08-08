@@ -10,10 +10,10 @@ class ChatInputActionsBlocSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<ChatCubit, ChatState, bool>(
-      selector: (state) => state.isTyping,
+    return BlocSelector<ChatCubit, ChatState, Mode>(
+      selector: (state) => state.mode,
       builder: (context, state) {
-        if (!state) {
+        if (state == Mode.initial) {
           return ChatInputActions();
         }
         return SizedBox.shrink();

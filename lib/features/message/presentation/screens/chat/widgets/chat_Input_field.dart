@@ -26,9 +26,9 @@ class _ChatInputFieldState extends State<ChatInputField> {
 
   void _updateTypingStatus() {
     if (_controller.text.isNotEmpty) {
-      context.read<ChatCubit>().updateTypingState(true);
+      context.read<ChatCubit>().updateMode(Mode.typing);
     } else {
-      context.read<ChatCubit>().updateTypingState(false);
+      context.read<ChatCubit>().updateMode(Mode.initial);
     }
   }
 
@@ -64,7 +64,6 @@ class _ChatInputFieldState extends State<ChatInputField> {
             Expanded(
               child: TextField(
                 controller: _controller,
-            
                 textAlignVertical: TextAlignVertical.top,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,

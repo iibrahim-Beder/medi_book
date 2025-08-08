@@ -1,5 +1,5 @@
 part of 'navigation_cubit.dart';
-enum BottomNavigationTab {  homeScreen, massage, searchDoctorScreen, myAppointmentScreen,myProfileScreen}
+enum BottomNavigationTab {  homeScreen,inpoxScreen, searchDoctorScreen, myAppointmentScreen,myProfileScreen}
 @freezed
 class NavigationState with _$NavigationState {
   const factory NavigationState(

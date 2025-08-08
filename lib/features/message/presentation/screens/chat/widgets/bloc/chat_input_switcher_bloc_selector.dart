@@ -11,10 +11,10 @@ class ChatInputSwitcherBlocSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<ChatCubit, ChatState, bool>(
-      selector: (state) => state.isRecording,
+    return BlocSelector<ChatCubit, ChatState, Mode>(
+      selector: (state) => state.mode,
       builder: (context, state) {
-        if (state) {
+        if (state == Mode.recording || state == Mode.paused) {
           return const VoiceRecordingWaveform();
         }
         return const ChatInputField();

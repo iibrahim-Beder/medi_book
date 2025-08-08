@@ -11,27 +11,27 @@ class ChatActionBlocSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<ChatCubit, ChatState, bool>(
-      selector: (state) => state.isTyping || state.isRecording,
+    final cubit = context.read<ChatCubit>();
+    return BlocSelector<ChatCubit, ChatState, Mode>(
+      selector: (state) => state.mode,
       builder: (context, state) {
-        if (state) {
+        if (state == Mode.initial) {
           return InkWell(
-              onTap: () {
-                // context.read<ChatCubit>().updateRecordingState(false);
-                context.read<ChatCubit>().updateTypingState(false);
-                context.read<ChatCubit>().stopRecording();
-              },
-              child: SvgPicture.asset('assets/svgs/send_message_icon.svg'));
+            onTap: () => cubit.toggleRecording(),
+            child: Image.asset(
+              'assets/images/record_voice_icon.png',
+              height: 56.h,
+              width: 56.w,
+            ),
+          );
         }
         // return const VoiceRecorderButton();
         return InkWell(
-          onTap: () => context.read<ChatCubit>().startRecording(),
-          child: Image.asset(
-            'assets/images/record_voice_icon.png',
-            height: 56.h,
-            width: 56.w,
-          ),
-        );
+            onTap: () {
+              cubit.updateMode(Mode.initial);
+              cubit.stopRecording();
+            },
+            child: SvgPicture.asset('assets/svgs/send_message_icon.svg'));
       },
     );
   }

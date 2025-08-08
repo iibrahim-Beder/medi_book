@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatState {
-  bool get isTyping => throw _privateConstructorUsedError;
-  bool get isRecording => throw _privateConstructorUsedError;
+  Mode get mode => throw _privateConstructorUsedError;
   bool get hasPermission => throw _privateConstructorUsedError;
   Duration get recordingDuration =>
       throw _privateConstructorUsedError; // Current session
@@ -38,8 +37,7 @@ abstract class $ChatStateCopyWith<$Res> {
       _$ChatStateCopyWithImpl<$Res, ChatState>;
   @useResult
   $Res call(
-      {bool isTyping,
-      bool isRecording,
+      {Mode mode,
       bool hasPermission,
       Duration recordingDuration,
       Duration totalRecordingDuration,
@@ -61,22 +59,17 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isTyping = null,
-    Object? isRecording = null,
+    Object? mode = null,
     Object? hasPermission = null,
     Object? recordingDuration = null,
     Object? totalRecordingDuration = null,
     Object? recordingPath = freezed,
   }) {
     return _then(_value.copyWith(
-      isTyping: null == isTyping
-          ? _value.isTyping
-          : isTyping // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isRecording: null == isRecording
-          ? _value.isRecording
-          : isRecording // ignore: cast_nullable_to_non_nullable
-              as bool,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as Mode,
       hasPermission: null == hasPermission
           ? _value.hasPermission
           : hasPermission // ignore: cast_nullable_to_non_nullable
@@ -106,8 +99,7 @@ abstract class _$$ChatStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isTyping,
-      bool isRecording,
+      {Mode mode,
       bool hasPermission,
       Duration recordingDuration,
       Duration totalRecordingDuration,
@@ -127,22 +119,17 @@ class __$$ChatStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isTyping = null,
-    Object? isRecording = null,
+    Object? mode = null,
     Object? hasPermission = null,
     Object? recordingDuration = null,
     Object? totalRecordingDuration = null,
     Object? recordingPath = freezed,
   }) {
     return _then(_$ChatStateImpl(
-      isTyping: null == isTyping
-          ? _value.isTyping
-          : isTyping // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isRecording: null == isRecording
-          ? _value.isRecording
-          : isRecording // ignore: cast_nullable_to_non_nullable
-              as bool,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as Mode,
       hasPermission: null == hasPermission
           ? _value.hasPermission
           : hasPermission // ignore: cast_nullable_to_non_nullable
@@ -167,17 +154,14 @@ class __$$ChatStateImplCopyWithImpl<$Res>
 
 class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
   const _$ChatStateImpl(
-      {required this.isTyping,
-      required this.isRecording,
+      {required this.mode,
       required this.hasPermission,
       required this.recordingDuration,
       required this.totalRecordingDuration,
       this.recordingPath});
 
   @override
-  final bool isTyping;
-  @override
-  final bool isRecording;
+  final Mode mode;
   @override
   final bool hasPermission;
   @override
@@ -191,7 +175,7 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatState(isTyping: $isTyping, isRecording: $isRecording, hasPermission: $hasPermission, recordingDuration: $recordingDuration, totalRecordingDuration: $totalRecordingDuration, recordingPath: $recordingPath)';
+    return 'ChatState(mode: $mode, hasPermission: $hasPermission, recordingDuration: $recordingDuration, totalRecordingDuration: $totalRecordingDuration, recordingPath: $recordingPath)';
   }
 
   @override
@@ -199,8 +183,7 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ChatState'))
-      ..add(DiagnosticsProperty('isTyping', isTyping))
-      ..add(DiagnosticsProperty('isRecording', isRecording))
+      ..add(DiagnosticsProperty('mode', mode))
       ..add(DiagnosticsProperty('hasPermission', hasPermission))
       ..add(DiagnosticsProperty('recordingDuration', recordingDuration))
       ..add(
@@ -213,10 +196,7 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChatStateImpl &&
-            (identical(other.isTyping, isTyping) ||
-                other.isTyping == isTyping) &&
-            (identical(other.isRecording, isRecording) ||
-                other.isRecording == isRecording) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
             (identical(other.hasPermission, hasPermission) ||
                 other.hasPermission == hasPermission) &&
             (identical(other.recordingDuration, recordingDuration) ||
@@ -228,8 +208,8 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isTyping, isRecording,
-      hasPermission, recordingDuration, totalRecordingDuration, recordingPath);
+  int get hashCode => Object.hash(runtimeType, mode, hasPermission,
+      recordingDuration, totalRecordingDuration, recordingPath);
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -242,17 +222,14 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
 
 abstract class _ChatState implements ChatState {
   const factory _ChatState(
-      {required final bool isTyping,
-      required final bool isRecording,
+      {required final Mode mode,
       required final bool hasPermission,
       required final Duration recordingDuration,
       required final Duration totalRecordingDuration,
       final String? recordingPath}) = _$ChatStateImpl;
 
   @override
-  bool get isTyping;
-  @override
-  bool get isRecording;
+  Mode get mode;
   @override
   bool get hasPermission;
   @override

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 abstract class ColorsManager {
   static const Color mainBlue = Color(0xff247CFF);
   static const Color mainBlueDiluted = Color(0xff88C3F3);
@@ -15,6 +14,7 @@ abstract class ColorsManager {
   static const Color text20 = Color(0xffF5F5F5);
   static const Color text100 = Color(0xff242424);
   static const Color text80 = Color(0xff616161);
+  static const Color text70 = Color(0xff9E9E9E);
   static const Color primarySurface = Color(0xffF4F8FF);
   static const Color primarySurfaceBaseLight = Color(0xffE9EEF9);
   static const Color primarySurfaceHighlight = Color(0xffFAFCFF);

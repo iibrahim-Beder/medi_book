@@ -10,7 +10,7 @@ part of 'home_api_service.dart';
 
 class _HomeApiService implements HomeApiService {
   _HomeApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://b8bf3600ca92.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://1bd2901cfd48.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -32,7 +32,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://b8bf3600ca92.ngrok-free.app/Api/v1/DoctorOverview/List',
+            'https://1bd2901cfd48.ngrok-free.app/Api/v1/DoctorOverview/List',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -68,7 +68,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'https://b8bf3600ca92.ngrok-free.app/Api/v1/Speciality/List',
+            'https://1bd2901cfd48.ngrok-free.app/Api/v1/Speciality/List',
             queryParameters: queryParameters,
             data: _data,
           )

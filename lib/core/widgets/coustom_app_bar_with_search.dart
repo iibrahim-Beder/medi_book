@@ -19,6 +19,7 @@ class NormalAppBarForSearch extends StatelessWidget {
     this.color,
     this.isHasMoreVertBoutton = true,
     this.isHasFiltersBoutton = true,
+    this.hintText, this.leftWidget,
   });
 
   final String title;
@@ -31,6 +32,8 @@ class NormalAppBarForSearch extends StatelessWidget {
   final Color? color;
   final bool isHasMoreVertBoutton;
   final bool isHasFiltersBoutton;
+  final String? hintText;
+  final Widget? leftWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +51,7 @@ class NormalAppBarForSearch extends StatelessWidget {
           ArrowBackBoxAndAddress(
             title: title,
             coustomWidget: isHasMoreVertBoutton ? widgetBox : SizedBox.shrink(),
+            leftWidget: leftWidget,
           ),
           verticalSpace(20),
           Row(
@@ -58,7 +62,7 @@ class NormalAppBarForSearch extends StatelessWidget {
                     "assets/svgs/search.svg",
                     fit: BoxFit.none,
                   ),
-                  hintText: 'Search',
+                  hintText: hintText ?? 'Search',
                   validator: (String? value) {},
                   controller: searchController,
                   onChanged: onChanged,

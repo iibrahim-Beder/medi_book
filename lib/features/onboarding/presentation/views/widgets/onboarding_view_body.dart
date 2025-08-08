@@ -7,8 +7,8 @@ import 'package:medi_book/features/auth/routes/auth_routes.dart';
 import 'package:medi_book/features/onboarding/presentation/views/widgets/doctor_image_and_text.dart';
 import 'package:medi_book/features/onboarding/presentation/views/widgets/logo_with_name_logo.dart';
 
-class OnboardingViewBody extends StatelessWidget {
-  const OnboardingViewBody({super.key});
+class OnboardingScreenBody extends StatelessWidget {
+  const OnboardingScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

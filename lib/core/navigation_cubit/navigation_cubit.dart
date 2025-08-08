@@ -28,7 +28,7 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   static const List<String> tabs = [
     HomeRoutes.kHomeScreen,
-    HomeRoutes.searchDoctorScreen,
+    HomeRoutes.inpoxScreen,
     HomeRoutes.searchDoctorScreen,
     HomeRoutes.myAppointmentScreen,
     HomeRoutes.myProfileScreen,
@@ -39,7 +39,7 @@ class NavigationCubit extends Cubit<NavigationState> {
       case BottomNavigationTab.homeScreen:
         context.goNamed(tabs[tab.index]);
         break;
-      case BottomNavigationTab.massage:
+      case BottomNavigationTab.inpoxScreen:
         context.goNamed(tabs[tab.index], extra: state.specialties);
         break;
       case BottomNavigationTab.searchDoctorScreen:
@@ -51,6 +51,7 @@ class NavigationCubit extends Cubit<NavigationState> {
       case BottomNavigationTab.myProfileScreen:
         context.goNamed(tabs[tab.index]);
         break;
+
     }
     changeNavigation(BottomNavigationTab.values[tab.index]);
   }

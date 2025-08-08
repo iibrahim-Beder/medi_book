@@ -66,7 +66,7 @@ class PastAppointmentCard extends StatelessWidget {
                       rating: 4.8,
                       numberOfReviews: 120,
                       imageUrl:
-                          'https://b8bf3600ca92.ngrok-free.app//uploads/images/persons/rendy.png',
+                          'https://8f8ef18a839b.ngrok-free.app/uploads/images/persons/rendy.png',
                     ),
                     color: Colors.white,
                     isHasMessageIcon: true,

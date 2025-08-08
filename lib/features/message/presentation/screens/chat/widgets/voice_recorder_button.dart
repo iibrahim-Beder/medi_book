@@ -40,7 +40,7 @@ class _VoiceRecorderButtonState extends State<VoiceRecorderButton>
 
   void toggleRecording() {
     // context.read<ChatCubit>().requestMicrophonePermission();
-    context.read<ChatCubit>().startRecording();
+    context.read<ChatCubit>().toggleRecording();
     setState(() {
       isRecording = !isRecording;
       if (isRecording) {

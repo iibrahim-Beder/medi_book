@@ -1,10 +1,9 @@
 part of 'chat_cubit.dart';
-
+enum Mode {initial,typing, recording, paused}
 @freezed
 class ChatState with _$ChatState {
   const factory ChatState({
-    required bool isTyping,
-    required bool isRecording,
+    required Mode mode,
     required bool hasPermission,
     required Duration recordingDuration, // Current session
     required Duration totalRecordingDuration, // Accumulated across sessions
@@ -12,8 +11,7 @@ class ChatState with _$ChatState {
   }) = _ChatState;
 
   factory ChatState.initial() => const ChatState(
-        isTyping: false,
-        isRecording: false,
+        mode: Mode.initial,
         hasPermission: false,
         recordingDuration: Duration.zero,
         totalRecordingDuration: Duration.zero,

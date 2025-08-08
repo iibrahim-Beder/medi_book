@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
+import 'package:medi_book/features/home/routes/home_routes.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key, required this.isThereNotifications});
@@ -45,7 +47,7 @@ class HomeAppBar extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(right: 16.h),
           child: GestureDetector(
-            onTap: () => print("Hello Tebsen"),
+            onTap: () => context.pushNamed(HomeRoutes.notificationScreen),
             child: Container(
               height: 50,
               width: 50,

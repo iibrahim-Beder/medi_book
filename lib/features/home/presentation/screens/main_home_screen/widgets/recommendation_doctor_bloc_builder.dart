@@ -18,7 +18,7 @@ class RecommendationDoctorBlocBuilder extends StatelessWidget {
               current.recommendedDoctorsState.paginatedState!.isLoadingMore,
       builder: (context, state) {
         final paginatedState = state.recommendedDoctorsState.paginatedState;
-        if (paginatedState == null) return const SizedBox.shrink();
+        if (paginatedState == null) return SliverToBoxAdapter(child: SizedBox.shrink());
 
         if (paginatedState.isLoading) {
           return DoctorListFlatShimmerLoading(
@@ -32,7 +32,7 @@ class RecommendationDoctorBlocBuilder extends StatelessWidget {
             
           );
         } else {
-          return const SizedBox.shrink();
+          return SliverToBoxAdapter(child: const SizedBox.shrink());
         }
       },
     );

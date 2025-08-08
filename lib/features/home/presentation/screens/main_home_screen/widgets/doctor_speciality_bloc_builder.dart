@@ -22,10 +22,12 @@ class SpecialtiesBlocBuilder extends StatelessWidget {
         if (state.specialtiesState.isLoading) {
           return SpecialtiesShimmerLoading();
         } else if (state.specialtiesState.data.isNotEmpty) {
-          context.read<NavigationCubit>().addSpecialtys(state.specialtiesState.data);
+          context
+              .read<NavigationCubit>()
+              .addSpecialtys(state.specialtiesState.data);
           return SpecialtiesListView(specialties: state.specialtiesState.data);
         } else {
-          return SizedBox.shrink();
+          return Text(state.specialtiesState.errorMessage);
         }
       },
     );
