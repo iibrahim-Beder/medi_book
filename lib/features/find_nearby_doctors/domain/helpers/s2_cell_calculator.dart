@@ -326,7 +326,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:h3_flutter/h3_flutter.dart';
 
-class S2CellCalculator {
+class S2CellCalculator{
   /// Determine the cell configuration based on zoom level and viewport size (in km)
 
   static Map<int, double> h3AreaKm2 = {

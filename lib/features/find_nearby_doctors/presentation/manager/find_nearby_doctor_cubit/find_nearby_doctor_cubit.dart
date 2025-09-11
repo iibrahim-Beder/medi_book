@@ -168,6 +168,9 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
     //     '🗺️ Bounds: NE(${bounds.northeast.latitude}, ${bounds.northeast.longitude}) | SW(${bounds.southwest.latitude}, ${bounds.southwest.longitude})');
     // print('🔍 Zoom Level: $zoomLevel');
     print("************* onMapIdle Triggered ****************");
+
+    handleZoomChange(_previousZoomLevel ?? 0, zoomLevel);
+
     final CellConfig config = S2CellCalculator.getCellSizeByZoomAndBBox(
       zoomLevel,
       bounds.northeast.latitude - bounds.southwest.latitude,
@@ -308,6 +311,15 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
     // print('🔄 Cache keys at start: ${NearbyDoctorCellCache.cachedKeys()}');
     // print({NearbyDoctorCellCache.cachedKeys().length});
     // });
+  }
+
+  void handleZoomChange(double oldZoom, double newZoom) {
+    final double zoomThreshold = 2.0; 
+
+    if ((newZoom - oldZoom).abs() >= zoomThreshold) {
+      print('****** C L E A CAHCE ******');
+      NearbyDoctorCellCache.clear(); 
+    }
   }
 
   void onCameraMove(CameraPosition position) {
@@ -502,16 +514,20 @@ Future<List<LocationWithDoctors>> generateFixedDoctors() async {
 
 double getMinDeltaFromZoom(double zoomLevel) {
   if (zoomLevel >= 14) {
-    return 0.005; // resolution 8 ~0.74 km²
+    return 0.005; 
   } else if (zoomLevel >= 12) {
-    return 0.01; // resolution 7 ~5 km²
+    return 0.01; 
   } else if (zoomLevel >= 10) {
-    return 0.03; // resolution 6 ~36 km²
+    return 0.03;
   } else if (zoomLevel >= 8) {
-    return 0.05; // resolution 5 ~253 km²
-  } else if (zoomLevel >= 4) {
-    return 0.1; // resolution 4 ≥ 1,770 km²
+    return 0.05; 
+  } else if (zoomLevel >= 6.5) {
+    return 0.1; 
+  } else if (zoomLevel >= 6) {
+    return 0.15; 
+  } else if (zoomLevel >= 2) {
+    return 0.2; 
   } else {
-    return 0.2; // resolution 0 or very low zooms (fallback)
+    return 0.3;
   }
 }

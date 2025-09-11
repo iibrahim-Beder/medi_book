@@ -133,6 +133,12 @@ class NearbyDoctorCellCache {
           '🧹 Cache cleanup: removed ${keysToRemove.length} keys not near zoom $currentZoom');
     }
   }
+
+    static void clear() {
+    _cache.clear();
+    print('🗑️ Cache cleared');
+  }
+
 }
 
 class CachedCellData<T> {
