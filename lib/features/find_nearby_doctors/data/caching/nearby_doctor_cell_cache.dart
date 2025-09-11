@@ -50,6 +50,7 @@ class NearbyDoctorCellCache {
     // Remove that entry from the cache
     _cache.remove(lruKey);
   }
+  
 
   static bool isFresh(String key, Duration ttl) {
     final entry = _cache[key];

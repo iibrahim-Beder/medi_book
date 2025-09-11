@@ -339,23 +339,32 @@ class S2CellCalculator {
   static CellConfig getCellSizeByZoomAndBBox(
       double zoomLevel, double bboxWidthKm, double bboxHeightKm) {
     double resolution;
-
     String label;
     if (zoomLevel >= 14) {
       resolution = 8;
-      label = '0.7km';
+      label = "0.7km²";
     } else if (zoomLevel >= 12) {
       resolution = 7;
-      label = '5km';
+      label = "5km²";
     } else if (zoomLevel >= 10) {
       resolution = 6;
-      label = '36km';
+      label = "36km²";
     } else if (zoomLevel >= 8) {
       resolution = 5;
-      label = '253km';
-    } else {
+      label = "253km²";
+    } else if (zoomLevel >= 6.5) {
       resolution = 4;
-      label = '1770km';
+      label = "1,770km²";
+    } else if (zoomLevel >= 6) {
+      // changed from 4 to 3
+      resolution = 2;
+      label = "85,000km²";
+    } else if (zoomLevel >= 2) {
+      resolution = 1;
+      label = "600,000km²";
+    } else {
+      resolution = 0;
+      label = "4,250,000km²";
     }
 
     double cellArea = h3AreaKm2[resolution] ?? h3AreaKm2[6]!;
@@ -454,7 +463,6 @@ class S2CellCalculator {
     final Set<String> keys = {};
     final h3 = const H3Factory().load();
 
-    
     final int resolution = getH3ResolutionFromZoom(config.zoomLevel);
     print("*******************");
     print(" Zoom Level: ${config.zoomLevel}");
@@ -519,12 +527,20 @@ int getH3ResolutionFromZoom(double zoomLevel) {
     return 6; // ~36 km²
   } else if (zoomLevel >= 8) {
     return 5; // ~253 km²
-  } else if (zoomLevel >= 4) {
-    return 4; // ≥ 1,770 km²
+  } else if (zoomLevel >= 6.5) {
+    return 4; // ~1,770 km²
+  } else if (zoomLevel >= 6) {
+    // moved from 4 to 3
+    return 2; // ~85,000 km² (bigger cells earlier)
+  } else if (zoomLevel >= 2) {
+    return 1; // ~600,000 km²
   } else {
-    return 0; // 
+    return 0; // ~4,250,000 km²
   }
 }
+
+
+
 // int getH3ResolutionByZoom(double zoomLevel) {
 //   if (zoomLevel >= 15) return 10;  
 //   if (zoomLevel >= 12) return 9;   
