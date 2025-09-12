@@ -14,7 +14,7 @@ class _NotificationsApiService implements NotificationsApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://efec73dd9d22.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://ffe526b44f80.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -38,7 +38,7 @@ class _NotificationsApiService implements NotificationsApiService {
     )
             .compose(
               _dio.options,
-              'https://efec73dd9d22.ngrok-free.app/Api/v1/Notifications/GetPatientNotifications',
+              'https://ffe526b44f80.ngrok-free.app/Api/v1/Notifications/GetPatientNotifications',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -85,7 +85,7 @@ class _NotificationsApiService implements NotificationsApiService {
     )
         .compose(
           _dio.options,
-          'https://efec73dd9d22.ngrok-free.app/Api/v1/Notifications/MarkNotificationAsRead',
+          'https://ffe526b44f80.ngrok-free.app/Api/v1/Notifications/MarkNotificationAsRead',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -124,7 +124,7 @@ class _NotificationsApiService implements NotificationsApiService {
     )
         .compose(
           _dio.options,
-          'https://efec73dd9d22.ngrok-free.app/Api/v1/Notifications/MarkAllNotificationsAsRead',
+          'https://ffe526b44f80.ngrok-free.app/Api/v1/Notifications/MarkAllNotificationsAsRead',
           queryParameters: queryParameters,
           data: _data,
         )

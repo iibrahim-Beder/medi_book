@@ -14,7 +14,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://efec73dd9d22.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://ffe526b44f80.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -42,7 +42,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
     )
             .compose(
               _dio.options,
-              'https://efec73dd9d22.ngrok-free.app/Api/v1/Bookings/GetDoctorDayTimeSlots',
+              'https://ffe526b44f80.ngrok-free.app/Api/v1/Bookings/GetDoctorDayTimeSlots',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -85,7 +85,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
     )
             .compose(
               _dio.options,
-              'https://efec73dd9d22.ngrok-free.app/Api/v1/Bookings/GetDoctorAvailableWorkDays',
+              'https://ffe526b44f80.ngrok-free.app/Api/v1/Bookings/GetDoctorAvailableWorkDays',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -129,7 +129,7 @@ class _BookAppointmentApiService implements BookAppointmentApiService {
     )
             .compose(
               _dio.options,
-              'https://efec73dd9d22.ngrok-free.app/Api/v1/Bookings/AddInitialBookingTimeSlot',
+              'https://ffe526b44f80.ngrok-free.app/Api/v1/Bookings/AddInitialBookingTimeSlot',
               queryParameters: queryParameters,
               data: _data,
             )

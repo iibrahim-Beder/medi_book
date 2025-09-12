@@ -14,7 +14,7 @@ class _AuthApiService implements AuthApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://efec73dd9d22.ngrok-free.app/Api/v1/Auth/';
+    baseUrl ??= 'https://ffe526b44f80.ngrok-free.app/Api/v1/Auth/';
   }
 
   final Dio _dio;
@@ -37,7 +37,7 @@ class _AuthApiService implements AuthApiService {
     )
         .compose(
           _dio.options,
-          'https://efec73dd9d22.ngrok-free.app/Api/v1/Auth/LoginWithEmailAndPassWord',
+          'https://ffe526b44f80.ngrok-free.app/Api/v1/Auth/LoginWithEmailAndPassWord',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -72,7 +72,7 @@ class _AuthApiService implements AuthApiService {
     )
         .compose(
           _dio.options,
-          'https://efec73dd9d22.ngrok-free.app/Api/v1/Auth/CreateAccountWithEmailAndPassWord',
+          'https://ffe526b44f80.ngrok-free.app/Api/v1/Auth/CreateAccountWithEmailAndPassWord',
           queryParameters: queryParameters,
           data: _data,
         )

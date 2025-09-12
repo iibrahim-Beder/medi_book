@@ -168,8 +168,10 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
     //     '🗺️ Bounds: NE(${bounds.northeast.latitude}, ${bounds.northeast.longitude}) | SW(${bounds.southwest.latitude}, ${bounds.southwest.longitude})');
     // print('🔍 Zoom Level: $zoomLevel');
     print("************* onMapIdle Triggered ****************");
-
-    handleZoomChange(_previousZoomLevel ?? 0, zoomLevel);
+    print(_previousZoomLevel);
+    handleZoomChange(
+        _previousZoomLevel ?? zoomLevel, zoomLevel); 
+    _previousZoomLevel = zoomLevel;
 
     final CellConfig config = S2CellCalculator.getCellSizeByZoomAndBBox(
       zoomLevel,
@@ -241,7 +243,7 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
         ),
       ));
       _previousBounds = bounds;
-      _previousZoomLevel = zoomLevel;
+      // _previousZoomLevel = zoomLevel;
       return;
     }
 
@@ -304,7 +306,7 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
     ));
 
     _previousBounds = bounds;
-    _previousZoomLevel = zoomLevel;
+    // _previousZoomLevel = zoomLevel;
 
     print("************* onMapIdle finished ****************");
 
@@ -314,11 +316,11 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
   }
 
   void handleZoomChange(double oldZoom, double newZoom) {
-    final double zoomThreshold = 2.0; 
+    final double zoomThreshold = 2.0;
 
     if ((newZoom - oldZoom).abs() >= zoomThreshold) {
       print('****** C L E A CAHCE ******');
-      NearbyDoctorCellCache.clear(); 
+      NearbyDoctorCellCache.clear();
     }
   }
 
@@ -514,19 +516,19 @@ Future<List<LocationWithDoctors>> generateFixedDoctors() async {
 
 double getMinDeltaFromZoom(double zoomLevel) {
   if (zoomLevel >= 14) {
-    return 0.005; 
+    return 0.005;
   } else if (zoomLevel >= 12) {
-    return 0.01; 
+    return 0.01;
   } else if (zoomLevel >= 10) {
     return 0.03;
   } else if (zoomLevel >= 8) {
-    return 0.05; 
+    return 0.05;
   } else if (zoomLevel >= 6.5) {
-    return 0.1; 
+    return 0.1;
   } else if (zoomLevel >= 6) {
-    return 0.15; 
+    return 0.15;
   } else if (zoomLevel >= 2) {
-    return 0.2; 
+    return 0.2;
   } else {
     return 0.3;
   }

@@ -14,7 +14,7 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://efec73dd9d22.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://ffe526b44f80.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -36,7 +36,7 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
     )
         .compose(
           _dio.options,
-          'https://efec73dd9d22.ngrok-free.app/Api/v1/DoctorProfile/Get',
+          'https://ffe526b44f80.ngrok-free.app/Api/v1/DoctorProfile/Get',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -71,7 +71,7 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
     )
             .compose(
               _dio.options,
-              'https://efec73dd9d22.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
+              'https://ffe526b44f80.ngrok-free.app/Api/v1/DoctorLocations/GetDoctorLocations',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -120,7 +120,7 @@ class _DoctorDetailsApiService implements DoctorDetailsApiService {
     )
             .compose(
               _dio.options,
-              'https://efec73dd9d22.ngrok-free.app/Api/v1/DoctorReviews/List',
+              'https://ffe526b44f80.ngrok-free.app/Api/v1/DoctorReviews/List',
               queryParameters: queryParameters,
               data: _data,
             )
