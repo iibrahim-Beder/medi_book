@@ -35,4 +35,6 @@ abstract class ColorsManager {
   static const Color black54 = Color(0x8A000000);
   static const Color grey200 = Color(0xFFEEEEEE);
   static const Color grayBlue40 = Color(0x668A9BA8);
+  static const Color voicePausedBlueGray = Color(0xFFBCCCDC);
+
 }

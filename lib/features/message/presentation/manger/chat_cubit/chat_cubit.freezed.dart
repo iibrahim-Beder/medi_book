@@ -18,11 +18,15 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatState {
   Mode get mode => throw _privateConstructorUsedError;
   bool get hasPermission => throw _privateConstructorUsedError;
-  Duration get recordingDuration =>
-      throw _privateConstructorUsedError; // Current session
-  Duration get totalRecordingDuration =>
-      throw _privateConstructorUsedError; // Accumulated across sessions
+  Duration get recordingDuration => throw _privateConstructorUsedError;
+  Duration get totalRecordingDuration => throw _privateConstructorUsedError;
   String? get recordingPath => throw _privateConstructorUsedError;
+  List<Message> get messages => throw _privateConstructorUsedError;
+  String? get messagesError => throw _privateConstructorUsedError;
+  bool get isLoadingMessages => throw _privateConstructorUsedError;
+  List<String> get chatsList => throw _privateConstructorUsedError;
+  String? get chatsListError => throw _privateConstructorUsedError;
+  bool get isLoadingChatsList => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,7 +45,13 @@ abstract class $ChatStateCopyWith<$Res> {
       bool hasPermission,
       Duration recordingDuration,
       Duration totalRecordingDuration,
-      String? recordingPath});
+      String? recordingPath,
+      List<Message> messages,
+      String? messagesError,
+      bool isLoadingMessages,
+      List<String> chatsList,
+      String? chatsListError,
+      bool isLoadingChatsList});
 }
 
 /// @nodoc
@@ -64,6 +74,12 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
     Object? recordingDuration = null,
     Object? totalRecordingDuration = null,
     Object? recordingPath = freezed,
+    Object? messages = null,
+    Object? messagesError = freezed,
+    Object? isLoadingMessages = null,
+    Object? chatsList = null,
+    Object? chatsListError = freezed,
+    Object? isLoadingChatsList = null,
   }) {
     return _then(_value.copyWith(
       mode: null == mode
@@ -86,6 +102,30 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
           ? _value.recordingPath
           : recordingPath // ignore: cast_nullable_to_non_nullable
               as String?,
+      messages: null == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<Message>,
+      messagesError: freezed == messagesError
+          ? _value.messagesError
+          : messagesError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoadingMessages: null == isLoadingMessages
+          ? _value.isLoadingMessages
+          : isLoadingMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      chatsList: null == chatsList
+          ? _value.chatsList
+          : chatsList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      chatsListError: freezed == chatsListError
+          ? _value.chatsListError
+          : chatsListError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoadingChatsList: null == isLoadingChatsList
+          ? _value.isLoadingChatsList
+          : isLoadingChatsList // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -103,7 +143,13 @@ abstract class _$$ChatStateImplCopyWith<$Res>
       bool hasPermission,
       Duration recordingDuration,
       Duration totalRecordingDuration,
-      String? recordingPath});
+      String? recordingPath,
+      List<Message> messages,
+      String? messagesError,
+      bool isLoadingMessages,
+      List<String> chatsList,
+      String? chatsListError,
+      bool isLoadingChatsList});
 }
 
 /// @nodoc
@@ -124,6 +170,12 @@ class __$$ChatStateImplCopyWithImpl<$Res>
     Object? recordingDuration = null,
     Object? totalRecordingDuration = null,
     Object? recordingPath = freezed,
+    Object? messages = null,
+    Object? messagesError = freezed,
+    Object? isLoadingMessages = null,
+    Object? chatsList = null,
+    Object? chatsListError = freezed,
+    Object? isLoadingChatsList = null,
   }) {
     return _then(_$ChatStateImpl(
       mode: null == mode
@@ -146,6 +198,30 @@ class __$$ChatStateImplCopyWithImpl<$Res>
           ? _value.recordingPath
           : recordingPath // ignore: cast_nullable_to_non_nullable
               as String?,
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<Message>,
+      messagesError: freezed == messagesError
+          ? _value.messagesError
+          : messagesError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoadingMessages: null == isLoadingMessages
+          ? _value.isLoadingMessages
+          : isLoadingMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      chatsList: null == chatsList
+          ? _value._chatsList
+          : chatsList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      chatsListError: freezed == chatsListError
+          ? _value.chatsListError
+          : chatsListError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoadingChatsList: null == isLoadingChatsList
+          ? _value.isLoadingChatsList
+          : isLoadingChatsList // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -156,26 +232,62 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
   const _$ChatStateImpl(
       {required this.mode,
       required this.hasPermission,
-      required this.recordingDuration,
-      required this.totalRecordingDuration,
-      this.recordingPath});
+      this.recordingDuration = Duration.zero,
+      this.totalRecordingDuration = Duration.zero,
+      this.recordingPath,
+      final List<Message> messages = const [],
+      this.messagesError,
+      this.isLoadingMessages = false,
+      final List<String> chatsList = const [],
+      this.chatsListError,
+      this.isLoadingChatsList = false})
+      : _messages = messages,
+        _chatsList = chatsList;
 
   @override
   final Mode mode;
   @override
   final bool hasPermission;
   @override
+  @JsonKey()
   final Duration recordingDuration;
-// Current session
   @override
+  @JsonKey()
   final Duration totalRecordingDuration;
-// Accumulated across sessions
   @override
   final String? recordingPath;
+  final List<Message> _messages;
+  @override
+  @JsonKey()
+  List<Message> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  final String? messagesError;
+  @override
+  @JsonKey()
+  final bool isLoadingMessages;
+  final List<String> _chatsList;
+  @override
+  @JsonKey()
+  List<String> get chatsList {
+    if (_chatsList is EqualUnmodifiableListView) return _chatsList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chatsList);
+  }
+
+  @override
+  final String? chatsListError;
+  @override
+  @JsonKey()
+  final bool isLoadingChatsList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatState(mode: $mode, hasPermission: $hasPermission, recordingDuration: $recordingDuration, totalRecordingDuration: $totalRecordingDuration, recordingPath: $recordingPath)';
+    return 'ChatState(mode: $mode, hasPermission: $hasPermission, recordingDuration: $recordingDuration, totalRecordingDuration: $totalRecordingDuration, recordingPath: $recordingPath, messages: $messages, messagesError: $messagesError, isLoadingMessages: $isLoadingMessages, chatsList: $chatsList, chatsListError: $chatsListError, isLoadingChatsList: $isLoadingChatsList)';
   }
 
   @override
@@ -188,7 +300,13 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
       ..add(DiagnosticsProperty('recordingDuration', recordingDuration))
       ..add(
           DiagnosticsProperty('totalRecordingDuration', totalRecordingDuration))
-      ..add(DiagnosticsProperty('recordingPath', recordingPath));
+      ..add(DiagnosticsProperty('recordingPath', recordingPath))
+      ..add(DiagnosticsProperty('messages', messages))
+      ..add(DiagnosticsProperty('messagesError', messagesError))
+      ..add(DiagnosticsProperty('isLoadingMessages', isLoadingMessages))
+      ..add(DiagnosticsProperty('chatsList', chatsList))
+      ..add(DiagnosticsProperty('chatsListError', chatsListError))
+      ..add(DiagnosticsProperty('isLoadingChatsList', isLoadingChatsList));
   }
 
   @override
@@ -204,12 +322,34 @@ class _$ChatStateImpl with DiagnosticableTreeMixin implements _ChatState {
             (identical(other.totalRecordingDuration, totalRecordingDuration) ||
                 other.totalRecordingDuration == totalRecordingDuration) &&
             (identical(other.recordingPath, recordingPath) ||
-                other.recordingPath == recordingPath));
+                other.recordingPath == recordingPath) &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.messagesError, messagesError) ||
+                other.messagesError == messagesError) &&
+            (identical(other.isLoadingMessages, isLoadingMessages) ||
+                other.isLoadingMessages == isLoadingMessages) &&
+            const DeepCollectionEquality()
+                .equals(other._chatsList, _chatsList) &&
+            (identical(other.chatsListError, chatsListError) ||
+                other.chatsListError == chatsListError) &&
+            (identical(other.isLoadingChatsList, isLoadingChatsList) ||
+                other.isLoadingChatsList == isLoadingChatsList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mode, hasPermission,
-      recordingDuration, totalRecordingDuration, recordingPath);
+  int get hashCode => Object.hash(
+      runtimeType,
+      mode,
+      hasPermission,
+      recordingDuration,
+      totalRecordingDuration,
+      recordingPath,
+      const DeepCollectionEquality().hash(_messages),
+      messagesError,
+      isLoadingMessages,
+      const DeepCollectionEquality().hash(_chatsList),
+      chatsListError,
+      isLoadingChatsList);
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -224,20 +364,38 @@ abstract class _ChatState implements ChatState {
   const factory _ChatState(
       {required final Mode mode,
       required final bool hasPermission,
-      required final Duration recordingDuration,
-      required final Duration totalRecordingDuration,
-      final String? recordingPath}) = _$ChatStateImpl;
+      final Duration recordingDuration,
+      final Duration totalRecordingDuration,
+      final String? recordingPath,
+      final List<Message> messages,
+      final String? messagesError,
+      final bool isLoadingMessages,
+      final List<String> chatsList,
+      final String? chatsListError,
+      final bool isLoadingChatsList}) = _$ChatStateImpl;
 
   @override
   Mode get mode;
   @override
   bool get hasPermission;
   @override
-  Duration get recordingDuration; // Current session
+  Duration get recordingDuration;
   @override
-  Duration get totalRecordingDuration; // Accumulated across sessions
+  Duration get totalRecordingDuration;
   @override
   String? get recordingPath;
+  @override
+  List<Message> get messages;
+  @override
+  String? get messagesError;
+  @override
+  bool get isLoadingMessages;
+  @override
+  List<String> get chatsList;
+  @override
+  String? get chatsListError;
+  @override
+  bool get isLoadingChatsList;
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.

@@ -14,7 +14,7 @@ class _HomeApiService implements HomeApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://ffe526b44f80.ngrok-free.app/Api/v1/';
+    baseUrl ??= 'https://5cf045714da6.ngrok-free.app/Api/v1/';
   }
 
   final Dio _dio;
@@ -39,7 +39,7 @@ class _HomeApiService implements HomeApiService {
     )
             .compose(
               _dio.options,
-              'https://ffe526b44f80.ngrok-free.app/Api/v1/DoctorOverview/List',
+              'https://5cf045714da6.ngrok-free.app/Api/v1/DoctorOverview/List',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -81,7 +81,7 @@ class _HomeApiService implements HomeApiService {
     )
             .compose(
               _dio.options,
-              'https://ffe526b44f80.ngrok-free.app/Api/v1/Speciality/List',
+              'https://5cf045714da6.ngrok-free.app/Api/v1/Speciality/List',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medi_book/core/helpers/doctors_list.dart';
 import 'package:medi_book/features/message/presentation/screens/chat/widgets/chat_bubble_list_view.dart';
-import 'package:medi_book/features/message/presentation/screens/chat/widgets/chat_input_area.dart';
+import 'package:medi_book/features/message/presentation/screens/chat/widgets/InputArea/chat_input_area.dart';
 
 class TextMessageBubble extends StatelessWidget {
   const TextMessageBubble({

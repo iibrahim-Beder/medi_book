@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medi_book/features/message/presentation/manger/chat_cubit/chat_cubit.dart';
-import 'package:medi_book/features/message/presentation/screens/chat/widgets/chat_Input_field.dart';
+import 'package:medi_book/features/message/presentation/screens/chat/widgets/InputArea/chat_Input_field.dart';
 
 class ChatInputActionsBlocSelector extends StatelessWidget {
   const ChatInputActionsBlocSelector({

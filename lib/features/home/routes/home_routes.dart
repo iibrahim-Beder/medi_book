@@ -172,7 +172,10 @@ abstract class HomeRoutes {
             path: "/chatPage",
             name: chatPageScreen,
             builder: (context, state) => BlocProvider(
-              create: (context) => ChatCubit(),
+              create: (context) => ChatCubit(
+                  getMessagesStreamUseCase: getIt(),
+                  sendMessageUseCase: getIt(),
+                  getChatsListUseCase: getIt()),
               child: const ChatScreen(),
             ),
           ),

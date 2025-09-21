@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/theming/styles.dart';
-import 'package:medi_book/features/message/presentation/screens/chat/widgets/preview_last_chunk_player.dart';
+import 'package:medi_book/features/message/presentation/manger/chat_cubit/chat_cubit.dart';
+import 'package:medi_book/features/message/presentation/screens/chat/widgets/InputArea/preview_last_chunk_player.dart';
 
 class VoiceRecordingBottomSheetBody extends StatelessWidget {
   const VoiceRecordingBottomSheetBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ChatCubit>();
     return Container(
       decoration: BoxDecoration(
           color: ColorsManager.backgroundWhite,
@@ -33,7 +36,10 @@ class VoiceRecordingBottomSheetBody extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cubit.cancelRecording();
+                      Navigator.pop(context);
+                    },
                     icon: Icon(
                       Icons.delete,
                       size: 30,
@@ -59,6 +65,24 @@ class VoiceRecordingBottomSheetBody extends StatelessWidget {
   }
 }
 
+
+Future<void> voiceRecordingBottomSheet(BuildContext context) async {
+  final cubit = context.read<ChatCubit>();
+  showModalBottomSheet<bool>(
+    context: context,
+    isScrollControlled: true,
+    enableDrag: false,
+    backgroundColor: Colors.transparent,
+    builder: (_) {
+      return BlocProvider.value(
+        value: cubit,
+        child: VoiceRecordingBottomSheetBody(),
+      );
+    },
+  );
+}
+
+
 class LastRecordingPreviewWithResumeMic extends StatelessWidget {
   const LastRecordingPreviewWithResumeMic({
     super.key,
@@ -82,7 +106,7 @@ class LastRecordingPreviewWithResumeMic extends StatelessWidget {
                 bottomRight: Radius.circular(20.r),
                 topRight: Radius.circular(20.r),
               ),
-              color: ColorsManager.mainBlue,
+              color: ColorsManager.voicePausedBlueGray,
             ),
             child: Center(
               child: Image.asset(

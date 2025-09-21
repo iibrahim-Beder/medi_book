@@ -17,7 +17,7 @@ class ChatActionBlocSelector extends StatelessWidget {
       builder: (context, state) {
         if (state == Mode.initial) {
           return InkWell(
-            onTap: () => cubit.toggleRecording(),
+            onTap: () => cubit.startRecording(),
             child: Image.asset(
               'assets/images/record_voice_icon.png',
               height: 56.h,
@@ -29,7 +29,7 @@ class ChatActionBlocSelector extends StatelessWidget {
         return InkWell(
             onTap: () {
               cubit.updateMode(Mode.initial);
-              cubit.stopRecording();
+              cubit.cancelRecording();
             },
             child: SvgPicture.asset('assets/svgs/send_message_icon.svg'));
       },

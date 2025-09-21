@@ -1,7 +1,11 @@
+import 'dart:io';
 import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medi_book/core/theming/colors.dart';
+import 'package:medi_book/features/message/presentation/manger/chat_cubit/chat_cubit.dart';
 import 'package:medi_book/features/message/presentation/screens/chat/widgets/bloc/recording_duration_timer_bloc_selector.dart';
 
 class PreviewLastChunkPlayer extends StatefulWidget {
@@ -23,9 +27,13 @@ class _PreviewLastChunkPlayerState extends State<PreviewLastChunkPlayer> {
   }
 
   Future<void> _prepareWaveform() async {
-    await _playerController.extractWaveformData(
-      path: widget.path,
-    );
+    if (await File(widget.path).exists()) {
+      await _playerController.extractWaveformData(
+        path: widget.path,
+      );
+    } else {
+      print("❌ File does not exist: ${widget.path}");
+    }
   }
 
   @override
@@ -36,6 +44,7 @@ class _PreviewLastChunkPlayerState extends State<PreviewLastChunkPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ChatCubit>();
     return Expanded(
       child: Container(
         height: 50, // match waveform height
@@ -46,25 +55,22 @@ class _PreviewLastChunkPlayerState extends State<PreviewLastChunkPlayer> {
             bottomRight: Radius.circular(5.r),
             topRight: Radius.circular(5.r),
           ),
-          color: ColorsManager.mainBlue,
+          color: ColorsManager.voicePausedBlueGray,
         ),
         child: Row(
           children: [
             Padding(
               padding: const EdgeInsets.all(10),
               child: InkWell(
-                onTap: () {},
-                child: Container(
-                    height: 30.h,
-                    width: 30.w,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: ColorsManager.mainBlue,
-                    ),
-                    child: Image.asset(
-                      'assets/images/pause.png',
-                      color: ColorsManager.backgroundWhite,
-                    )),
+                onTap: () {
+                  // cubit.playRecordedChunk(cubit.state.recordingPath?? '');
+                  print(cubit.state.mode);
+                  // cubit.toggleRecording();
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/play.svg',
+                  color: Colors.white,
+                ),
               ),
             ),
             Flexible(

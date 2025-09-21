@@ -7,6 +7,7 @@ import 'package:medi_book/features/message/presentation/screens/chat/widgets/blo
 import 'package:medi_book/features/message/presentation/screens/chat/widgets/bloc/chat_input_switcher_bloc_selector.dart';
 
 class ChatInputArea extends StatelessWidget {
+  
   const ChatInputArea({
     super.key,
   });
@@ -14,7 +15,7 @@ class ChatInputArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ChatCubit>().state;
-    bool isHasTrash = state.mode == Mode.paused || state.mode == Mode.recording;
+    bool isHasTrash = state.mode == Mode.recording;
     return Container(
       constraints: BoxConstraints(
         minHeight: 80,
@@ -28,7 +29,7 @@ class ChatInputArea extends StatelessWidget {
         children: [
           if (isHasTrash)
             IconButton(
-              onPressed: () => context.read<ChatCubit>().stopRecording(),
+              onPressed: () => context.read<ChatCubit>().cancelRecording(),
               icon: const Icon(
                 Icons.delete,
                 color: ColorsManager.text70,

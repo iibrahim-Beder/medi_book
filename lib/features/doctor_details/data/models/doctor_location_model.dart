@@ -28,3 +28,5 @@ class DoctorLocationModel {
       _$DoctorLocationModelFromJson(json);  
 
 }
+
+

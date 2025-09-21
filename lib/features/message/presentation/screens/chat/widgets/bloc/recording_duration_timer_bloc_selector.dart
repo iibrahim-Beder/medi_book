@@ -8,6 +8,7 @@ class RecordingDurationTimerBlocSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<ChatCubit, ChatState, Duration>(
+      
       selector: (state) => state.totalRecordingDuration + state.recordingDuration,
       builder: (context, total) {
         final minutes = total.inMinutes.remainder(60).toString().padLeft(2, '0');

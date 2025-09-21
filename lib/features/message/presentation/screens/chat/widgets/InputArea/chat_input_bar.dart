@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:medi_book/core/helpers/spacing.dart';
 import 'package:medi_book/core/theming/colors.dart';
-import 'package:medi_book/features/message/presentation/screens/chat/widgets/chat_Input_field.dart';
-import 'package:medi_book/features/message/presentation/screens/chat/widgets/voice_recorder_button.dart';
+import 'package:medi_book/features/message/presentation/screens/chat/widgets/InputArea/chat_Input_field.dart';
+import 'package:medi_book/features/message/presentation/screens/chat/widgets/InputArea/voice_recorder_button.dart';
 
 class ChatInputBar extends StatelessWidget {
   const ChatInputBar({
