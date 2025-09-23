@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart'
     hide ClusterManager, Cluster;
 import 'package:medi_book/core/theming/colors.dart';
 import 'package:medi_book/core/widgets/setup_error_state.dart';
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/location_with_doctors.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/response/location_with_doctors.dart';
 import 'package:medi_book/features/find_nearby_doctors/presentation/manager/find_nearby_doctor_cubit/find_nearby_doctor_cubit.dart';
 import 'package:medi_book/features/find_nearby_doctors/presentation/manager/find_nearby_doctor_cubit/find_nearby_doctor_state.dart';
 import 'package:medi_book/features/find_nearby_doctors/presentation/screens/find_nearby_screen/widgets/helpers/create_custom_doctor_marker.dart';
@@ -20,6 +20,8 @@ class CoustomGoogleMap extends StatefulWidget {
 class _CoustomGoogleMapState extends State<CoustomGoogleMap> {
   late GoogleMapController _mapController;
   Set<Marker> _markers = {}; // Holds simple markers instead of clusters
+  late BitmapDescriptor _customMarkerIcon;
+  
 
   // late ClusterManager<LocationWithDoctors> _manager;
 
@@ -31,7 +33,7 @@ class _CoustomGoogleMapState extends State<CoustomGoogleMap> {
   @override
   void initState() {
     super.initState();
-
+   _loadCustomIcon();
     context.read<FindNearbyDoctorCubit>().loadInitialMapData();
 
     // ClusterManager temporarily disabled for debugging simple markers
@@ -65,27 +67,27 @@ class _CoustomGoogleMapState extends State<CoustomGoogleMap> {
     });
   }
 
-  Future<Marker> _markerBuilder(Cluster<LocationWithDoctors> cluster) async {
-    if (cluster.isMultiple) {
-      return Marker(
-        markerId: MarkerId(cluster.getId()),
-        position: cluster.location,
-        icon: await createClusterBitmap(cluster.items.length),
-      );
-    } else {
-      final doctorItem = cluster.items.first;
-      return Marker(
-        markerId: MarkerId(doctorItem.doctor.id.toString()),
-        position: doctorItem.location,
-        icon: doctorItem.icon,
-        onTap: () {
-          // context.read<FindNearbyDoctorCubit>().updateSelectedDoctor(
-          //       doctorItem.doctor,
-          //     );
-        },
-      );
-    }
-  }
+  // Future<Marker> _markerBuilder(Cluster<LocationWithDoctors> cluster) async {
+  //   if (cluster.isMultiple) {
+  //     return Marker(
+  //       markerId: MarkerId(cluster.getId()),
+  //       position: cluster.location,
+  //       icon: await createClusterBitmap(cluster.items.length),
+  //     );
+  //   } else {
+  //     final doctorItem = cluster.items.first;
+  //     return Marker(
+  //       markerId: MarkerId(doctorItem.doctor.id.toString()),
+  //       position: doctorItem.location,
+  //       icon: doctorItem.icon,
+  //       onTap: () {
+  //         // context.read<FindNearbyDoctorCubit>().updateSelectedDoctor(
+  //         //       doctorItem.doctor,
+  //         //     );
+  //       },
+  //     );
+  //   }
+  // }
 
   @override
 
@@ -113,9 +115,9 @@ class _CoustomGoogleMapState extends State<CoustomGoogleMap> {
 
             Set<Marker> simpleMarkers = items.map((item) {
               return Marker(
-                markerId: MarkerId(item.doctor.id.toString()),
+                markerId: MarkerId(item.doctors.first.id.toString()),
                 position: item.location,
-                icon: item.icon,
+                icon: _customMarkerIcon,
               );
             }).toSet();
 
@@ -171,4 +173,12 @@ class _CoustomGoogleMapState extends State<CoustomGoogleMap> {
       },
     );
   }
+
+  Future<void> _loadCustomIcon() async {
+  _customMarkerIcon = await BitmapDescriptor.fromAssetImage(
+    const ImageConfiguration(size: Size(48, 48)),
+    'assets/images/markar_location.png',
+  );
 }
+}
+

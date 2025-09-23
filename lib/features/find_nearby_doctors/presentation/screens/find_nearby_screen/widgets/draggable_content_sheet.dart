@@ -158,7 +158,7 @@ class DoctorFindNearbyCard extends StatelessWidget {
                     rating: 4.8,
                     numberOfReviews: 120,
                     imageUrl:
-                        'https://efec73dd9d22.ngrok-free.app/uploads/images/persons/rendy.png',
+                        'https://6f4c181d8d6b.ngrok-free.app/uploads/images/persons/rendy.png',
                   ),
                   color: Colors.white,
                   paddingOfIconMessage: EdgeInsets.only(top: 25, right: 10),

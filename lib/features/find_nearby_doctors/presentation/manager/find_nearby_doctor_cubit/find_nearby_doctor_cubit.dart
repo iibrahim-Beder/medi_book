@@ -1,21 +1,24 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/nearby_doctors_result.dart';
+import 'package:medi_book/features/find_nearby_doctors/networking/find_nearby_doctors_api_service.dart';
 import 'package:medi_book/features/find_nearby_doctors/presentation/screens/find_nearby_screen/helpers/compute_helpers.dart';
 import 'package:medi_book/features/home/domain/entities/doctor.dart';
 import 'package:medi_book/features/home/domain/entities/specialty.dart';
 import 'package:medi_book/features/find_nearby_doctors/data/caching/nearby_doctor_cell_cache.dart';
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/location_with_doctors.dart';
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/nearby_doctors_result.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/response/location_with_doctors.dart';
 import 'package:medi_book/features/find_nearby_doctors/domain/helpers/s2_cell_calculator.dart';
 import 'package:medi_book/features/find_nearby_doctors/presentation/manager/find_nearby_doctor_cubit/find_nearby_doctor_state.dart';
-import 'package:h3_dart/h3_dart.dart' hide H3Factory;
+
+
+// we stoped at regerting FindNearbyDoctorApiService in di
 
 class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
-  FindNearbyDoctorCubit([this.specialties, this.doctor])
+  FindNearbyDoctorsApiService apiService;
+
+  FindNearbyDoctorCubit(this.apiService,[this.specialties, this.doctor, ])
       : super(FindNearbyDoctorState.initial());
 
   List<Speciality>? specialties;
@@ -169,8 +172,7 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
     // print('🔍 Zoom Level: $zoomLevel');
     print("************* onMapIdle Triggered ****************");
     print(_previousZoomLevel);
-    handleZoomChange(
-        _previousZoomLevel ?? zoomLevel, zoomLevel); 
+    handleZoomChange(_previousZoomLevel ?? zoomLevel, zoomLevel);
     _previousZoomLevel = zoomLevel;
 
     final CellConfig config = S2CellCalculator.getCellSizeByZoomAndBBox(
@@ -282,7 +284,7 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
       // ...locationsFromCachedCells,
       ...newlyFetched,
     ]) {
-      uniqueDoctors[doc.doctor.id.toString()] = doc;
+      uniqueDoctors[doc.doctors.first.id.toString()] = doc;
     }
 
     final allData = uniqueDoctors.values.toList();
@@ -382,7 +384,7 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
 
       // Get cached data from those cells
       final List<LocationWithDoctors> cachedData =
-          await LocationsFromCachedCells(cachedCells);
+          await locationsFromCachedCells(cachedCells);
 
       // If any cached data is found, emit it
       if (cachedData.isNotEmpty) {
@@ -402,7 +404,7 @@ class FindNearbyDoctorCubit extends Cubit<FindNearbyDoctorState> {
     });
   }
 
-  Future<List<LocationWithDoctors>> LocationsFromCachedCells(
+  Future<List<LocationWithDoctors>> locationsFromCachedCells(
       Set<String> cachedCells) async {
     List<LocationWithDoctors> cachedLocations = [];
     for (var cellKey in cachedCells) {
@@ -465,10 +467,10 @@ Future<List<LocationWithDoctors>> generateFixedDoctors() async {
     // LatLng(30.6186 + 0.0015, 30.4308 - 0.0020),
 
     LatLng(30.35, 30.73),
-    LatLng(30.33, 30.75),
-    LatLng(30.31, 30.72),
-    LatLng(30.34, 30.70),
-    LatLng(30.32, 30.74)
+    // LatLng(30.33, 30.75),
+    // LatLng(30.31, 30.72),
+    // LatLng(30.34, 30.70),
+    // LatLng(30.32, 30.74)
   ];
 
   List<LocationWithDoctors> list = [];
@@ -485,16 +487,16 @@ Future<List<LocationWithDoctors>> generateFixedDoctors() async {
       imageUrl: 'https://example.com/doctor${i + 1}.jpg',
     );
 
-    final icon = await BitmapDescriptor.fromAssetImage(
-      ImageConfiguration(size: Size(48, 48)),
-      'assets/images/markar_location.png',
-    );
+    // final icon = await BitmapDescriptor.fromAssetImage(
+    //   ImageConfiguration(size: Size(48, 48)),
+    //   'assets/images/markar_location.png',
+    // );
 
     list.add(LocationWithDoctors(
-      location: fixedLocations[i],
-      doctor: doctor,
-      icon: icon,
-    ));
+        locationId: '10',
+        latitude: 30.35,
+        longitude: 30.73,
+        doctors: [doctor]));
   }
 
   return list;

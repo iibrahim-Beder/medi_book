@@ -244,7 +244,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image/image.dart' as img;
 import 'package:medi_book/features/home/domain/entities/doctor.dart';
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/location_with_doctors.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/response/location_with_doctors.dart';
 import 'package:medi_book/features/find_nearby_doctors/presentation/screens/find_nearby_screen/widgets/helpers/doctor_Item.dart';
 
 Future<List<LocationWithDoctorsItem>> getNearbyDoctorItems(
@@ -433,16 +433,14 @@ Future<List<LocationWithDoctors>> generateMockLocationsFromCellKeys(
   List<LocationWithDoctors> locations = [];
 
   for (final cellKey in cellKeys) {
-
     final regex = RegExp(r'cell_\w+_([0-9]+\.[0-9]+)_([0-9]+\.[0-9]+)');
     final match = regex.firstMatch(cellKey);
 
     if (match == null) {
       print('⚠️ Invalid cellKey format: $cellKey');
-      continue; 
+      continue;
     }
 
-  
     double lat = double.parse(match.group(1)!);
     double lng = double.parse(match.group(2)!);
 
@@ -462,12 +460,8 @@ Future<List<LocationWithDoctors>> generateMockLocationsFromCellKeys(
       'assets/images/markar_location.png',
     );
 
-  
     locations.add(LocationWithDoctors(
-      location: LatLng(lat, lng),
-      doctor: doctor,
-      icon: icon,
-    ));
+        locationId: '0', latitude: lat, longitude: lng,  doctors: []));
 
     print('📍 Generated doctor at $lat, $lng for cell $cellKey');
   }

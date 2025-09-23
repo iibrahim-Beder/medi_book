@@ -11,7 +11,8 @@ CellLocationsWithDoctorsModel _$CellLocationsWithDoctorsModelFromJson(
     CellLocationsWithDoctorsModel(
       cellId: json['cellId'] as String,
       locations: (json['locations'] as List<dynamic>)
-          .map((e) => LocationDoctorsModel.fromJson(e as Map<String, dynamic>))
+          .map((e) =>
+              LocationWithDoctorsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -20,26 +21,4 @@ Map<String, dynamic> _$CellLocationsWithDoctorsModelToJson(
     <String, dynamic>{
       'cellId': instance.cellId,
       'locations': instance.locations,
-    };
-
-LocationDoctorsModel _$LocationDoctorsModelFromJson(
-        Map<String, dynamic> json) =>
-    LocationDoctorsModel(
-      locationId: json['locationId'] as String,
-      latitude: (json['latitude'] as num).toDouble(),
-      longitude: (json['longitude'] as num).toDouble(),
-      locationDescription: json['locationDescription'] as String?,
-      doctors: (json['doctors'] as List<dynamic>)
-          .map((e) => DoctorModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$LocationDoctorsModelToJson(
-        LocationDoctorsModel instance) =>
-    <String, dynamic>{
-      'locationId': instance.locationId,
-      'latitude': instance.latitude,
-      'longitude': instance.longitude,
-      'locationDescription': instance.locationDescription,
-      'doctors': instance.doctors,
     };

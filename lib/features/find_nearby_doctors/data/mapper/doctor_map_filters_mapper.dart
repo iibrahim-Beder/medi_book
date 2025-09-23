@@ -1,17 +1,18 @@
 // Mapper between DTO and Entity
 import 'package:medi_book/features/find_nearby_doctors/data/models/request/doctor_map_filters_model.dart';
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/doctor_map_filters.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/request/doctor_map_filters.dart';
 
 extension DoctorMapFiltersMapper on DoctorMapFiltersModel {
-  DoctorMapFiltersEntity toEntity() {
-    return DoctorMapFiltersEntity(
+  DoctorMapFilters toEntity() {
+    return DoctorMapFilters(
       currentlyWorking: currentlyWorking,
       priceMin: priceMin,
       priceMax: priceMax,
       ratingMin: ratingMin,
     );
   }
-  static DoctorMapFiltersModel fromEntity(DoctorMapFiltersEntity entity) {
+
+  static DoctorMapFiltersModel fromEntity(DoctorMapFilters entity) {
     return DoctorMapFiltersModel(
       currentlyWorking: entity.currentlyWorking,
       priceMin: entity.priceMin,

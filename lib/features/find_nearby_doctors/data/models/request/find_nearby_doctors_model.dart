@@ -7,7 +7,6 @@ part 'find_nearby_doctors_model.g.dart';
 class FindNearbyDoctorsModel {
   @JsonKey(fromJson: latLngBoundsFromJson, toJson: latLngBoundsToJson)
   final LatLngBounds bounds;
-  
   final double zoomLevel;
   final DoctorMapFiltersModel filters;
   final String sortBy;

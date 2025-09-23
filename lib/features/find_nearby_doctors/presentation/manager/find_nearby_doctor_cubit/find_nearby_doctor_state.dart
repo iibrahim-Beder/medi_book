@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:medi_book/features/find_nearby_doctors/data/models/request/doctor_map_filters_model.dart';
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/location_with_doctors.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/response/location_with_doctors.dart';
 import 'package:medi_book/features/find_nearby_doctors/domain/entities/nearby_doctors_result.dart';
 
 part 'find_nearby_doctor_state.freezed.dart';
@@ -65,3 +65,6 @@ class FetchedNearbyDoctorsState with _$FetchedNearbyDoctorsState {
 class DoctorMapFiltersState with _$DoctorMapFiltersState {
   const factory DoctorMapFiltersState.fetchNearbyDoctors() = _DoctorMapFiltersState;
 }
+
+
+

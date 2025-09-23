@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:medi_book/features/find_nearby_doctors/domain/entities/location_with_doctors.dart';
+import 'package:medi_book/features/find_nearby_doctors/domain/entities/response/location_with_doctors.dart';
 
 class NearbyDoctorCellCache {
   static final Map<String, CachedCellData<List<LocationWithDoctors>>> _cache =
